@@ -168,6 +168,51 @@
             size: A4;
             margin: 0;
         }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 0 !important;
+                overflow: hidden !important;
+            }
+
+            #resume-window {
+                width: calc(100vw - 1rem) !important;
+                max-width: none !important;
+                height: calc(100vh - 1rem) !important;
+                height: calc(100dvh - 1rem) !important; /* Dynamic viewport height for mobile browsers */
+                border: 2px solid black !important;
+                border-radius: 0.5rem !important;
+                box-shadow: none !important;
+                position: fixed !important;
+                top: 0.5rem !important;
+                left: 0.5rem !important;
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            #title-bar {
+                border-radius: 0.5rem 0.5rem 0 0 !important;
+                flex-shrink: 0 !important;
+            }
+
+            .flex-grow {
+                flex: 1 !important;
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+                -webkit-overflow-scrolling: touch !important;
+                padding-bottom: 1rem !important;
+                min-height: 0 !important;
+            }
+
+            .p-6 {
+                padding: 1rem !important;
+            }
+
+            .md\\:p-8 {
+                padding: 1rem !important;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
