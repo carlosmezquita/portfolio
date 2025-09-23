@@ -359,12 +359,12 @@
         // --- Winking Animation Logic ---
         const hedgehogIcon = document.getElementById('winking-emoji');
 
-        function scheduleNextWink() {
+        function scheduleNextAnimation() {
             // Random interval between 3-8 seconds
             const randomDelay = Math.random() * 5000 + 3000;
             setTimeout(() => {
                 wink();
-                scheduleNextWink();
+                scheduleNextAnimation();
             }, randomDelay);
         }
 
@@ -399,7 +399,32 @@
         });
 
         // Start the winking cycle
-        scheduleNextWink();
+        scheduleNextAnimation();
+
+        // --- Animated Favicon Logic ---
+        const favicon = document.querySelector('link[rel="icon"]');
+
+        function scheduleFaviconAnimation() {
+            // Random interval between 5-10 seconds for favicon
+            const randomDelay = Math.random() * 5000 + 5000;
+            setTimeout(() => {
+                faviconSunglasses();
+                scheduleFaviconAnimation();
+            }, randomDelay);
+        }
+
+        function faviconSunglasses() {
+            // Switch favicon to wink
+            favicon.href = './img/sunglasses.png';
+
+            // Switch back to smile after 200ms
+            setTimeout(() => {
+                favicon.href = './img/smile.png';
+            }, 200);
+        }
+
+        // Start the favicon winking cycle
+        scheduleFaviconAnimation();
 
     </script>
 </body>
