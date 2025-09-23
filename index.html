@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juan Carlos Mezquita - Resume</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background-color: #F7F3E9; /* A sandy color similar to PostHog's site */
+            background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4CDBF' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+            overflow: hidden;
+        }
+
+        /* For the blinking cursor effect */
+        .typing-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.2rem;
+            background-color: black;
+            animation: blink 1s step-end infinite;
+            margin-left: 4px;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+        
+        .prompt::before {
+            content: '>';
+            margin-right: 0.75rem;
+            color: #9CA3AF;
+        }
+
+        .window-shadow {
+            box-shadow: 8px 8px 0px rgba(0,0,0,1);
+        }
+
+        .alert-shadow {
+             box-shadow: 4px 4px 0px rgba(0,0,0,1);
+        }
+
+        /* Print Styles */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background-color: #F7F3E9 !important;
+                background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4CDBF' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E") !important;
+                margin: 20px !important;
+                padding: 0 !important;
+                overflow: visible !important;
+                min-height: auto !important;
+                font-size: 9px !important;
+                line-height: 1.1 !important;
+            }
+
+            #resume-window {
+                position: static !important;
+                width: 100% !important;
+                height: auto !important;
+                max-width: none !important;
+                margin: 0 !important;
+                box-shadow: none !important;
+                border: 1px solid black !important;
+                page-break-inside: avoid !important;
+            }
+
+            #title-bar {
+                background-color: #e5e7eb !important;
+                border-bottom: 1px solid black !important;
+                padding: 0.25rem !important;
+            }
+
+            .window-shadow {
+                box-shadow: none !important;
+            }
+
+            .alert-shadow {
+                box-shadow: none !important;
+            }
+
+            #alert-box {
+                display: none !important;
+            }
+
+            .typing-cursor {
+                display: none !important;
+            }
+
+            * {
+                page-break-inside: avoid !important;
+            }
+
+            .space-y-8 > * {
+                margin-bottom: 0.5rem !important;
+            }
+
+            .space-y-4 > * {
+                margin-bottom: 0.35rem !important;
+            }
+
+            .space-y-1 > * {
+                margin-bottom: 0.15rem !important;
+            }
+
+            .p-6, .p-8 {
+                padding: 1rem !important;
+            }
+
+            .md\\:p-8 {
+                padding: 1rem !important;
+            }
+
+            .text-3xl, .text-4xl, .md\\:text-4xl {
+                font-size: 1.2rem !important;
+            }
+
+            .text-lg {
+                font-size: 0.9rem !important;
+            }
+
+            .text-md {
+                font-size: 0.8rem !important;
+            }
+
+            .text-sm {
+                font-size: 0.7rem !important;
+            }
+
+            .mb-2 {
+                margin-bottom: 0.25rem !important;
+            }
+
+            .mt-2 {
+                margin-top: 0.25rem !important;
+            }
+
+            .mt-4 {
+                margin-top: 0.5rem !important;
+            }
+
+            .p-4 {
+                padding: 0.5rem !important;
+            }
+
+            ul {
+                margin-top: 0.25rem !important;
+            }
+
+            li {
+                margin-bottom: 0.1rem !important;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <!-- The OS-like Window -->
+    <div id="resume-window" class="w-full max-w-4xl h-[90vh] bg-white border-2 border-black rounded-lg window-shadow flex flex-col absolute">
+        <!-- Title Bar -->
+        <div id="title-bar" class="bg-gray-200 p-2 flex items-center justify-between border-b-2 border-black cursor-move rounded-t-lg">
+            <div class="flex items-center gap-2">
+                 <!-- Hedgehog Icon SVG -->
+                 <img id="winking-emoji" class="" src="./img/smile.png" width="18px" title="Image author j8chi (https://www.flaticon.com/packs/pixel-emojis)">
+                <p class="text-sm font-medium"> MezquitaOS/documents/resume.md</p>
+            </div>
+            <div class="flex items-center space-x-2">
+                <div class="w-3 h-3 bg-yellow-400 rounded-full border border-black/50"></div>
+                <div class="w-3 h-3 bg-green-500 rounded-full border border-black/50"></div>
+                <div id="close-button" class="w-3 h-3 bg-red-500 rounded-full border border-black/50 cursor-pointer hover:bg-red-600"></div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="p-6 md:p-8 flex-grow overflow-y-auto text-gray-800">
+            <div class="space-y-8">
+                <!-- Header -->
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-bold">Juan Carlos Mezquita</h1>
+                    <div class="text-sm mt-2 space-x-4">
+                        <a href="https://www.linkedin.com/in/carlosmezquitalobato" target="_blank" class="hover:underline">LinkedIn</a>
+                        <span>•</span>
+                        <a href="https://github.com/carlosmezquita" target="_blank" class="hover:underline">GitHub</a>
+                        <span>•</span>
+                        <a href="mailto:mezquitalobato@gmail.com" class="hover:underline">mezquitalobato@gmail.com</a>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div>
+                    <h2 class="font-bold text-lg mb-2 prompt">README.md</h2>
+                    <blockquote class="bg-gray-50 p-4 border-l-4 border-gray-300">
+                        <p id="summary-text" class="text-gray-700"></p>
+                    </blockquote>
+                </div>
+
+                <!-- Professional Experience -->
+                <div>
+                    <h2 class="font-bold text-lg mb-2 prompt">cat ./experience/denodo.log</h2>
+                    <div class="ml-4 pl-4 border-l border-dashed">
+                        <h3 class="font-bold text-md">QA Testing and Development</h3>
+                        <p class="text-sm text-gray-600">Denodo | A Coruña, Spain | Mar 2023 – Present</p>
+                        <ul class="list-disc list-inside mt-2 text-sm space-y-1">
+                            <li>Contribute to the quality of a complex data virtualization product used by large enterprises.</li>
+                            <li>Develop and execute automated/manual test cases to validate new features for performance.</li>
+                            <li>Collaborate with developers in an agile environment to identify, document, and resolve defects.</li>
+                            <li>Analyze technical issues related to data integration and platform performance.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Personal Projects -->
+                <div>
+                    <h2 class="font-bold text-lg mb-2 prompt">./showcase.sh --projects</h2>
+                    <div class="ml-4 pl-4 border-l border-dashed space-y-4">
+                        <!-- CadeiraAI Project -->
+                        <div>
+                            <h3 class="font-bold text-md">CadeiraAI - Full-Stack AI Telephony Agent (2024-Present)</h3>
+                            <p class="text-sm text-gray-600">A full-stack application featuring a React front-end and a Node.js back-end that connects an AI agent to live telephone calls.</p>
+                            <ul class="list-disc list-inside mt-2 text-sm space-y-1">
+                                <li>Engineered a Node.js backend with Express, using LangChain and LangGraph for complex LLM agent orchestration.</li>
+                                <li>Integrated Twilio for telephony and Microsoft Cognitive Services for real-time Speech-to-Text/Text-to-Speech.</li>
+                                <li>Implemented real-time communication between client and server using Socket.io.</li>
+                                <li>Built a modern React/Vite/TypeScript frontend with TailwindCSS for managing the agent.</li>
+                                <li>Utilized Redis for semantic caching to optimize LLM responses and deployed services using Docker.</li>
+                            </ul>
+                        </div>
+                        <!-- SurfBot Project -->
+                        <div>
+                            <h3 class="font-bold text-md">SurfBot - ML-Powered Forecast Bot (2022)</h3>
+                            <p class="text-sm text-gray-600">A passion project started in high school to provide automated surf forecasts via WhatsApp and Twitter.</p>
+                            <ul class="list-disc list-inside mt-2 text-sm space-y-1">
+                                <li>Built a conversational WhatsApp bot in JavaScript that uses ML (NLU) to interpret user queries for tide, wind, and swell conditions.</li>
+                                <li>Engineered a scheduled job to automate daily forecast posts to the Twitter API.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                 <!-- Education -->
+                <div>
+                    <h2 class="font-bold text-lg mb-2 prompt">ls ./education</h2>
+                     <div class="ml-4 pl-4 border-l border-dashed">
+                        <p class="text-sm"><span class="font-bold">Computer Science, B.S.</span> — Universidade de Vigo (2023 – 2027)</p>
+                        <p class="text-sm"><span class="font-bold">Multi-platform Apps Dev, HNC</span> — CPR Plurilingüe Liceo La Paz (2021 – 2023)</p>
+                    </div>
+                </div>
+
+                <!-- Certs & Languages -->
+                <div>
+                     <h2 class="font-bold text-lg mb-2 prompt">get-misc-info</h2>
+                     <div class="ml-4 pl-4 border-l border-dashed text-sm">
+                        <p><span class="font-bold">Certifications:</span> Programming Foundations: Software Testing/QA</p>
+                        <p><span class="font-bold">Languages:</span> Spanish (Native), Galician (Native), English (Professional)</p>
+                     </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Easter Egg Alert Box -->
+    <div id="alert-box" class="hidden fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-yellow-100 border-2 border-black p-6 rounded-lg alert-shadow w-72">
+        <div class="flex items-start gap-4">
+            <div class="text-2xl">🤔</div>
+            <div>
+                <h3 class="font-bold">Hey, wait a minute!</h3>
+                <p class="text-sm mt-1">Closing this resume seems like a bug, not a feature. Are you sure you want to proceed?</p>
+                <button id="alert-ok-button" class="mt-4 bg-black text-white text-sm px-4 py-1 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">Okay, I'll reconsider</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // --- Draggable Window Logic ---
+        const resumeWindow = document.getElementById('resume-window');
+        const titleBar = document.getElementById('title-bar');
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        titleBar.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            offsetX = e.clientX - resumeWindow.getBoundingClientRect().left;
+            offsetY = e.clientY - resumeWindow.getBoundingClientRect().top;
+            resumeWindow.style.cursor = 'grabbing';
+            // Set position to fixed to drag it out of the initial centering
+            if(resumeWindow.style.position !== 'fixed') {
+                const rect = resumeWindow.getBoundingClientRect();
+                resumeWindow.style.position = 'fixed';
+                resumeWindow.style.left = `${rect.left}px`;
+                resumeWindow.style.top = `${rect.top}px`;
+            }
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                resumeWindow.style.left = `${e.clientX - offsetX}px`;
+                resumeWindow.style.top = `${e.clientY - offsetY}px`;
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            resumeWindow.style.cursor = 'default';
+        });
+
+        // --- Typing effect for summary ---
+        const summaryText = "A Computer Science student with 2+ years of hands-on experience in QA and development for Denodo's enterprise-level data virtualization platform. Passionate about building robust, high-quality tools for technical users. ";
+        const summaryElement = document.getElementById('summary-text');
+        summaryElement.innerHTML = '<span class="typing-cursor"></span>';
+        let i = 0;
+
+        function typeWriter() {
+            if (i < summaryText.length) {
+                summaryElement.innerHTML = summaryText.substring(0, i + 1) + '<span class="typing-cursor"></span>';
+                i++;
+                setTimeout(typeWriter, 20);
+            } else {
+                 // Remove cursor when done
+                summaryElement.innerHTML = summaryText;
+            }
+        }
+        
+        // Start typing after a short delay
+        setTimeout(typeWriter, 500);
+
+        // --- Easter Egg Logic ---
+        const closeButton = document.getElementById('close-button');
+        const alertBox = document.getElementById('alert-box');
+        const alertOkButton = document.getElementById('alert-ok-button');
+
+        closeButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            alertBox.classList.remove('hidden');
+        });
+
+        alertOkButton.addEventListener('click', () => {
+            alertBox.classList.add('hidden');
+        });
+
+        // --- Winking Animation Logic ---
+        const hedgehogIcon = document.getElementById('winking-emoji');
+
+        function scheduleNextWink() {
+            // Random interval between 3-8 seconds
+            const randomDelay = Math.random() * 5000 + 3000;
+            setTimeout(() => {
+                wink();
+                scheduleNextWink();
+            }, randomDelay);
+        }
+
+        function wink() {
+            // Switch to wink.png
+            hedgehogIcon.src = './img/wink.png';
+
+            // Switch back to smile.png after 150ms (brief wink)
+            setTimeout(() => {
+                hedgehogIcon.src = './img/smile.png';
+            }, 150);
+        }
+
+        // Hover wink effect
+        hedgehogIcon.addEventListener('mouseenter', () => {
+            wink();
+        });
+
+        // Wink effect for links
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+            let hoverTimeout;
+            link.addEventListener('mouseenter', () => {
+                hoverTimeout = setTimeout(() => {
+                    wink();
+                }, 250); // 250ms delay
+            });
+
+            link.addEventListener('mouseleave', () => {
+                clearTimeout(hoverTimeout);
+            });
+        });
+
+        // Start the winking cycle
+        scheduleNextWink();
+
+    </script>
+</body>
+</html>
+
+
+
+
