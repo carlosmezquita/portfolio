@@ -282,28 +282,17 @@
         .project-launcher strong { font-size:1rem; }
         .project-launcher small { font-size:.875rem; line-height:1.5; }
         .project-open-label { font-size:.875rem; text-decoration:underline; text-underline-offset:3px; margin-top:auto; }
-        .project-dialog { padding:0; border:2px solid #172033; border-radius:8px; width:min(760px,calc(100vw - 24px)); max-width:none; height:min(650px,calc(100dvh - 24px)); max-height:calc(100dvh - 24px); margin:auto; background:#fff; color:#172033; box-shadow:0 20px 60px #0f172a40; overflow:hidden; }
+        .project-dialog { padding:0; border:2px solid #172033; border-radius:8px; width:min(1120px,calc(100vw - 24px)); max-width:none; height:min(850px,calc(100dvh - 24px)); max-height:calc(100dvh - 24px); margin:auto; background:#fff; color:#172033; box-shadow:0 20px 60px #0f172a40; overflow:hidden; }
         .project-dialog[open] { display:flex; flex-direction:column; }
         .project-dialog::backdrop { background:rgb(15 23 42 / .25); }
         .project-titlebar { display:flex; align-items:center; justify-content:space-between; gap:12px; background:#e5e7eb; border-bottom:2px solid #172033; padding:6px 10px 6px 16px; touch-action:none; cursor:grab; flex-shrink:0; }
         .project-titlebar p { font-size:.875rem; overflow-wrap:anywhere; }
         .project-close { width:44px; height:44px; flex-shrink:0; font-size:1.5rem; cursor:pointer; border:1px solid #64748b; border-radius:4px; background:#fff; }
         .project-close:hover { background:#fee2e2; }
-        .project-window-body { padding:clamp(20px,4vw,32px); overflow:auto; overscroll-behavior:contain; min-height:0; }
-        .project-window-body h2 { font-size:clamp(1.75rem,5vw,2.25rem); line-height:1.3; font-weight:700; }
-        .project-window-body p { font-size:1rem; line-height:1.75; margin-top:16px; }
-        .project-window-body .project-kind { font-size:.875rem; color:#475569; margin-top:8px; }
-        .project-window-body h3 { font-size:1rem; font-weight:700; margin-top:24px; }
-        .project-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:20px; }
-        .project-tags span { font-size:.875rem; background:#eef0f3; padding:4px 8px; border-radius:3px; }
-        .project-demo { margin-top:24px; background:#172033; color:#f8fafc; padding:20px; border-radius:4px; }
-        .project-demo h3 { margin-top:0; }
-        .project-demo small { display:block; font-size:.875rem; color:#cbd5e1; margin-top:6px; }
-        .project-steps { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
-        .project-steps button { padding:10px 12px; border:1px solid #94a3b8; border-radius:3px; font-size:.875rem; cursor:pointer; }
-        .project-steps button[aria-pressed="true"] { background:#facc15; color:#172033; border-color:#facc15; }
-        .project-step-copy { min-height:7em; }
-        .project-visit { display:inline-block; margin-top:24px; text-decoration:underline; text-underline-offset:4px; }
+        .project-window-body { flex:1; min-height:0; overflow:hidden; }
+        .project-frame { display:block; width:100%; height:100%; border:0; background:#fff; }
+        .project-window-actions { display:flex; align-items:center; gap:12px; flex-shrink:0; }
+        .project-full-page { font-size:.875rem; text-decoration:underline; text-underline-offset:3px; }
         .project-dialog :focus-visible, .project-launcher:focus-visible { outline:3px solid #2563eb; outline-offset:3px; }
         @media(max-width:540px) { .project-launchers { grid-template-columns:1fr; } .project-launcher { display:grid; grid-template-columns:44px 1fr; column-gap:16px; } .project-mark { grid-row:span 3; } .project-titlebar { cursor:default; } }
         @media print { .project-dialog { display:none !important; } .project-launchers { grid-template-columns:repeat(3,1fr); } }
@@ -368,8 +357,7 @@
                 <!-- Personal Projects -->
                 <section id="projects" aria-labelledby="projects-heading">
                     <h2 id="projects-heading" class="font-bold text-lg mb-2 prompt">open ./projects</h2>
-                    <div class="project-launchers"><button type="button" class="project-launcher" data-open-project="cadeira" aria-haspopup="dialog"><span class="project-mark" aria-hidden="true">CA</span><strong>Cadeira</strong><small>AI restaurant reservations</small><span class="project-open-label">Open project ↗</span></button><button type="button" class="project-launcher" data-open-project="urbot" aria-haspopup="dialog"><span class="project-mark" aria-hidden="true">UR</span><strong>Urbot</strong><small>Guided urban-planning review</small><span class="project-open-label">Open project ↗</span></button><button type="button" class="project-launcher" data-open-project="surfay" aria-haspopup="dialog"><span class="project-mark" aria-hidden="true">SF</span><strong>Surfay</strong><small>Local surf forecasts for Galicia</small><span class="project-open-label">Open project ↗</span></button></div>
-                    <noscript><p>Enable JavaScript to open the project windows. Cadeira is my AI restaurant reservation project; Urbot supports guided urban-planning review; Surfay provides local surf forecasts for Galicia.</p></noscript>
+                    <div class="project-launchers"><a href="./projects/cadeira/" class="project-launcher" data-open-project="cadeira" aria-haspopup="dialog"><span class="project-mark" aria-hidden="true">CA</span><strong>Cadeira</strong><small>AI restaurant reservations</small><span class="project-open-label">Open project ↗</span></a><a href="./projects/urbot/" class="project-launcher" data-open-project="urbot" aria-haspopup="dialog"><span class="project-mark" aria-hidden="true">UR</span><strong>Urbot</strong><small>Guided urban-planning review</small><span class="project-open-label">Open project ↗</span></a><a href="./projects/surfay/" class="project-launcher" data-open-project="surfay" aria-haspopup="dialog"><span class="project-mark" aria-hidden="true">SF</span><strong>Surfay</strong><small>Local surf forecasts for Galicia</small><span class="project-open-label">Open project ↗</span></a></div>
                 </section>
 
                 <!-- Education -->
@@ -399,15 +387,11 @@
     </div>
 
 
-    <dialog id="project-window" class="project-dialog" aria-labelledby="project-window-heading">
-        <header class="project-titlebar" id="project-window-bar"><p id="project-window-path">MezquitaOS / projects</p><button type="button" class="project-close" id="project-window-close" aria-label="Close project window" autofocus>×</button></header>
+    <dialog id="project-window" class="project-dialog" aria-labelledby="project-window-path">
+        <header class="project-titlebar" id="project-window-bar"><p id="project-window-path">MezquitaOS / projects</p><div class="project-window-actions"><a id="project-full-page" class="project-full-page" href="./projects/cadeira/" target="_blank" rel="noopener">Full page ↗</a><button type="button" class="project-close" id="project-window-close" aria-label="Close project window" autofocus>×</button></div></header>
         <div class="project-window-body" id="project-window-content"></div>
     </dialog>
-<template id="project-template-cadeira"><article><h2 id="project-window-heading">Cadeira</h2><p class="project-kind">AI restaurant reservations</p><p>I’m building Cadeira to connect AI telephone conversations with restaurant reservations. The project brings together a voice agent and a web interface for managing settings and reservation data.</p><h3>What I’m building</h3><p>I work across the React and TypeScript client and the Node.js backend. The voice stack connects Twilio with Microsoft speech services, while LangChain and LangGraph orchestrate the agent. The wider application includes reservations, table availability, and calendar integrations.</p><div class="project-tags" aria-label="Technologies"><span>React</span><span>TypeScript</span><span>Node.js</span><span>Twilio</span><span>LangGraph</span></div><section class="project-demo"><h3>Inside a telephone conversation</h3><small>Interactive walkthrough</small><div class="project-steps" role="group" aria-label="Walkthrough stages"><button type="button" data-step-copy="Twilio connects the caller to the application." aria-pressed="true">1. Connect</button><button type="button" data-step-copy="Speech-to-text converts the caller’s voice into text for the agent." aria-pressed="false">2. Listen</button><button type="button" data-step-copy="The backend orchestrates the agent, then text-to-speech turns its response into audio for the caller." aria-pressed="false">3. Respond</button></div><p class="project-step-copy" aria-live="polite" aria-atomic="true">Twilio connects the caller to the application.</p></section><a class="project-visit" href="https://cadeira.ai" target="_blank" rel="noopener noreferrer">Visit Cadeira ↗</a></article></template>
-<template id="project-template-urbot"><article><h2 id="project-window-heading">Urbot</h2><p class="project-kind">Guided urban-planning review</p><p>I’m developing Urbot as an internal tool for NMarq: a guided workspace for urban-planning checks, case tracking, and consultation through MCP.</p><h3>What I’m building</h3><p>The application combines a React interface with a Worker API and a deterministic rules engine. It brings location, project details, evidence, and review status into one workflow. Professional validation remains a separate reviewer action, and incomplete sources stay visibly under review.</p><div class="project-tags" aria-label="Technologies"><span>React</span><span>Cloudflare Workers</span><span>D1 + R2</span><span>MCP</span><span>Rules engine</span></div><section class="project-demo"><h3>From project to review</h3><small>Interactive walkthrough</small><div class="project-steps" role="group" aria-label="Walkthrough stages"><button type="button" data-step-copy="Start with the site and its context: mapping, address search, and cadastral comparison support the guided intake." aria-pressed="true">1. Locate</button><button type="button" data-step-copy="Project details feed a deterministic evaluation across seven review layers. Evidence stays attached to the case." aria-pressed="false">2. Check</button><button type="button" data-step-copy="Pending or conditional layers remain visible. A reviewer must resolve them before the case can be professionally validated." aria-pressed="false">3. Review</button></div><p class="project-step-copy" aria-live="polite" aria-atomic="true">Start with the site and its context: mapping, address search, and cadastral comparison support the guided intake.</p></section></article></template>
-<template id="project-template-surfay"><article><h2 id="project-window-heading">Surfay</h2><p class="project-kind">Local surf forecasts for Galicia</p><p>I’m building Surfay to make forecasts more useful for the Galician coast. It combines marine forecasts with local spot profiles, so the same offshore conditions can be interpreted differently at each beach.</p><h3>What I’m building</h3><p>The React and MapLibre interface is backed by a Cloudflare Worker. A shared TypeScript engine scores the forecast, while D1 stores the spot catalogue and forecast snapshots. The model includes coastline exposure and researched bathymetric effects, with calibration and modelling limits kept explicit.</p><div class="project-tags" aria-label="Technologies"><span>React</span><span>MapLibre</span><span>TypeScript</span><span>Cloudflare Workers</span><span>D1</span></div><section class="project-demo"><h3>How a forecast takes shape</h3><small>Interactive walkthrough</small><div class="project-steps" role="group" aria-label="Walkthrough stages"><button type="button" data-step-copy="The server retrieves marine weather from Open-Meteo and refreshes a cached seven-day forecast." aria-pressed="true">1. Forecast</button><button type="button" data-step-copy="Spot profiles and coastline exposure add local context. Reviewed bathymetric cases model refraction and shoaling, with other effects outside that table." aria-pressed="false">2. Localize</button><button type="button" data-step-copy="The map and forecast interface make the scored conditions available by spot. Forecast snapshots are cached so every visit does not trigger a fresh provider request." aria-pressed="false">3. Explore</button></div><p class="project-step-copy" aria-live="polite" aria-atomic="true">The server retrieves marine weather from Open-Meteo and refreshes a cached seven-day forecast.</p></section></article></template>
-
-    <!-- Easter Egg Alert Box -->
+<!-- Easter Egg Alert Box -->
     <div id="alert-box"
         class="hidden fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-yellow-100 border-2 border-black p-6 rounded-lg alert-shadow w-72">
         <div class="flex items-start gap-4">
@@ -426,23 +410,29 @@
 
     <script>
 
-        // A single native window; project DOM is created only when opened.
+        // Load a complete case-study page only when its launcher is used.
         const projectWindow = document.getElementById('project-window');
         const projectContent = document.getElementById('project-window-content');
         const projectBar = document.getElementById('project-window-bar');
         let projectOpener = null;
         let projectDrag = null;
-        document.querySelectorAll('[data-open-project]').forEach(button => {
-            button.addEventListener('click', () => {
-                const template = document.getElementById(`project-template-${button.dataset.openProject}`);
-                projectOpener = button;
-                projectContent.replaceChildren(template.content.cloneNode(true));
-                document.getElementById('project-window-path').textContent = `MezquitaOS / projects / ${button.dataset.openProject}`;
+        document.querySelectorAll('[data-open-project]').forEach(link => {
+            link.addEventListener('click', event => {
+                // Preserve native open-in-new-tab behavior and the standalone fallback.
+                if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || !projectWindow.showModal) return;
+                event.preventDefault();
+                projectOpener = link;
+                const frame = document.createElement('iframe');
+                frame.className = 'project-frame';
+                frame.title = `${link.querySelector('strong').textContent} project case study`;
+                frame.src = link.href;
+                projectContent.replaceChildren(frame);
+                document.getElementById('project-window-path').textContent = `MezquitaOS / projects / ${link.dataset.openProject}`;
+                document.getElementById('project-full-page').href = link.href;
                 projectWindow.style.removeProperty('margin');
                 projectWindow.style.removeProperty('left');
                 projectWindow.style.removeProperty('top');
                 projectWindow.showModal();
-                projectContent.scrollTop = 0;
             });
         });
         document.getElementById('project-window-close').addEventListener('click', () => projectWindow.close());
@@ -451,16 +441,22 @@
             projectContent.replaceChildren();
             projectOpener?.focus();
         });
-        projectContent.addEventListener('click', event => {
-            const button = event.target.closest('[data-step-copy]');
-            if (!button) return;
-            const demo = button.closest('.project-demo');
-            demo.querySelectorAll('[data-step-copy]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-            demo.querySelector('.project-step-copy').textContent = button.dataset.stepCopy;
+        // Escape also closes the OS window while focus is inside its document.
+        window.addEventListener('message', event => {
+            const frame = projectContent.querySelector('iframe');
+            if (event.origin !== location.origin || event.source !== frame?.contentWindow) return;
+            if (event.data === 'portfolio:close-project' && projectWindow.open) projectWindow.close();
+            if (event.data?.type === 'portfolio:project-ready') {
+                const match = /^\/projects\/(cadeira|urbot|surfay)\/$/.exec(event.data.path);
+                if (!match) return;
+                document.getElementById('project-window-path').textContent = `MezquitaOS / projects / ${match[1]}`;
+                document.getElementById('project-full-page').href = event.data.path;
+                frame.title = `${match[1]} project case study`;
+            }
         });
         // Pointer capture keeps drag listeners local; no global animation loop.
         projectBar.addEventListener('pointerdown', event => {
-            if (event.target.closest('button') || event.button !== 0 || window.innerWidth <= 540) return;
+            if (event.target.closest('button, a') || event.button !== 0 || window.innerWidth <= 540) return;
             const rect = projectWindow.getBoundingClientRect();
             projectDrag = { x: event.clientX - rect.left, y: event.clientY - rect.top };
             projectWindow.style.margin = '0';
@@ -605,4 +601,5 @@
 </body>
 
 </html>
+
 

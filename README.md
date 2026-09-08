@@ -34,13 +34,14 @@ The site is static HTML, CSS, and vanilla JavaScript. There is no package instal
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | Résumé, project launchers and templates, styles, interaction logic, and metadata. |
+| `index.html` | Résumé, project launchers, OS window styles, interaction logic, and metadata. |
+| `projects/` | Standalone case-study pages, shared styles, diagrams, and authoring instructions. |
 | `img/` | Existing pixel emoji assets used by the window and favicon. |
 | `CNAME` | Custom domain: `carlosmezquita.dev`. |
 
 The existing page loads Tailwind through its CDN script, IBM Plex Mono through Google Fonts, and Google Analytics. It is therefore not entirely dependency-free or offline.
 
-Project interactions add no external libraries or requests. A single native `<dialog>` is reused, with content cloned from an inert `<template>` only when a project opens and removed when it closes. The window supports desktop dragging, Escape to close, and focus restoration. Walkthroughs illustrate the architecture; they do not call the project backends.
+The project window reuses a native `<dialog>` and loads one static case-study page in an iframe when opened. Closing removes the frame. The pages have direct URLs, section navigation, static SVG architecture diagrams, and captioned-image support. Shared CSS and a small script load on demand; there are no new external services or UI libraries. The window supports desktop dragging, Escape to close, and focus restoration.
 
 ## Run locally
 
@@ -54,14 +55,11 @@ Open `http://127.0.0.1:8000` in your browser. Internet access is needed for the 
 
 ## Maintain the portfolio
 
-Edit `index.html` directly. To add a project:
+Edit résumé content in `index.html` and project content in `projects/<slug>/index.html`. See [Editing project case studies](projects/AUTHORING.md) for screenshot and diagram examples.
 
-1. Add a launcher with a unique `data-open-project` value.
-2. Add a matching `<template id="project-template-VALUE">`.
-3. Follow the existing heading, summary, contribution, and walkthrough structure.
-4. Keep project names, public links, and descriptions consistent.
+To add a project, create its standalone page and add a home-page launcher linking to it with a unique `data-open-project` value. Extend the allowed project-path list in the window message handler so embedded navigation updates the title bar and full-page link. Reuse the shared styles and keep names, descriptions, metadata, and public links consistent.
 
-The launcher handler discovers templates by ID, so an additional project does not require a separate dialog or event listener implementation. Keep résumé dates, education, contact links, and social metadata accurate.
+Keep résumé dates, education, contact links, and social metadata accurate.
 
 ## Performance and accessibility
 
@@ -76,7 +74,7 @@ The launcher handler discovers templates by ID, so an additional project does no
 
 For content-only edits, proofread the copy and check affected links. For interaction or layout changes, also check:
 
-- All three project launchers and their walkthrough stages.
+- All three project launchers, section navigation, diagrams, and standalone URLs.
 - Closing with the close button and Escape, then restoring launcher focus.
 - Desktop dragging and resizing without losing the window off-screen.
 - Mobile scrolling and text at 200% zoom.
@@ -88,3 +86,4 @@ Document which checks were actually performed in the pull request. There is curr
 ## Publishing
 
 The portfolio uses GitHub Pages with the custom domain recorded in `CNAME`. Confirm the configured publishing source in repository settings before changing deployment behavior. Submit changes through a pull request; merging and publication are separate from preparing the change.
+
