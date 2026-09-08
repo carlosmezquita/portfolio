@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Urbot — Project case study | Carlos Mezquita</title>
+<meta name="description" content="A guided workspace for urban-planning checks and case review. A project case study by Carlos Mezquita.">
+<link rel="canonical" href="https://carlosmezquita.dev/projects/urbot/">
+<link rel="icon" href="../../img/smile.png" type="image/png">
+<link rel="stylesheet" href="../case-study.css">
+<script defer src="../case-study.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#overview">Skip to case study</a>
+<header class="site-bar"><a href="../../" target="_top">← Carlos Mezquita</a><span>projects / urbot / readme</span></header>
+<div class="layout">
+<nav class="contents" aria-label="Case study contents"><p>In this project</p><a href="#overview">Overview</a><a href="#contribution">My contribution</a><a href="#architecture">Workflow</a><a href="#decisions">Process</a><a href="#scope">Current scope</a></nav>
+<main class="case-article" id="overview">
+<header><div class="eyebrow"><span class="file-number">02</span> Project case study</div><h1>Urbot</h1><p class="lede">A guided workspace for urban-planning checks and case review.</p><dl class="facts"><div><dt>My work</dt><dd>Application and workflow development</dd></div><div><dt>Project focus</dt><dd>Guided intake · Rules · Review</dd></div></dl></header>
+<section class="case-section" aria-labelledby="context-heading"><span class="section-number">01 / CONTEXT</span><h2 id="context-heading">The project</h2><p>I’m developing Urbot as an internal tool for NMarq: a guided workspace for urban-planning checks, case tracking, and consultation through MCP.</p></section>
+<section class="case-section" id="contribution" aria-labelledby="work-heading"><span class="section-number">02 / BUILD</span><h2 id="work-heading">What I’m building</h2><p>The application combines a React interface with a Worker API and a deterministic rules engine. It brings location, project details, evidence, and review status into one workflow.</p><ul class="stack" aria-label="Technologies"><li>React</li><li>Cloudflare Workers</li><li>D1 + R2</li><li>MCP</li><li>Rules engine</li></ul></section>
+<section class="case-section" id="architecture" aria-labelledby="architecture-heading"><span class="section-number">03 / WORKFLOW</span><h2 id="architecture-heading">From project to review</h2><figure class="architecture"><a href="./architecture.svg" target="_blank" rel="noopener" aria-label="Open Urbot workflow diagram at full size"><img src="./architecture.svg" width="760" height="190" alt="Locate the site, check the project details, and review unresolved layers." loading="lazy" decoding="async"></a><figcaption>The guided workflow: locate, check, and review.</figcaption></figure></section>
+<!-- SCREENSHOTS: Add captioned figures here using the example in projects/AUTHORING.md.
+     Add a Screenshots link to the contents navigation only when real images are present. -->
+<section class="case-section" id="decisions" aria-labelledby="decisions-heading"><span class="section-number">04 / PROCESS</span><h2 id="decisions-heading">Inside the workflow</h2><details open><summary>1. Locate</summary><p>Start with the site and its context: mapping, address search, and cadastral comparison support the guided intake.</p></details><details><summary>2. Check</summary><p>Project details feed a deterministic evaluation across seven review layers. Evidence stays attached to the case.</p></details><details><summary>3. Review</summary><p>Pending or conditional layers remain visible. A reviewer must resolve them before the case can be professionally validated.</p></details></section>
+<section class="case-section" id="scope" aria-labelledby="scope-heading"><span class="section-number">05 / SCOPE</span><h2 id="scope-heading">Review boundaries</h2><p>Professional validation remains a separate reviewer action, and incomplete sources stay visibly under review.</p></section>
+<footer class="case-footer"><a href="../../" target="_top">Back to portfolio</a><a href="../surfay/">Next project: Surfay →</a></footer>
+</main>
+</div>
+</body>
+</html>
