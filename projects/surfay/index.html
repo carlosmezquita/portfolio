@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Surfay — Project case study | Carlos Mezquita</title>
+<meta name="description" content="Interpreting a marine forecast for the beaches of Galicia. A project case study by Carlos Mezquita.">
+<link rel="canonical" href="https://carlosmezquita.dev/projects/surfay/">
+<link rel="icon" href="../../img/smile.png" type="image/png">
+<link rel="stylesheet" href="../case-study.css">
+<script defer src="../case-study.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#overview">Skip to case study</a>
+<header class="site-bar"><a href="../../" target="_top">← Carlos Mezquita</a><span>projects / surfay / readme</span></header>
+<div class="layout">
+<nav class="contents" aria-label="Case study contents"><p>In this project</p><a href="#overview">Overview</a><a href="#contribution">My contribution</a><a href="#architecture">Architecture</a><a href="#decisions">Design notes</a><a href="#scope">Current scope</a></nav>
+<main class="case-article" id="overview">
+<header><div class="eyebrow"><span class="file-number">03</span> Project case study</div><h1>Surfay</h1><p class="lede">Interpreting a marine forecast for the beaches of Galicia.</p><dl class="facts"><div><dt>My work</dt><dd>Forecast application and model development</dd></div><div><dt>Project focus</dt><dd>Forecasts · Local context · Maps</dd></div></dl></header>
+<section class="case-section" aria-labelledby="context-heading"><span class="section-number">01 / CONTEXT</span><h2 id="context-heading">The problem</h2><p>The same offshore forecast can mean different conditions at different beaches. Surfay combines marine forecasts with local spot profiles to make conditions easier to explore along the Galician coast.</p></section>
+<section class="case-section" id="contribution" aria-labelledby="work-heading"><span class="section-number">02 / BUILD</span><h2 id="work-heading">My contribution</h2><p>I’m building the React and MapLibre interface and the supporting forecast application. A Cloudflare Worker serves the backend, a shared TypeScript engine scores forecasts, and D1 holds the spot catalogue and forecast snapshots.</p><h3>The forecast interface</h3><p>The map and forecast views let visitors explore conditions by spot. Local profiles give the forecast context rather than presenting offshore values as if they apply equally everywhere.</p><h3>The scoring pipeline</h3><p>The server retrieves marine weather from Open-Meteo and prepares a seven-day forecast. The model includes coastline exposure and reviewed bathymetric cases for refraction and shoaling.</p><h3>Serving forecast data</h3><p>Forecast snapshots are cached on the server. This lets visitors read the prepared dataset without every visit triggering a fresh request to the forecast provider.</p><ul class="stack" aria-label="Technologies"><li>React</li><li>MapLibre</li><li>TypeScript</li><li>Cloudflare Workers</li><li>D1</li><li>Open-Meteo</li></ul></section>
+<section class="case-section" id="architecture" aria-labelledby="architecture-heading"><span class="section-number">03 / SYSTEM</span><h2 id="architecture-heading">How the pieces connect</h2><p>Forecast data passes through a server-side pipeline before reaching the browser. The scoring engine combines provider information with local context, while stored snapshots support the interface.</p><figure class="architecture"><a href="./architecture.svg" target="_blank" rel="noopener" aria-label="Open Surfay architecture diagram at full size"><img src="./architecture.svg" width="760" height="400" alt="React + MapLibre connects to Worker API; Open-Meteo connects to Worker API; Spot profiles · D1 connects to TypeScript scoring; Worker API connects to TypeScript scoring; TypeScript scoring connects to Forecast snapshots; Forecast snapshots connects to React + MapLibre" loading="lazy" decoding="async"></a><figcaption>A high-level component map. Select the diagram to inspect it at full size.</figcaption></figure></section>
+<!-- SCREENSHOTS: Add captioned figures here using the example in projects/AUTHORING.md.
+     Add a Screenshots link to the contents navigation only when real images are present. -->
+<section class="case-section" id="decisions" aria-labelledby="decisions-heading"><span class="section-number">04 / ENGINEERING</span><h2 id="decisions-heading">Design notes</h2><details open><summary>Local context instead of a universal score</summary><p>Spot profiles and coastline exposure help interpret conditions locally. The result remains a model: it is useful to describe what is included and what still needs calibration, rather than treating a score as an observation.</p></details><details><summary>Server-side work, shared forecast snapshots</summary><p>The model runs behind the interface and the prepared results are cached. This separates forecast processing from browsing and avoids a new provider request for every visitor.</p></details><details><summary>A model with visible boundaries</summary><p>Reviewed bathymetric cases model refraction and shoaling. Other effects remain outside that table. Keeping those limits explicit makes it possible to explain what a forecast represents without overstating its precision.</p></details></section>
+<section class="case-section" id="scope" aria-labelledby="scope-heading"><span class="section-number">05 / SCOPE</span><h2 id="scope-heading">Where the project stands</h2><p>Surfay combines a map-based interface, local spot profiles, and server-scored forecast snapshots. Its model includes coastline exposure and researched bathymetric effects.</p><div class="scope-note"><h3 style="margin-top:0">Scope and limitations</h3><p>Forecast scores are model outputs, not measured surf conditions. Calibration and modelling limits remain part of the work; this case study makes no numerical accuracy claim.</p></div></section>
+<footer class="case-footer"><a href="../../" target="_top">Back to portfolio</a><a href="../cadeira/">Next project: Cadeira →</a></footer>
+</main>
+</div>
+</body>
+</html>
