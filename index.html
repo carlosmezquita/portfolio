@@ -36,9 +36,6 @@
     <meta name="twitter:image" content="https://carlosmezquita.dev/img/smile.png">
     <link rel="icon" type="image/png" href="./img/smile.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -58,9 +55,10 @@
         "description": "Computer Science student and software developer with two years of part-time experience in QA and software development at Denodo."
     }
     </script>
+    <link rel="stylesheet" href="./os-theme.css">
     <style>
         body {
-            font-family: 'IBM Plex Mono', monospace;
+            font-family: var(--os-font);
             background-color: #F7F3E9;
             /* A sandy color similar to PostHog's site */
             background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4CDBF' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
@@ -274,28 +272,67 @@
             }
         }
 
-        /* Native project windows; no UI runtime or animation library. */
-        .project-launchers { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:16px; }
-        .project-launcher { display:flex; flex-direction:column; align-items:flex-start; gap:8px; padding:16px; border:1px solid #64748b; border-radius:6px; text-align:left; background:#f8fafc; color:#172033; min-width:0; cursor:pointer; }
-        .project-launcher:hover { background:#fef3c7; border-color:#172033; }
-        .project-mark { display:grid; place-items:center; width:44px; height:44px; border:2px solid #172033; box-shadow:3px 3px 0 #172033; background:#facc15; font-weight:700; }
-        .project-launcher strong { font-size:1rem; }
-        .project-launcher small { font-size:.875rem; line-height:1.5; }
-        .project-open-label { font-size:.875rem; text-decoration:underline; text-underline-offset:3px; margin-top:auto; }
-        .project-dialog { padding:0; border:2px solid #172033; border-radius:8px; width:min(1120px,calc(100vw - 24px)); max-width:none; height:min(850px,calc(100dvh - 24px)); max-height:calc(100dvh - 24px); margin:auto; background:#fff; color:#172033; box-shadow:0 20px 60px #0f172a40; overflow:hidden; }
-        .project-dialog[open] { display:flex; flex-direction:column; }
-        .project-dialog::backdrop { background:rgb(15 23 42 / .25); }
-        .project-titlebar { display:flex; align-items:center; justify-content:space-between; gap:12px; background:#e5e7eb; border-bottom:2px solid #172033; padding:6px 10px 6px 16px; touch-action:none; cursor:grab; flex-shrink:0; }
-        .project-titlebar p { font-size:.875rem; overflow-wrap:anywhere; }
-        .project-close { width:44px; height:44px; flex-shrink:0; font-size:1.5rem; cursor:pointer; border:1px solid #64748b; border-radius:4px; background:#fff; }
-        .project-close:hover { background:#fee2e2; }
-        .project-window-body { flex:1; min-height:0; overflow:hidden; }
-        .project-frame { display:block; width:100%; height:100%; border:0; background:#fff; }
-        .project-window-actions { display:flex; align-items:center; gap:12px; flex-shrink:0; }
-        .project-full-page { font-size:.875rem; text-decoration:underline; text-underline-offset:3px; }
-        .project-dialog :focus-visible, .project-launcher:focus-visible { outline:3px solid #2563eb; outline-offset:3px; }
-        @media(max-width:540px) { .project-launchers { grid-template-columns:1fr; } .project-launcher { display:grid; grid-template-columns:44px 1fr; column-gap:16px; } .project-mark { grid-row:span 3; } .project-titlebar { cursor:default; } }
-        @media print { .project-dialog { display:none !important; } .project-launchers { grid-template-columns:repeat(3,1fr); } }
+        /* One document window for the resume and case studies. */
+        #resume-window { width:calc(100vw - 48px); max-width:1180px; height:calc(100dvh - 64px); position:relative; color:var(--os-ink); }
+        #resume-window.is-maximized { position:fixed!important; inset:8px!important; width:calc(100vw - 16px)!important; max-width:none!important; height:calc(100dvh - 16px)!important; }
+        #title-bar { min-height:48px; padding:6px 12px; gap:12px; flex-shrink:0; }
+        #window-path { font-size:.875rem; overflow-wrap:anywhere; }
+        .window-controls { display:flex; gap:8px; align-items:center; }
+        .window-control { display:grid; place-items:center; width:32px; height:32px; border:1px solid #64748b; border-radius:4px; background:white; cursor:pointer; font-size:1.1rem; }
+        .window-control:hover { background:#fef3c7; }
+        #close-button:hover { background:#fee2e2; }
+        .window-toolbar { display:flex; align-items:center; gap:16px; padding:8px 20px; border-bottom:1px solid var(--os-line); background:#f8fafc; font-size:.875rem; flex-shrink:0; min-height:49px; }
+        .window-toolbar button { padding:6px 10px; border:1px solid var(--os-line); border-radius:4px; background:white; }
+        .window-toolbar button:disabled { color:#64748b; cursor:default; }
+        .window-toolbar a { margin-left:auto; text-decoration:underline; text-underline-offset:4px; }
+        #document-label { color:#475569; }
+        .home-pane { flex:1; min-height:0; overflow:auto; overscroll-behavior:contain; }
+        .resume-layout { display:grid; grid-template-columns:165px minmax(0,1fr); gap:32px; max-width:1080px; padding:36px 28px 64px; margin:auto; }
+        .home-contents { display:flex; flex-direction:column; gap:6px; position:sticky; top:24px; align-self:start; font-size:.875rem; }
+        .home-contents p { font-size:.75rem; letter-spacing:.08em; color:#475569; margin-bottom:8px; }
+        .home-contents a { padding:10px 0; }
+        .home-contents a:hover { text-decoration:underline; text-underline-offset:4px; }
+        .home-document { min-width:0; max-width:760px; }
+        .home-document h1 { font-size:clamp(1.9rem,4vw,2.7rem); letter-spacing:-.035em; line-height:1.25; }
+        .home-document p,.home-document li { font-size:1rem; line-height:1.75; }
+        .home-document h2 { font-size:1.125rem; margin-bottom:16px; }
+        .home-document section,.home-document [id] { scroll-margin-top:24px; }
+        .project-launchers { border-top:1px solid var(--os-ink); margin-top:16px; }
+        .project-launcher { display:grid; grid-template-columns:40px minmax(0,1fr) auto; gap:16px; align-items:center; padding:20px 8px; border-bottom:1px solid var(--os-line); text-decoration:none; }
+        .project-launcher:hover { background:#fef9e7; }
+        .project-index { align-self:start; font-size:.875rem; color:#475569; padding-top:4px; }
+        .project-info strong { display:block; font-size:1.125rem; margin-bottom:6px; }
+        .project-info small { display:block; font-size:.875rem; line-height:1.65; color:#475569; }
+        .project-info .project-tech { margin-top:8px; font-size:.75rem; color:#64748b; }
+        .project-open-label { font-size:.875rem; white-space:nowrap; }
+        .project-launcher:hover .project-open-label { text-decoration:underline; text-underline-offset:4px; }
+        .project-pane { flex:1; min-height:0; overflow:hidden; }
+        .project-frame { display:block; width:100%; height:100%; border:0; }
+        [hidden] { display:none!important; }
+        #resume-window :focus-visible { outline:3px solid #2563eb; outline-offset:3px; }
+        @media(max-width:768px) {
+          .resume-layout { display:block; padding:24px 20px 40px; }
+          .home-contents { position:static; flex-direction:row; flex-wrap:wrap; gap:4px 16px; padding-bottom:16px; margin-bottom:24px; border-bottom:1px solid var(--os-line); }
+          .home-contents p { width:100%; margin:0; }
+          .home-contents a { padding:6px 0; }
+          #maximize-window { display:none; }
+          .window-toolbar { padding:8px 12px; gap:8px; }
+          #document-label { display:none; }
+          #title-bar { cursor:default; }
+        }
+        @media(max-width:480px) {
+          .project-launcher { grid-template-columns:24px minmax(0,1fr); gap:12px; }
+          .project-open-label { grid-column:2; }
+          #window-path { font-size:.75rem; }
+        }
+        @media print {
+          .window-toolbar,.home-contents,.project-pane { display:none!important; }
+          .home-pane[hidden] { display:block!important; }
+          .home-pane { overflow:visible; }
+          .resume-layout { display:block; padding:0; }
+          .project-launcher { break-inside:avoid; }
+          #resume-window.is-maximized { position:static!important; width:100%!important; height:auto!important; }
+        }
     </style>
 </head>
 
@@ -311,22 +348,26 @@
                 <img id="winking-emoji" class="" src="./img/smile.png" width="18px"
                     title="Image author j8chi (https://www.flaticon.com/packs/pixel-emojis)"
                     alt="Pixel hedgehog icon for Juan Carlos Mezquita Lobato">
-                <p class="text-sm font-medium"> MezquitaOS/documents/resume.md</p>
+                <p id="window-path" class="font-medium">MezquitaOS / documents / resume.md</p>
             </div>
-            <div class="flex items-center space-x-2">
-                <div class="w-3 h-3 bg-yellow-400 rounded-full border border-black/50"></div>
-                <div class="w-3 h-3 bg-green-500 rounded-full border border-black/50"></div>
-                <div id="close-button"
-                    class="w-3 h-3 bg-red-500 rounded-full border border-black/50 cursor-pointer hover:bg-red-600">
-                </div>
+            <div class="window-controls">
+                <button type="button" id="maximize-window" class="window-control" aria-label="Maximize window" aria-pressed="false" title="Maximize window">□</button>
+                <button type="button" id="close-button" class="window-control" aria-label="Close document" title="Close document">×</button>
             </div>
         </div>
+        <nav class="window-toolbar" aria-label="Document navigation">
+            <button type="button" id="back-to-resume" disabled>← Résumé</button>
+            <span id="document-label" role="status">Personal portfolio</span>
+            <a id="project-full-page" href="./projects/cadeira/" target="_blank" rel="noopener" hidden>Open in new tab ↗</a>
+        </nav>
 
         <!-- Content Area -->
-        <div class="p-6 md:p-8 flex-grow overflow-y-auto text-gray-800">
-            <div class="space-y-8">
+        <div id="home-pane" class="home-pane">
+          <div class="resume-layout">
+            <nav class="home-contents" aria-label="Resume contents"><p>IN THIS DOCUMENT</p><a href="#intro">Overview</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#misc">More</a></nav>
+            <div class="space-y-8 home-document">
                 <!-- Header -->
-                <div>
+                <div id="intro">
                     <h1 class="text-3xl md:text-4xl font-bold">Juan Carlos Mezquita</h1>
                     <p class="text-sm text-gray-500 mt-1">Computer Science Student &amp; Software Developer</p>
                     <div class="text-sm md:text-base mt-3 flex items-center gap-3">
@@ -337,8 +378,14 @@
                     </div>
                 </div>
 
+                <!-- Personal Projects -->
+                <section id="projects" aria-labelledby="projects-heading">
+                    <h2 id="projects-heading" class="font-bold text-lg mb-2 prompt">open ./projects</h2>
+                    <div class="project-launchers"><a href="./projects/cadeira/" class="project-launcher" data-open-project="cadeira"><span class="project-index" aria-hidden="true">01</span><span class="project-info"><strong>Cadeira</strong><small>AI telephone conversations and restaurant reservations.</small><small class="project-tech">React · TypeScript · Node.js</small></span><span class="project-open-label">Read case study →</span></a><a href="./projects/urbot/" class="project-launcher" data-open-project="urbot"><span class="project-index" aria-hidden="true">02</span><span class="project-info"><strong>Urbot</strong><small>Guided urban-planning checks and case review.</small><small class="project-tech">React · Cloudflare Workers · MCP</small></span><span class="project-open-label">Read case study →</span></a><a href="./projects/surfay/" class="project-launcher" data-open-project="surfay"><span class="project-index" aria-hidden="true">03</span><span class="project-info"><strong>Surfay</strong><small>Local surf forecasts for the Galician coast.</small><small class="project-tech">React · MapLibre · TypeScript</small></span><span class="project-open-label">Read case study →</span></a></div>
+                </section>
+
                 <!-- Professional Experience -->
-                <div>
+                <div id="experience">
                     <h2 class="font-bold text-lg mb-2 prompt">cat ./experience/denodo.log</h2>
                     <div class="ml-4 pl-4 border-l border-dashed">
                         <h3 class="font-bold text-md">Part-time Quality Assurance &amp; Software Development</h3>
@@ -354,14 +401,8 @@
                     </div>
                 </div>
 
-                <!-- Personal Projects -->
-                <section id="projects" aria-labelledby="projects-heading">
-                    <h2 id="projects-heading" class="font-bold text-lg mb-2 prompt">open ./projects</h2>
-                    <div class="project-launchers"><a href="./projects/cadeira/" class="project-launcher" data-open-project="cadeira" aria-haspopup="dialog"><span class="project-mark" aria-hidden="true">CA</span><strong>Cadeira</strong><small>AI restaurant reservations</small><span class="project-open-label">Open project ↗</span></a><a href="./projects/urbot/" class="project-launcher" data-open-project="urbot" aria-haspopup="dialog"><span class="project-mark" aria-hidden="true">UR</span><strong>Urbot</strong><small>Guided urban-planning review</small><span class="project-open-label">Open project ↗</span></a><a href="./projects/surfay/" class="project-launcher" data-open-project="surfay" aria-haspopup="dialog"><span class="project-mark" aria-hidden="true">SF</span><strong>Surfay</strong><small>Local surf forecasts for Galicia</small><span class="project-open-label">Open project ↗</span></a></div>
-                </section>
-
                 <!-- Education -->
-                <div>
+                <div id="education">
                     <h2 class="font-bold text-lg mb-2 prompt">ls ./education</h2>
                     <div class="ml-4 pl-4 border-l border-dashed">
                         <p class="text-sm"><span class="font-bold">Computer Science, B.S.</span> — Universidade de A Coruña
@@ -372,7 +413,7 @@
                 </div>
 
                 <!-- Certs & Languages -->
-                <div>
+                <div id="misc">
                     <h2 class="font-bold text-lg mb-2 prompt">get-misc-info</h2>
                     <div class="ml-4 pl-4 border-l border-dashed text-sm">
                         <p><span class="font-bold">Certifications:</span> Programming Foundations: Software Testing/QA
@@ -383,14 +424,12 @@
                 </div>
 
             </div>
+          </div>
         </div>
+        <div id="project-pane" class="project-pane" hidden></div>
     </div>
 
 
-    <dialog id="project-window" class="project-dialog" aria-labelledby="project-window-path">
-        <header class="project-titlebar" id="project-window-bar"><p id="project-window-path">MezquitaOS / projects</p><div class="project-window-actions"><a id="project-full-page" class="project-full-page" href="./projects/cadeira/" target="_blank" rel="noopener">Full page ↗</a><button type="button" class="project-close" id="project-window-close" aria-label="Close project window" autofocus>×</button></div></header>
-        <div class="project-window-body" id="project-window-content"></div>
-    </dialog>
 <!-- Easter Egg Alert Box -->
     <div id="alert-box"
         class="hidden fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-yellow-100 border-2 border-black p-6 rounded-lg alert-shadow w-72">
@@ -410,108 +449,131 @@
 
     <script>
 
-        // Load a complete case-study page only when its launcher is used.
-        const projectWindow = document.getElementById('project-window');
-        const projectContent = document.getElementById('project-window-content');
-        const projectBar = document.getElementById('project-window-bar');
+        // One shared OS shell. Only the selected case-study document is loaded.
+        const resumeWindow = document.getElementById('resume-window');
+        const homePane = document.getElementById('home-pane');
+        const projectPane = document.getElementById('project-pane');
+        const backButton = document.getElementById('back-to-resume');
+        const fullPage = document.getElementById('project-full-page');
+        const windowPath = document.getElementById('window-path');
+        const documentLabel = document.getElementById('document-label');
+        const maximizeButton = document.getElementById('maximize-window');
+        const titles = { cadeira:'Cadeira', urbot:'Urbot', surfay:'Surfay' };
+        let activeProject = null;
         let projectOpener = null;
-        let projectDrag = null;
+        let resumeScroll = 0;
+
+        function showProject(slug) {
+            if (!titles[slug] || activeProject === slug) return;
+            if (!activeProject) resumeScroll = homePane.scrollTop;
+            activeProject = slug;
+            homePane.hidden = true;
+            projectPane.hidden = false;
+            const frame = document.createElement('iframe');
+            frame.className = 'project-frame';
+            frame.title = `${titles[slug]} case study`;
+            frame.src = `./projects/${slug}/`;
+            projectPane.replaceChildren(frame);
+            updateDocument(slug);
+            backButton.focus({preventScroll:true});
+        }
+        function updateDocument(slug) {
+            windowPath.textContent = `MezquitaOS / projects / ${slug}`;
+            documentLabel.textContent = `${titles[slug]} / case study`;
+            fullPage.href = `./projects/${slug}/`;
+            fullPage.hidden = false;
+            backButton.disabled = false;
+        }
+        function showResume() {
+            const wasProject = !!activeProject;
+            activeProject = null;
+            projectPane.replaceChildren();
+            projectPane.hidden = true;
+            homePane.hidden = false;
+            backButton.disabled = true;
+            fullPage.hidden = true;
+            windowPath.textContent = 'MezquitaOS / documents / resume.md';
+            documentLabel.textContent = 'Personal portfolio';
+            homePane.scrollTop = resumeScroll;
+            if (wasProject) projectOpener?.focus({preventScroll:true});
+        }
+        function returnToResume() {
+            if (!activeProject) return;
+            if (history.state?.portfolioProject) {
+                history.back();
+            } else {
+                history.replaceState(null, '', location.pathname + location.search + '#projects');
+                showResume();
+            }
+        }
+        function syncDocument() {
+            const match = /^#project\/(cadeira|urbot|surfay)$/.exec(location.hash);
+            if (match) showProject(match[1]);
+            else if (activeProject) showResume();
+        }
         document.querySelectorAll('[data-open-project]').forEach(link => {
             link.addEventListener('click', event => {
-                // Preserve native open-in-new-tab behavior and the standalone fallback.
-                if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || !projectWindow.showModal) return;
+                if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
                 event.preventDefault();
                 projectOpener = link;
-                const frame = document.createElement('iframe');
-                frame.className = 'project-frame';
-                frame.title = `${link.querySelector('strong').textContent} project case study`;
-                frame.src = link.href;
-                projectContent.replaceChildren(frame);
-                document.getElementById('project-window-path').textContent = `MezquitaOS / projects / ${link.dataset.openProject}`;
-                document.getElementById('project-full-page').href = link.href;
-                projectWindow.style.removeProperty('margin');
-                projectWindow.style.removeProperty('left');
-                projectWindow.style.removeProperty('top');
-                projectWindow.showModal();
+                history.pushState({portfolioProject:true}, '', `#project/${link.dataset.openProject}`);
+                showProject(link.dataset.openProject);
             });
         });
-        document.getElementById('project-window-close').addEventListener('click', () => projectWindow.close());
-        projectWindow.addEventListener('close', () => {
-            projectDrag = null;
-            projectContent.replaceChildren();
-            projectOpener?.focus();
-        });
-        // Escape also closes the OS window while focus is inside its document.
+        backButton.addEventListener('click', returnToResume);
+        window.addEventListener('popstate', syncDocument);
+        window.addEventListener('hashchange', syncDocument);
         window.addEventListener('message', event => {
-            const frame = projectContent.querySelector('iframe');
-            if (event.origin !== location.origin || event.source !== frame?.contentWindow) return;
-            if (event.data === 'portfolio:close-project' && projectWindow.open) projectWindow.close();
+            const frame = projectPane.querySelector('iframe');
+            if (!frame || event.origin !== location.origin || event.source !== frame.contentWindow) return;
+            if (event.data === 'portfolio:close-project') returnToResume();
             if (event.data?.type === 'portfolio:project-ready') {
                 const match = /^\/projects\/(cadeira|urbot|surfay)\/$/.exec(event.data.path);
                 if (!match) return;
-                document.getElementById('project-window-path').textContent = `MezquitaOS / projects / ${match[1]}`;
-                document.getElementById('project-full-page').href = event.data.path;
-                frame.title = `${match[1]} project case study`;
+                activeProject = match[1];
+                history.replaceState(history.state, '', `#project/${activeProject}`);
+                frame.title = `${titles[activeProject]} case study`;
+                updateDocument(activeProject);
             }
         });
-        // Pointer capture keeps drag listeners local; no global animation loop.
-        projectBar.addEventListener('pointerdown', event => {
-            if (event.target.closest('button, a') || event.button !== 0 || window.innerWidth <= 540) return;
-            const rect = projectWindow.getBoundingClientRect();
-            projectDrag = { x: event.clientX - rect.left, y: event.clientY - rect.top };
-            projectWindow.style.margin = '0';
-            projectWindow.style.left = `${rect.left}px`;
-            projectWindow.style.top = `${rect.top}px`;
-            projectBar.setPointerCapture(event.pointerId);
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && activeProject) returnToResume();
+        });
+        maximizeButton.addEventListener('click', () => {
+            const expanded = resumeWindow.classList.toggle('is-maximized');
+            maximizeButton.setAttribute('aria-pressed', String(expanded));
+            maximizeButton.setAttribute('aria-label', expanded ? 'Restore window size' : 'Maximize window');
+            maximizeButton.title = expanded ? 'Restore window size' : 'Maximize window';
+            maximizeButton.textContent = expanded ? '❐' : '□';
+            resetPosition();
+        });
+        // Drag only the title bar; keep controls and document interaction independent.
+        const titleBar = document.getElementById('title-bar');
+        let drag = null;
+        function resetPosition() {
+            drag = null;
+            ['position','left','top'].forEach(name => resumeWindow.style.removeProperty(name));
+        }
+        titleBar.style.touchAction = 'none';
+        titleBar.addEventListener('pointerdown', event => {
+            if (event.target.closest('button,a') || event.button !== 0 || innerWidth <= 768 || resumeWindow.classList.contains('is-maximized')) return;
+            const rect = resumeWindow.getBoundingClientRect();
+            drag = { x:event.clientX-rect.left, y:event.clientY-rect.top };
+            resumeWindow.style.position = 'fixed';
+            resumeWindow.style.left = `${rect.left}px`;
+            resumeWindow.style.top = `${rect.top}px`;
+            titleBar.setPointerCapture(event.pointerId);
             event.preventDefault();
         });
-        projectBar.addEventListener('pointermove', event => {
-            if (!projectDrag) return;
-            const x = Math.max(0, Math.min(event.clientX - projectDrag.x, window.innerWidth - projectWindow.offsetWidth));
-            const y = Math.max(0, Math.min(event.clientY - projectDrag.y, window.innerHeight - projectWindow.offsetHeight));
-            projectWindow.style.left = `${x}px`;
-            projectWindow.style.top = `${y}px`;
+        titleBar.addEventListener('pointermove', event => {
+            if (!drag) return;
+            resumeWindow.style.left = `${Math.max(0, Math.min(event.clientX-drag.x, innerWidth-resumeWindow.offsetWidth))}px`;
+            resumeWindow.style.top = `${Math.max(0, Math.min(event.clientY-drag.y, innerHeight-resumeWindow.offsetHeight))}px`;
         });
-        projectBar.addEventListener('pointerup', () => { projectDrag = null; });
-        projectBar.addEventListener('lostpointercapture', () => { projectDrag = null; });
-        window.addEventListener('resize', () => {
-            projectDrag = null;
-            projectWindow.style.removeProperty('margin');
-            projectWindow.style.removeProperty('left');
-            projectWindow.style.removeProperty('top');
-        });
-
-        // --- Draggable Window Logic ---
-        const resumeWindow = document.getElementById('resume-window');
-        const titleBar = document.getElementById('title-bar');
-        let isDragging = false;
-        let offsetX, offsetY;
-
-        titleBar.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            offsetX = e.clientX - resumeWindow.getBoundingClientRect().left;
-            offsetY = e.clientY - resumeWindow.getBoundingClientRect().top;
-            resumeWindow.style.cursor = 'grabbing';
-            // Set position to fixed to drag it out of the initial centering
-            if (resumeWindow.style.position !== 'fixed') {
-                const rect = resumeWindow.getBoundingClientRect();
-                resumeWindow.style.position = 'fixed';
-                resumeWindow.style.left = `${rect.left}px`;
-                resumeWindow.style.top = `${rect.top}px`;
-            }
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                resumeWindow.style.left = `${e.clientX - offsetX}px`;
-                resumeWindow.style.top = `${e.clientY - offsetY}px`;
-            }
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            resumeWindow.style.cursor = 'default';
-        });
+        titleBar.addEventListener('pointerup', () => { drag=null; });
+        titleBar.addEventListener('lostpointercapture', () => { drag=null; });
+        window.addEventListener('resize', resetPosition);
+        syncDocument();
 
         // --- Easter Egg Logic ---
         const closeButton = document.getElementById('close-button');
@@ -520,6 +582,7 @@
 
         closeButton.addEventListener('click', (e) => {
             e.stopPropagation();
+            if (activeProject) { returnToResume(); return; }
             alertBox.classList.remove('hidden');
         });
 
@@ -601,5 +664,6 @@
 </body>
 
 </html>
+
 
 
