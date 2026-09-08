@@ -2,7 +2,7 @@
 
 [Visit the portfolio](https://carlosmezquita.dev)
 
-A personal portfolio presented as a small desktop operating system. The résumé lives in its own window; Cadeira, Urbot, and Surfay open in a separate interactive project window.
+A personal portfolio presented as a small desktop operating system. The résumé and project case studies share one OS-style document window, with Back navigation and a maximize control.
 
 ## About
 
@@ -35,13 +35,14 @@ The site is static HTML, CSS, and vanilla JavaScript. There is no package instal
 | File | Purpose |
 | --- | --- |
 | `index.html` | Résumé, project launchers, OS window styles, interaction logic, and metadata. |
+| `os-theme.css` | Shared typography and color tokens for the résumé and case studies. |
 | `projects/` | Standalone case-study pages, shared styles, diagrams, and authoring instructions. |
 | `img/` | Existing pixel emoji assets used by the window and favicon. |
 | `CNAME` | Custom domain: `carlosmezquita.dev`. |
 
-The existing page loads Tailwind through its CDN script, IBM Plex Mono through Google Fonts, and Google Analytics. It is therefore not entirely dependency-free or offline.
+The existing page loads Tailwind through its CDN script and Google Analytics. It is therefore not entirely dependency-free or offline.
 
-The project window reuses a native `<dialog>` and loads one static case-study page in an iframe when opened. Closing removes the frame. The pages have direct URLs, section navigation, static SVG architecture diagrams, and captioned-image support. Shared CSS and a small script load on demand; there are no new external services or UI libraries. The window supports desktop dragging, Escape to close, and focus restoration.
+The shared window replaces the résumé view with one static case-study page in an iframe when opened. Returning to the résumé removes the frame and restores the previous scroll position. The pages have direct URLs, section navigation, static SVG architecture diagrams, and captioned-image support. Shared CSS and a small script load on demand; there are no new external services or UI libraries. The window supports desktop dragging, maximize/restore, browser Back/Forward, Escape to return, and focus restoration.
 
 ## Run locally
 
@@ -51,7 +52,7 @@ From the repository root, with Python 3 installed:
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8000` in your browser. Internet access is needed for the existing external font, styling, and analytics resources.
+Open `http://127.0.0.1:8000` in your browser. Internet access is needed for the existing external styling and analytics resources.
 
 ## Maintain the portfolio
 
@@ -86,4 +87,5 @@ Document which checks were actually performed in the pull request. There is curr
 ## Publishing
 
 The portfolio uses GitHub Pages with the custom domain recorded in `CNAME`. Confirm the configured publishing source in repository settings before changing deployment behavior. Submit changes through a pull request; merging and publication are separate from preparing the change.
+
 
