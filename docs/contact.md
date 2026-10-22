@@ -39,6 +39,8 @@ Both forms retain explicit visible labels associated by `for`/`id`, stable field
 
 ## Privacy
 
+Anonymous action counts are documented in [analytics.md](analytics.md). When enabled, the browser sends only an allowlisted page path alongside the form; after email acceptance the server increments a daily `contact_success` counter. No form values enter that counter. Collection respects the tracker opt-out and request privacy signals; telemetry failure never changes delivery success.
+
 The recipient address and Turnstile secret are never returned by the API. Names, email addresses, messages, IP addresses and tokens are not written to application logs or a database. The message and reply address pass through Cloudflare to the owner's inbox. Cloudflare processes the request and verification for delivery and abuse prevention. The inbox retains delivered email normally.
 
 ## Validation
