@@ -33,9 +33,8 @@ def p(text, style='body'):
 story = [
     p('Carlos Mezquita', 'name'),
     p('Software Engineer | Portsmouth, UK', 'subtitle'),
-    p('<link href="mailto:hello@carlosmezquita.dev">hello@carlosmezquita.dev</link> | '
-      '<link href="https://carlosmezquita.dev">carlosmezquita.dev</link><br/>'
-      '<link href="https://github.com/carlosmezquita">github.com/carlosmezquita</link> | '
+    p('<link href="https://carlosmezquita.dev">carlosmezquita.dev</link> | '
+      '<link href="https://github.com/carlosmezquita">github.com/carlosmezquita</link><br/>'
       '<link href="https://www.linkedin.com/in/carlosmezquitalobato">linkedin.com/in/carlosmezquitalobato</link>', 'contact'),
     p('Software engineer with QA and development experience at Denodo. Building web applications and backend systems while completing a BSc (Hons) top-up at the University of Portsmouth.'),
     p('EXPERIENCE', 'section'),

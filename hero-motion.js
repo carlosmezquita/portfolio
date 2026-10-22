@@ -31,10 +31,15 @@
 
   function centers() {
     const t = elapsed / 1000;
-    const a = Math.sin(t / 9), b = Math.sin(t / 13), c = Math.sin(t / 17);
-    return [[.08 + a * .045, -.04 + b * .05], [.59 + b * .065, .02 + a * .08],
-      [.68 + a * .06, -.12 + c * .07], [.99 + c * .04, .02 + b * .11],
-      [.88 + b * .06, .43 + a * .1], [.39 + c * .04, .04 + b * .05]];
+    // Buoyant rise/fall paths have different periods, so the wax never resets as a group.
+    return [
+      [.15 + .04 * Math.sin(t / 12), .35 + .24 * Math.sin(t / 9 - .6)],
+      [.48 + .06 * Math.sin(t / 16 + .4), .33 + .24 * Math.sin(t / 12 + .7)],
+      [.68 + .05 * Math.sin(t / 14 + 1), .28 + .28 * Math.sin(t / 10 + 2.4)],
+      [.92 + .04 * Math.sin(t / 17 + 2), .21 + .27 * Math.sin(t / 13 + 3.2)],
+      [.83 + .06 * Math.sin(t / 11 + 3), .44 + .20 * Math.sin(t / 14 - 1.1)],
+      [.32 + .05 * Math.sin(t / 19 + 1), .32 + .26 * Math.sin(t / 11 + 4.4)]
+    ];
   }
 
   function nudge(point, moveX = 0, moveY = 0, power = 1) {
@@ -163,10 +168,15 @@
     x += bubble.x;
     y += bubble.y;
     // Stretch and compress in opposite axes, like a soft volume retaining its area.
-    const stretch = Math.exp(clamp(bubble.squash + Math.hypot(bubble.vx, bubble.vy) * .06, -.2, .2));
+    const breathing = .10 * Math.sin(elapsed / 1000 / (10 + index * 1.7) + index);
+    const stretch = Math.exp(clamp(breathing + bubble.squash + Math.hypot(bubble.vx, bubble.vy) * .06, -.25, .25));
     radiusX *= stretch;
     radiusY /= stretch;
     angle += bubble.vx * .08;
+    drawGlow(x, y, radiusX, radiusY, angle, color, opacity);
+  }
+
+  function drawGlow(x, y, radiusX, radiusY, angle, color, opacity) {
     context.save();
     context.translate(x * canvas.width, y * canvas.height);
     context.rotate(angle);
@@ -192,12 +202,24 @@
     const c = Math.sin(t / 17);
     context.fillStyle = '#020d27';
     context.fillRect(0, 0, w, h);
-    blob(0, .08 + a * .045, -.04 + b * .05, .25, .8, -.12, '9,151,163', .94);
-    blob(1, .59 + b * .065, .02 + a * .08, .37, 1.12, -.08, '12,104,234', .98);
-    blob(2, .68 + a * .06, -.12 + c * .07, .27, 1.0, .08, '75,198,255', 1);
-    blob(3, .99 + c * .04, .02 + b * .11, .23, .78, -.13, '122,221,210', .96);
-    blob(4, .88 + b * .06, .43 + a * .1, .23, .51, -.22, '0,190,158', .88);
-    blob(5, .39 + c * .04, .04 + b * .05, .08, .77, .2, '31,95,205', .5);
+    // Keep the original identity's diffuse upper colour behind the moving wax.
+    drawGlow(.09, -.13, .31, .97, -.1, '9,151,163', .65);
+    drawGlow(.66, -.13, .49, 1.25, -.1, '12,104,234', .62);
+    drawGlow(.96, .10, .30, .99, -.15, '0,176,149', .38);
+    const positions = centers();
+    const aspect = w / h;
+    const fields = [
+      [.145, 1.10, -.12, '9,151,163', .88],
+      [.185, 1.12, -.08, '12,104,234', .96],
+      [.145, 1.05, .08, '75,198,255', .95],
+      [.13, 1.12, -.13, '122,221,210', .82],
+      [.15, 1.10, -.22, '0,190,158', .88],
+      [.10, 1.28, .20, '31,95,205', .72]
+    ];
+    fields.forEach(([radius, vertical, angle, color, opacity], index) => {
+      blob(index, positions[index][0], positions[index][1], radius,
+        radius * aspect * vertical, angle, color, opacity);
+    });
 
     // The soft diagonal ribbon is part of the original artwork's character.
     context.save();
@@ -215,8 +237,8 @@
     // Maintain the deep lower edge and readable name throughout the movement.
     const shade = context.createLinearGradient(0, h * .18, 0, h);
     shade.addColorStop(0, 'rgba(2,13,39,0)');
-    shade.addColorStop(.62, 'rgba(2,13,39,.25)');
-    shade.addColorStop(1, 'rgba(2,13,39,.88)');
+    shade.addColorStop(.62, 'rgba(2,13,39,.58)');
+    shade.addColorStop(1, 'rgba(2,13,39,.96)');
     context.fillStyle = shade;
     context.fillRect(0, 0, w, h);
   }
