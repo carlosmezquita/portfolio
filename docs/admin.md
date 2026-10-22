@@ -1,6 +1,8 @@
 # Private portfolio admin
 
-[Open the admin panel](https://portfolio-dashboard.cadeiraai.workers.dev/). Sign in with the configured owner Cloudflare account. No SQL, API key or local server is needed.
+[Open the admin panel](https://admin.carlosmezquita.dev/). Sign in with the configured owner Cloudflare account. No SQL, API key or local server is needed.
+
+The canonical hostname is `admin.carlosmezquita.dev`, configured as a Worker Custom Domain with HTTPS. Direct `workers.dev` access and version previews are disabled. The existing Worker-wide Access application also covers this custom domain; its owner policy and audience are unchanged. On 23 October 2026 (Canary Islands time), live checks confirmed owner sign-in, successful same-origin saving and Access redirects for unauthenticated/forged-identity requests at the new hostname. Custom domains follow [Cloudflare's Worker configuration](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
 
 - **Statistics:** 7, 30 or 90 UTC days of action totals, daily activity and link/page breakdowns. The traffic-source link opens Cloudflare's existing Web Analytics report.
 - **Requests:** new contact enquiries after email acceptance, with new/read/archived statuses and 25 requests per page. Earlier emails are not imported. Archiving is reversible and does not delete the record.

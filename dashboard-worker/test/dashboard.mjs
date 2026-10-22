@@ -12,7 +12,7 @@ const jwk = { ...await exportJWK(pair.publicKey), kid: 'test-key', alg: 'RS256',
 const keys = createLocalJWKSet({ keys: [jwk] });
 const env = {
   ACCESS_TEAM_DOMAIN: 'example.cloudflareaccess.com', ACCESS_AUD: 'a'.repeat(64),
-  OWNER_EMAIL: 'owner@example.org', DASHBOARD_HOST: 'portfolio-dashboard.cadeiraai.workers.dev',
+  OWNER_EMAIL: 'owner@example.org', DASHBOARD_HOST: 'admin.carlosmezquita.dev',
 };
 const claims = { email: env.OWNER_EMAIL, type: 'app' };
 const sign = (payload = claims, options = {}) => new SignJWT(payload)

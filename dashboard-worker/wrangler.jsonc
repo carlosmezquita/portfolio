@@ -4,10 +4,11 @@
   "account_id": "1db26bf02a050c742294458d1adc328b",
   "main": "worker.mjs",
   "compatibility_date": "2026-10-22",
-  "workers_dev": true,
+  "workers_dev": false,
   "preview_urls": false,
+  "routes": [{ "pattern": "admin.carlosmezquita.dev", "custom_domain": true }],
   "vars": {
-    "DASHBOARD_HOST": "portfolio-dashboard.cadeiraai.workers.dev",
+    "DASHBOARD_HOST": "admin.carlosmezquita.dev",
     "ACCESS_TEAM_DOMAIN": "dawn-waterfall-2c17.cloudflareaccess.com",
     "ACCESS_AUD": "9d1335ac95224e9f4db401f76e0c627e87daac7328bf8dab7b35498b541c2110"
   },
