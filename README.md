@@ -9,7 +9,10 @@ A concise overview of my software work, Denodo experience, education and contact
 Static HTML, CSS and a small compatibility script. No installation, build step, external fonts or client-side libraries are required.
 
 - `index.html`: content, navigation and metadata.
-- `site.css`: responsive layout, focus states and print styles.
+- `site.css`: responsive navy/blue/teal identity, focus states and print styles.
+- `img/surfay-forecast.png`: real application screenshot with synthetic forecast inputs and original map attribution.
+- `docs/design.md`: visual and editorial decisions, with research sources.
+- `docs/evidence-review.md`: claim review, LinkedIn inconsistencies and remaining publication gates.
 - `site.js`: maps old `#project/<name>` links to the current project anchors.
 - `Carlos-Mezquita-CV.pdf`: downloadable public CV.
 - `scripts/build_cv.py`: rebuilds the CV with Python and ReportLab.

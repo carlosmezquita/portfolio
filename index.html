@@ -28,9 +28,10 @@
     </header>
     <main id="main">
       <section class="intro" aria-labelledby="name">
-        <p class="eyebrow">Software engineer · Portsmouth, UK</p>
-        <h1 id="name">Carlos Mezquita</h1>
-        <p class="intro-copy">Previously at Denodo, working on test automation and software quality. I now build web applications and backend systems while completing my Computer Science degree at Portsmouth.</p>
+        <p class="eyebrow">Software engineer <span aria-hidden="true">/</span> Portsmouth, UK</p>
+        <h1 id="name">Carlos<br>Mezquita<span aria-hidden="true">.</span></h1>
+        <p class="intro-copy">I build web applications and backend systems. Previously at Denodo, where I worked on test automation and owned the redesign of parallel test execution.</p>
+        <p class="intro-context">From A Coruña. Completing Computer Science at Portsmouth, with an interest in early-stage AI teams in London.</p>
         <div class="links intro-links">
           <a class="primary-link" href="mailto:mezquitalobato@gmail.com">Email me <span aria-hidden="true">↗</span></a>
           <a href="./Carlos-Mezquita-CV.pdf" download>Download CV <span class="file-type">PDF</span></a>
@@ -42,9 +43,10 @@
         <h2 id="experience-heading">Experience</h2>
         <div class="section-content">
           <div class="entry-heading"><h3>Denodo</h3><p class="meta">Mar 2023 – Oct 2025</p></div>
-          <p class="role">QA &amp; Software Development · Part-time · A Coruña, Spain</p>
+          <p class="role">QA Testing and Development · A Coruña, Spain</p>
+          <p class="employment">Full-time internship, Mar–Jun 2023 · Part-time, Jun 2023–Oct 2025</p>
           <ul class="experience-list">
-            <li>Owned the redesign of parallel execution for a large automated test suite, reducing runtime by several hours.</li>
+            <li>Owned the redesign of parallel execution for an automated test suite.</li>
             <li>Contributed to the migration from Jelly to TestNG and developed automated and unit tests.</li>
             <li>Investigated defects, verified fixes and supported manual release testing.</li>
           </ul>
@@ -55,10 +57,14 @@
         <div class="section-content projects">
           <article class="project" id="surfay" aria-labelledby="surfay-heading">
             <div class="entry-heading"><h3 id="surfay-heading">Surfay</h3><p class="meta">Working prototype</p></div>
-            <p>A surf forecast application for Galicia. I built the map interface and backend that combines marine forecasts with local coastal profiles, stores forecast snapshots and supports moderated condition reports.</p>
+            <p>A surf forecast application for the Galician coast. I built the map interface and backend, combining marine forecasts with local coastal profiles, stored snapshots and moderated condition reports.</p>
+            <figure class="product-image">
+              <a href="./img/surfay-forecast.png" aria-label="Open the full Surfay interface screenshot"><img src="./img/surfay-forecast.png" alt="Surfay’s Pantín view: coastal map, hourly surf scores, wind and tide data" width="1716" height="1358" loading="lazy" decoding="async"></a>
+              <figcaption>From the working application, using synthetic forecast data. Map: OpenFreeMap / OpenMapTiles / OpenStreetMap.</figcaption>
+            </figure>
             <p class="stack">React · TypeScript · MapLibre · Cloudflare Workers · D1</p>
             <p class="project-note">Experimental scores; forecast accuracy has not been validated.</p>
-            <div class="links"><a href="https://github.com/carlosmezquita/surfay">View code <span aria-hidden="true">↗</span></a><a href="https://github.com/carlosmezquita/surfay/blob/main/docs/engineering.md">Engineering notes <span aria-hidden="true">↗</span></a></div>
+            <div class="links"><a href="https://github.com/carlosmezquita/surfay">View code <span aria-hidden="true">↗</span></a><a href="https://github.com/carlosmezquita/surfay/blob/main/docs/engineering.md">Engineering notes <span aria-hidden="true">↗</span></a><a href="https://github.com/carlosmezquita/surfay/actions/workflows/ci.yml">Checks <span aria-hidden="true">↗</span></a></div>
           </article>
           <article class="project" id="urbot" aria-labelledby="urbot-heading">
             <div class="entry-heading"><h3 id="urbot-heading">Urbot</h3><p class="meta">In development</p></div>
@@ -67,9 +73,9 @@
             <div class="links"><a href="mailto:mezquitalobato@gmail.com?subject=Urbot%20project">Ask about the project <span aria-hidden="true">↗</span></a><span class="project-note">Private source</span></div>
           </article>
           <article class="project" id="cadeira" aria-labelledby="cadeira-heading">
-            <div class="entry-heading"><h3 id="cadeira-heading">Cadeira</h3><p class="meta">Personal project</p></div>
-            <p>An AI restaurant reservation application. I worked across the web client and Node.js backend, connecting telephone calls, speech services, an AI agent and reservation workflows.</p>
-            <p class="stack">React · TypeScript · Node.js · Twilio · LangGraph</p>
+            <div class="entry-heading"><h3 id="cadeira-heading">CadeiraAI</h3><p class="meta">Prototype</p></div>
+            <p>An AI restaurant reservation application. I worked across the web client and TypeScript backend, connecting telephone calls, speech services, an AI agent and reservation workflows.</p>
+            <p class="stack">React · TypeScript · Bun · Twilio · LangGraph</p>
             <div class="links"><a href="mailto:mezquitalobato@gmail.com?subject=Cadeira%20project">Ask about the project <span aria-hidden="true">↗</span></a></div>
           </article>
         </div>
@@ -77,13 +83,13 @@
       <section class="section" id="education" aria-labelledby="education-heading">
         <h2 id="education-heading">Education</h2>
         <div class="section-content education">
-          <div><div class="entry-heading"><h3>University of Portsmouth</h3><p class="meta">2026 – 2027</p></div><p>BSc (Hons) Computer Science and Advanced Technologies (Top-Up)</p><p class="meta">Expected graduation: July 2027</p></div>
+          <div><div class="entry-heading"><h3>University of Portsmouth</h3><p class="meta">2026 – 2027</p></div><p>BSc (Hons) Computer Science and Advanced Technologies (Top-Up)</p><p class="meta">Expected completion: 2027</p></div>
           <div><div class="entry-heading"><h3>Liceo La Paz</h3><p class="meta">2021 – 2023</p></div><p>Higher Technician in Multiplatform Application Development (DAM)</p></div>
         </div>
       </section>
       <section class="section" id="leadership" aria-labelledby="leadership-heading">
         <h2 id="leadership-heading">Leadership</h2>
-        <div class="section-content"><h3>President, University of Portsmouth AI Society</h3><p>Organising practical workshops, build nights and industry connections.</p><p class="languages">Spanish and Galician: native · English: professional</p></div>
+        <div class="section-content"><h3>President, University of Portsmouth AI Society</h3><p>Rebuilding the society with a new committee and planning practical AI workshops, projects and industry talks.</p><p class="languages">Spanish and Galician: native · English: professional</p></div>
       </section>
     </main>
     <footer><p>Let’s talk about what you’re building.</p><a href="mailto:mezquitalobato@gmail.com">mezquitalobato@gmail.com <span aria-hidden="true">↗</span></a></footer>

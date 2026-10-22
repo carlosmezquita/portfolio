@@ -15,7 +15,7 @@ pdfmetrics.registerFont(TTFont('CVSans-Bold', str(FONT_DIR / 'VeraBd.ttf')))
 pdfmetrics.registerFontFamily('CVSans', normal='CVSans', bold='CVSans-Bold')
 INK = colors.HexColor('#172f3b')
 MUTED = colors.HexColor('#53616a')
-ACCENT = colors.HexColor('#126652')
+ACCENT = colors.HexColor('#126b80')
 STYLES = {
     'name': ParagraphStyle('name', fontName='CVSans-Bold', fontSize=26, leading=30, textColor=INK, spaceAfter=7),
     'subtitle': ParagraphStyle('subtitle', fontName='CVSans', fontSize=11, leading=15, textColor=MUTED, spaceAfter=8),
@@ -39,9 +39,10 @@ story = [
       '<link href="https://www.linkedin.com/in/carlosmezquitalobato">linkedin.com/in/carlosmezquitalobato</link>', 'contact'),
     p('Software engineer with QA and development experience at Denodo. Building web applications and backend systems while completing a BSc (Hons) top-up at the University of Portsmouth.'),
     p('EXPERIENCE', 'section'),
-    p('Denodo | QA &amp; Software Development (Part-time)', 'entry'),
+    p('Denodo | QA Testing and Development', 'entry'),
     p('Mar 2023 - Oct 2025 | A Coru\u00f1a, Spain', 'meta'),
-    p('- Owned the redesign of parallel execution for a large automated test suite, reducing runtime by several hours.', 'bullet'),
+    p('Full-time internship, Mar-Jun 2023; part-time, Jun 2023-Oct 2025.', 'meta'),
+    p('- Owned the redesign of parallel execution for an automated test suite.', 'bullet'),
     p('- Contributed to the migration from Jelly to TestNG and developed automated and unit tests.', 'bullet'),
     p('- Investigated defects, verified fixes and supported manual release testing.', 'bullet'),
     p('SELECTED PROJECTS', 'section'),
@@ -50,15 +51,15 @@ story = [
     p('<link href="https://github.com/carlosmezquita/surfay">github.com/carlosmezquita/surfay</link>', 'meta'),
     p('Urbot | In development for NMarq', 'entry'),
     p('Building an internal urban-planning tool with guided intake, deterministic planning checks, evidence tracking and human review. React, TypeScript, Cloudflare Workers, D1, R2 and MCP. Private source.'),
-    p('Cadeira | Personal project', 'entry'),
-    p('Worked across a React/TypeScript client and Node.js backend for AI restaurant reservations, integrating telephone calls, speech services, agent orchestration and booking workflows. Twilio and LangGraph.'),
+    p('CadeiraAI | Prototype', 'entry'),
+    p('Worked across a React/TypeScript client and TypeScript backend for AI restaurant reservations, integrating telephone calls, speech services, agent orchestration and booking workflows. Bun, Twilio and LangGraph.'),
     p('EDUCATION', 'section'),
-    p('University of Portsmouth | Sep 2026 - Jul 2027 (expected)', 'entry'),
+    p('University of Portsmouth | 2026 - 2027 (expected)', 'entry'),
     p('BSc (Hons) Computer Science and Advanced Technologies (Top-Up)'),
     p('Liceo La Paz | 2021 - 2023', 'entry'),
     p('Higher Technician in Multiplatform Application Development (DAM)'),
     p('LEADERSHIP &amp; SKILLS', 'section'),
-    p('President, University of Portsmouth AI Society. Organising practical workshops, build nights and industry connections.'),
+    p('President, University of Portsmouth AI Society. Rebuilding the society and planning practical AI workshops, projects and industry talks.'),
     p('TypeScript/JavaScript, Java, Python, SQL; React, Node.js, Cloudflare Workers, D1/R2, TestNG and Git. Spanish and Galician: native. English: professional.'),
 ]
 
