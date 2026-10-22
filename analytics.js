@@ -34,10 +34,10 @@
     let action;
     if (url.origin === location.origin && url.pathname === '/Carlos-Mezquita-CV.pdf') action = ['cv_download', 'cv'];
     else if (url.hostname === 'github.com') {
-      const target = { '/carlosmezquita': 'profile', '/carlosmezquita/': 'profile', '/carlosmezquita/surfay': 'surfay', '/carlosmezquita/surfay/blob/main/docs/engineering.md': 'surfay-engineering' }[url.pathname];
+      const target = link.dataset?.githubTarget || { '/carlosmezquita': 'profile', '/carlosmezquita/': 'profile', '/carlosmezquita/surfay': 'surfay', '/carlosmezquita/surfay/blob/main/docs/engineering.md': 'surfay-engineering' }[url.pathname];
       if (target) action = ['github_click', target];
-    } else if (url.origin === location.origin) {
-      const project = link.closest('[id="surfay"], [id="urbot"], [id="cadeira"]')?.id
+    } else if (url.origin === location.origin || (url.protocol === 'https:' && link.dataset?.projectTarget)) {
+      const project = link.dataset?.projectTarget || link.closest('[id="surfay"], [id="urbot"], [id="cadeira"]')?.id
         || ({ '#surfay': 'surfay', '#urbot': 'urbot', '#cadeira': 'cadeira' })[url.hash];
       if (project) action = ['project_click', project];
     }
