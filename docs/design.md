@@ -79,3 +79,11 @@ Composition A uses the original wide artwork, a single-line desktop name, warm p
 Both compositions were inspected in the cloud browser at approximately 1350px. The main composition was also inspected in a 390px iframe; the content width was 375px after the scrollbar, with no horizontal overflow. Images loaded and fonts reported loaded. Responsive line-break spacing and the alternative background inheritance were corrected after inspection. This is visual review, not user approval or a complete accessibility audit. 200% text enlargement remains to be checked before production publication.
 
 Do not call the design finished based on source checks, a passing contrast calculation or a successful deployment. Inspect its rendered result and revise it. Preserve the working production domain until a design is approved.
+
+## Animated identity field
+
+Following the user’s request, the hero now draws moving blue, cyan and teal fields on a 2D canvas, including a soft diagonal ribbon related to the original artwork. Independent long periods move and reshape the fields without an abrupt loop reset. The lower edge stays dark for the name. This is a code-drawn interpretation, not an animated raster image.
+
+A visible keyboard-operable pause/play control freezes and resumes the current composition. Reduced-motion preference displays the original artwork and removes the motion control. JavaScript or canvas unavailability also leaves the artwork visible. Rendering is capped at 24fps and 1000px canvas width, suspended when the hero is outside the viewport or the tab is hidden, and resumed without advancing time across that pause. No animation dependency was added.
+
+Validation: desktop and 390px-frame browser rendering reviewed, mobile control placement and no horizontal overflow confirmed. Pause changed to Play in the browser; keyboard playback was also observed. A Node VM behavioural harness verified rendering, pause/resume, viewport and tab suspension, preference changes, unavailable-canvas fallback and resolution cap. Syntax and whitespace checks pass. The draft preview is updated; production remains unchanged.

@@ -18,6 +18,7 @@
   <link rel="preload" href="./fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./site.css">
   <script defer src="./site.js"></script>
+  <script defer src="./hero-motion.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -29,6 +30,8 @@
     <section class="hero wrap" aria-labelledby="name">
       <div class="hero-poster">
         <img class="identity-art" src="./img/identity-field.jpg" width="1634" height="608" alt="" fetchpriority="high">
+        <canvas class="identity-motion" id="identity-motion" aria-hidden="true"></canvas>
+        <button class="motion-toggle" type="button" aria-controls="identity-motion" hidden>Pause motion</button>
         <div class="poster-top"><p>Software engineer</p><p>A Coruña → Portsmouth</p></div>
         <h1 id="name">Carlos Mezquita</h1>
       </div>
