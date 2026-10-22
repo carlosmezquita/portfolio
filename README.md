@@ -6,7 +6,7 @@ A concise overview of my software work, Denodo experience, education and contact
 
 ## Implementation
 
-Static HTML, CSS and a small compatibility script. No installation, build step, font CDN or client-side libraries are required. Instrument Sans and Instrument Serif are self-hosted; their licences are in `fonts/`.
+Static HTML, CSS and small scripts for navigation, motion and contact. No build step or font CDN is required. The contact form uses Cloudflare Turnstile and a separate Worker. Instrument Sans and Instrument Serif are self-hosted; their licences are in `fonts/`.
 
 - `index.html`: content, navigation and metadata.
 - `direction-b.html`: alternative split composition for design review.
@@ -17,6 +17,8 @@ Static HTML, CSS and a small compatibility script. No installation, build step, 
 - `docs/evidence-review.md`: claim review, LinkedIn inconsistencies and remaining publication gates.
 - `hero-motion.js`: lava-lamp-inspired blue/teal field with cursor attraction and touch springs, pause/play, reduced-motion fallback and offscreen/tab suspension.
 - `site.js`: maps old `#project/<name>` links to the current project anchors.
+- `contact.js`: contact-form submission, verification lifecycle and accessible feedback.
+- `contact-worker/`: Cloudflare email endpoint; recipient and Turnstile secret live in Worker secrets.
 - `Carlos-Mezquita-CV.pdf`: downloadable public CV.
 - `scripts/build_cv.py`: rebuilds the CV with Python and ReportLab.
 - `projects/<name>/index.html`: redirects old case-study URLs to their summaries, with a visible fallback link.
@@ -42,7 +44,7 @@ Check the desktop and mobile layouts, keyboard focus, downloadable CV, contact l
 
 ## Design review preview
 
-Use the local server above to review this branch. The standalone preview packages the same pages, fonts, images, rebuilt CV and motion code without a hosting dependency. The former Cloudflare review copy is stale and cannot be updated while its connection is unavailable. Do not use it to verify this follow-up.
+Use the local server above to review the layout. The contact form requires an approved HTTPS frontend origin and the configured Cloudflare backend. Use the Cloudflare review page for live form checks; downloaded HTML files cannot submit.
 
 ## Interaction checks
 
@@ -50,4 +52,8 @@ Run `node scripts/test-hero-motion.cjs` for event and spring behaviour checks. O
 
 ## Public contact policy
 
-Use LinkedIn for contact. Keep personal email addresses and mail links out of the public pages, CV, its generator and standalone previews. Run `node scripts/check-public-contact.cjs` alongside the interaction checks.
+Use the contact form, with LinkedIn as an alternative. Keep personal email addresses and mail links out of public source, pages, CV and previews. Run `node scripts/check-public-contact.cjs` alongside the interaction checks.
+
+## Contact form
+
+The site stays on GitHub Pages; the form posts JSON to a separate Cloudflare Worker. See [contact setup](docs/contact.md) for configuration, privacy, limits and validation. Run `node --test scripts/test-contact.mjs scripts/test-contact-ui.cjs` for server and client interaction checks.
