@@ -1,676 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-15R6SRW51T"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-15R6SRW51T');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carlos Mezquita | Software Developer</title>
-    <meta name="description"
-        content="Carlos Mezquita is a software developer studying at the University of Portsmouth, with previous QA and software development experience at Denodo.">
-    <meta name="keywords"
-        content="Carlos Mezquita desarrollador, Juan Carlos Mezquita Lobato, desarrollador de software, software developer, QA engineer, Galicia tech, desarrollador en Galicia, Carlos Mezquita QA">
-    <meta name="author" content="Juan Carlos Mezquita Lobato">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://carlosmezquita.dev/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Carlos Mezquita | Software Developer">
-    <meta property="og:description"
-        content="Software developer studying at Portsmouth, with previous experience at Denodo and projects in AI, web applications and cloud systems.">
-    <meta property="og:url" content="https://carlosmezquita.dev/">
-    <meta property="og:site_name" content="Carlos Mezquita Portfolio">
-    <meta property="og:image" content="https://carlosmezquita.dev/img/smile.png">
-    <meta property="og:locale" content="en_US">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Carlos Mezquita | Software Developer">
-    <meta name="twitter:description"
-        content="Software developer studying at Portsmouth, with previous experience at Denodo and projects in AI, web applications and cloud systems.">
-    <meta name="twitter:image" content="https://carlosmezquita.dev/img/smile.png">
-    <link rel="icon" type="image/png" href="./img/smile.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Juan Carlos Mezquita Lobato",
-        "alternateName": [
-            "Carlos Mezquita",
-            "Juan Carlos Mezquita"
-        ],
-        "jobTitle": "Software Developer",
-        "url": "https://carlosmezquita.dev/",
-        "image": "https://carlosmezquita.dev/img/smile.png",
-        "sameAs": [
-            "https://www.linkedin.com/in/carlosmezquitalobato",
-            "https://github.com/carlosmezquita"
-        ],
-        "description": "Software developer studying at the University of Portsmouth, with previous QA and software development experience at Denodo."
-    }
-    </script>
-    <link rel="stylesheet" href="./os-theme.css">
-    <style>
-        body {
-            font-family: var(--os-font);
-            background-color: #F7F3E9;
-            /* A sandy color similar to PostHog's site */
-            background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4CDBF' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
-            overflow: hidden;
-        }
-
-        /* For the blinking cursor effect */
-        .typing-cursor {
-            display: inline-block;
-            width: 8px;
-            height: 1.2rem;
-            background-color: black;
-            animation: blink 1s step-end infinite;
-            margin-left: 4px;
-        }
-
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
-        }
-
-        .prompt::before {
-            content: '>';
-            margin-right: 0.75rem;
-            color: #9CA3AF;
-        }
-
-        .window-shadow {
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18);
-        }
-
-        .alert-shadow {
-            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
-        }
-
-        #resume-window {
-            overflow: hidden;
-        }
-
-
-
-        /* Print Styles */
-        @media print {
-            * {
-                -webkit-print-color-adjust: exact !important;
-                color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-
-            body {
-                background-color: #F7F3E9 !important;
-                background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4CDBF' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E") !important;
-                margin: 20px !important;
-                padding: 0 !important;
-                overflow: visible !important;
-                min-height: auto !important;
-                font-size: 9px !important;
-                line-height: 1.1 !important;
-            }
-
-            #resume-window {
-                position: static !important;
-                width: 100% !important;
-                height: auto !important;
-                max-width: none !important;
-                margin: 0 !important;
-                box-shadow: none !important;
-                border: 1px solid black !important;
-                page-break-inside: avoid !important;
-            }
-
-            #title-bar {
-                background-color: #e5e7eb !important;
-                border-bottom: 1px solid black !important;
-                padding: 0.25rem !important;
-            }
-
-            .window-shadow {
-                box-shadow: none !important;
-            }
-
-            .alert-shadow {
-                box-shadow: none !important;
-            }
-
-            #alert-box {
-                display: none !important;
-            }
-
-            .typing-cursor {
-                display: none !important;
-            }
-
-            * {
-                page-break-inside: avoid !important;
-            }
-
-            .space-y-8>* {
-                margin-bottom: 0.5rem !important;
-            }
-
-            .space-y-4>* {
-                margin-bottom: 0.35rem !important;
-            }
-
-            .space-y-1>* {
-                margin-bottom: 0.15rem !important;
-            }
-
-            .p-6,
-            .p-8 {
-                padding: 1rem !important;
-            }
-
-            .md\\:p-8 {
-                padding: 1rem !important;
-            }
-
-            .text-3xl,
-            .text-4xl,
-            .md\\:text-4xl {
-                font-size: 1.2rem !important;
-            }
-
-            .text-lg {
-                font-size: 0.9rem !important;
-            }
-
-            .text-md {
-                font-size: 0.8rem !important;
-            }
-
-            .text-sm {
-                font-size: 0.7rem !important;
-            }
-
-            .mb-2 {
-                margin-bottom: 0.25rem !important;
-            }
-
-            .mt-2 {
-                margin-top: 0.25rem !important;
-            }
-
-            .mt-4 {
-                margin-top: 0.5rem !important;
-            }
-
-            .p-4 {
-                padding: 0.5rem !important;
-            }
-
-            ul {
-                margin-top: 0.25rem !important;
-            }
-
-            li {
-                margin-bottom: 0.1rem !important;
-            }
-        }
-
-        @page {
-            size: A4;
-            margin: 0;
-        }
-
-        /* Mobile Styles */
-        @media (max-width: 768px) {
-            body {
-                padding: 0 !important;
-                overflow: hidden !important;
-            }
-
-            #resume-window {
-                width: calc(100vw - 1rem) !important;
-                max-width: none !important;
-                height: calc(100vh - 1rem) !important;
-                height: calc(100dvh - 1rem) !important;
-                /* Dynamic viewport height for mobile browsers */
-                border: 2px solid black !important;
-                border-radius: 0.5rem !important;
-                box-shadow: none !important;
-                position: fixed !important;
-                top: 0.5rem !important;
-                left: 0.5rem !important;
-                display: flex !important;
-                flex-direction: column !important;
-            }
-
-            #title-bar {
-                border-radius: 0.5rem 0.5rem 0 0 !important;
-                flex-shrink: 0 !important;
-            }
-
-            .flex-grow {
-                flex: 1 !important;
-                overflow-y: auto !important;
-                overflow-x: hidden !important;
-                -webkit-overflow-scrolling: touch !important;
-                padding-bottom: 1rem !important;
-                min-height: 0 !important;
-            }
-
-            .p-6 {
-                padding: 1rem !important;
-            }
-
-            .md\\:p-8 {
-                padding: 1rem !important;
-            }
-        }
-
-        /* One document window for the resume and case studies. */
-        #resume-window { width:calc(100vw - 48px); max-width:1180px; height:calc(100dvh - 64px); position:relative; color:var(--os-ink); }
-        #resume-window.is-maximized { position:fixed!important; inset:8px!important; width:calc(100vw - 16px)!important; max-width:none!important; height:calc(100dvh - 16px)!important; }
-        #title-bar { min-height:48px; padding:6px 12px; gap:12px; flex-shrink:0; }
-        #window-path { font-size:.875rem; overflow-wrap:anywhere; }
-        .window-controls { display:flex; gap:8px; align-items:center; }
-        .window-control { display:grid; place-items:center; width:32px; height:32px; border:1px solid #64748b; border-radius:4px; background:white; cursor:pointer; font-size:1.1rem; }
-        .window-control:hover { background:#fef3c7; }
-        #close-button:hover { background:#fee2e2; }
-        .window-toolbar { display:flex; align-items:center; gap:16px; padding:8px 20px; border-bottom:1px solid var(--os-line); background:#f8fafc; font-size:.875rem; flex-shrink:0; min-height:49px; }
-        .window-toolbar button { padding:6px 10px; border:1px solid var(--os-line); border-radius:4px; background:white; }
-        .window-toolbar button:disabled { color:#64748b; cursor:default; }
-        .window-toolbar a { margin-left:auto; text-decoration:underline; text-underline-offset:4px; }
-        #document-label { color:#475569; }
-        .home-pane { flex:1; min-height:0; overflow:auto; overscroll-behavior:contain; }
-        .resume-layout { display:grid; grid-template-columns:165px minmax(0,1fr); gap:32px; max-width:1080px; padding:36px 28px 64px; margin:auto; }
-        .home-contents { display:flex; flex-direction:column; gap:6px; position:sticky; top:24px; align-self:start; font-size:.875rem; }
-        .home-contents p { font-size:.75rem; letter-spacing:.08em; color:#475569; margin-bottom:8px; }
-        .home-contents a { padding:10px 0; }
-        .home-contents a:hover { text-decoration:underline; text-underline-offset:4px; }
-        .home-document { min-width:0; max-width:760px; }
-        .home-document h1 { font-size:clamp(1.9rem,4vw,2.7rem); letter-spacing:-.035em; line-height:1.25; }
-        .home-document p,.home-document li { font-size:1rem; line-height:1.75; }
-        .home-document h2 { font-size:1.125rem; margin-bottom:16px; }
-        .home-document section,.home-document [id] { scroll-margin-top:24px; }
-        .project-launchers { border-top:1px solid var(--os-ink); margin-top:16px; }
-        .project-launcher { display:grid; grid-template-columns:40px minmax(0,1fr) auto; gap:16px; align-items:center; padding:20px 8px; border-bottom:1px solid var(--os-line); text-decoration:none; }
-        .project-launcher:hover { background:#fef9e7; }
-        .project-index { align-self:start; font-size:.875rem; color:#475569; padding-top:4px; }
-        .project-info strong { display:block; font-size:1.125rem; margin-bottom:6px; }
-        .project-info small { display:block; font-size:.875rem; line-height:1.65; color:#475569; }
-        .project-info .project-tech { margin-top:8px; font-size:.75rem; color:#64748b; }
-        .project-open-label { font-size:.875rem; white-space:nowrap; }
-        .project-launcher:hover .project-open-label { text-decoration:underline; text-underline-offset:4px; }
-        .project-pane { flex:1; min-height:0; overflow:hidden; }
-        .project-frame { display:block; width:100%; height:100%; border:0; }
-        [hidden] { display:none!important; }
-        #resume-window :focus-visible { outline:3px solid #2563eb; outline-offset:3px; }
-        @media(max-width:768px) {
-          .resume-layout { display:block; padding:24px 20px 40px; }
-          .home-contents { position:static; flex-direction:row; flex-wrap:wrap; gap:4px 16px; padding-bottom:16px; margin-bottom:24px; border-bottom:1px solid var(--os-line); }
-          .home-contents p { width:100%; margin:0; }
-          .home-contents a { padding:6px 0; }
-          #maximize-window { display:none; }
-          .window-toolbar { padding:8px 12px; gap:8px; }
-          #document-label { display:none; }
-          #title-bar { cursor:default; }
-        }
-        @media(max-width:480px) {
-          .project-launcher { grid-template-columns:24px minmax(0,1fr); gap:12px; }
-          .project-open-label { grid-column:2; }
-          #window-path { font-size:.75rem; }
-        }
-        @media print {
-          .window-toolbar,.home-contents,.project-pane { display:none!important; }
-          .home-pane[hidden] { display:block!important; }
-          .home-pane { overflow:visible; }
-          .resume-layout { display:block; padding:0; }
-          .project-launcher { break-inside:avoid; }
-          #resume-window.is-maximized { position:static!important; width:100%!important; height:auto!important; }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carlos Mezquita — Software Engineer</title>
+  <meta name="description" content="Software engineer from A Coruña, based in Portsmouth. Previously at Denodo. Building Surfay, Urbot and CadeiraAI.">
+  <meta name="author" content="Juan Carlos Mezquita Lobato">
+  <link rel="canonical" href="https://carlosmezquita.dev/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Carlos Mezquita — Software Engineer">
+  <meta property="og:description" content="Selected software work, from surf forecasts to urban planning and voice reservations.">
+  <meta property="og:url" content="https://carlosmezquita.dev/">
+  <meta property="og:image" content="https://carlosmezquita.dev/img/identity-field.jpg">
+  <meta property="og:image:alt" content="Carlos Mezquita’s portfolio, with blue and teal artwork">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="./fonts/instrument-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./site.css">
+  <script defer src="./site.js"></script>
+  <script defer src="./hero-motion.js"></script>
 </head>
-
-<body class="min-h-screen flex items-center justify-center p-4">
-    <!-- The OS-like Window -->
-    <div id="resume-window"
-        class="w-full max-w-4xl h-[90vh] bg-white border-2 border-black rounded-lg window-shadow flex flex-col absolute">
-        <!-- Title Bar -->
-        <div id="title-bar"
-            class="bg-gray-200 p-2 flex items-center justify-between border-b-2 border-black cursor-move rounded-t-lg">
-            <div class="flex items-center gap-2">
-                <!-- Hedgehog Icon SVG -->
-                <img id="winking-emoji" class="" src="./img/smile.png" width="18px"
-                    title="Image author j8chi (https://www.flaticon.com/packs/pixel-emojis)"
-                    alt="Pixel hedgehog icon for Juan Carlos Mezquita Lobato">
-                <p id="window-path" class="font-medium">MezquitaOS / documents / resume.md</p>
-            </div>
-            <div class="window-controls">
-                <button type="button" id="maximize-window" class="window-control" aria-label="Maximize window" aria-pressed="false" title="Maximize window">□</button>
-                <button type="button" id="close-button" class="window-control" aria-label="Close document" title="Close document">×</button>
-            </div>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="./" aria-label="Carlos Mezquita, home">Carlos Mezquita</a>
+    <nav aria-label="Main navigation"><a href="#projects">Selected work</a><a href="#about">About</a><a class="header-email" href="mailto:mezquitalobato@gmail.com">Get in touch <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="name">
+      <div class="hero-poster">
+        <img class="identity-art" src="./img/identity-field.jpg" width="1634" height="608" alt="" fetchpriority="high">
+        <canvas class="identity-motion" id="identity-motion" aria-hidden="true"></canvas>
+        <button class="motion-toggle" type="button" aria-controls="identity-motion" hidden>Pause motion</button>
+        <p class="touch-hint" aria-hidden="true">Tap or swipe sideways to stir</p>
+        <div class="poster-top"><p>Software engineer</p><p>A Coruña → Portsmouth</p></div>
+        <h1 id="name">Carlos Mezquita</h1>
+      </div>
+      <div class="intro">
+        <div class="intro-copy"><p>I build web applications and AI systems.<br> Previously at Denodo, now finishing Computer Science at Portsmouth.</p><p class="intro-detail">My work spans surf forecasts, urban planning and restaurant reservations.</p></div>
+        <div class="intro-links"><a href="mailto:mezquitalobato@gmail.com">Email me <span aria-hidden="true">↗</span></a><a href="./Carlos-Mezquita-CV.pdf" download>Download CV <span class="file-type">PDF</span></a><a href="https://github.com/carlosmezquita">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/carlosmezquitalobato">LinkedIn <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+    <section class="work wrap" id="projects" aria-labelledby="work-heading">
+      <div class="section-heading"><h2 id="work-heading">Selected work</h2><p>Independent projects &amp; ongoing work</p></div>
+      <article class="showcase" id="surfay" aria-labelledby="surfay-heading">
+        <div class="surfay-stage">
+          <div class="stage-label"><span class="surfay-wordmark">Surfay</span><span>Galicia, Spain</span></div>
+          <a class="product-frame" href="./img/surfay-forecast.png" aria-label="Open the complete Surfay interface screenshot"><img src="./img/surfay-forecast.png" alt="Surfay’s Pantín forecast: a coastal map, swell and wind directions, surf score and tide curve" width="1716" height="1358" loading="lazy" decoding="async"></a>
+          <p class="stage-caption">Pantín · Interface preview with synthetic forecasts</p>
         </div>
-        <nav class="window-toolbar" aria-label="Document navigation">
-            <button type="button" id="back-to-resume" disabled>← Résumé</button>
-            <span id="document-label" role="status">Personal portfolio</span>
-            <a id="project-full-page" href="./projects/cadeira/" target="_blank" rel="noopener" hidden>Open in new tab ↗</a>
-        </nav>
-
-        <!-- Content Area -->
-        <div id="home-pane" class="home-pane">
-          <div class="resume-layout">
-            <nav class="home-contents" aria-label="Resume contents"><p>IN THIS DOCUMENT</p><a href="#intro">Overview</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#leadership">Leadership</a><a href="#education">Education</a><a href="#misc">More</a></nav>
-            <div class="space-y-8 home-document">
-                <!-- Header -->
-                <div id="intro">
-                    <h1 class="text-3xl md:text-4xl font-bold">Carlos Mezquita</h1>
-                    <p class="text-sm text-gray-500 mt-1">Software developer · Computer Science at Portsmouth</p>
-                    <div class="text-sm md:text-base mt-3 flex items-center gap-3">
-                        <a href="https://www.linkedin.com/in/carlosmezquitalobato" target="_blank"
-                            class="hover:underline">LinkedIn</a>
-                        <span class="text-gray-400" aria-hidden="true">&bull;</span>
-                        <a href="https://github.com/carlosmezquita" target="_blank" class="hover:underline">GitHub</a>
-                    </div>
-                </div>
-
-                <!-- Personal Projects -->
-                <section id="projects" aria-labelledby="projects-heading">
-                    <h2 id="projects-heading" class="font-bold text-lg mb-2 prompt">open ./projects</h2>
-                    <div class="project-launchers"><a href="./projects/cadeira/" class="project-launcher" data-open-project="cadeira"><span class="project-index" aria-hidden="true">01</span><span class="project-info"><strong>Cadeira</strong><small>AI telephone conversations and restaurant reservations.</small><small class="project-tech">React · TypeScript · Node.js</small></span><span class="project-open-label">Read case study →</span></a><a href="./projects/urbot/" class="project-launcher" data-open-project="urbot"><span class="project-index" aria-hidden="true">02</span><span class="project-info"><strong>Urbot</strong><small>Guided urban-planning checks and case review.</small><small class="project-tech">React · Cloudflare Workers · MCP</small></span><span class="project-open-label">Read case study →</span></a><a href="./projects/surfay/" class="project-launcher" data-open-project="surfay"><span class="project-index" aria-hidden="true">03</span><span class="project-info"><strong>Surfay</strong><small>Local surf forecasts for the Galician coast.</small><small class="project-tech">React · MapLibre · TypeScript</small></span><span class="project-open-label">Read case study →</span></a></div>
-                </section>
-
-                <!-- Professional Experience -->
-                <div id="experience">
-                    <h2 class="font-bold text-lg mb-2 prompt">cat ./experience/denodo.log</h2>
-                    <div class="ml-4 pl-4 border-l border-dashed">
-                        <h3 class="font-bold text-md">Part-time Quality Assurance &amp; Software Development</h3>
-                        <p class="text-sm text-gray-600">Denodo | A Coruña, Spain | Mar 2023 - Oct 2025</p>
-                        <ul class="list-disc list-inside mt-2 text-sm space-y-1">
-                            <li>Worked on testing and reliability for Denodo's data virtualization platform.</li>
-                            <li>Redesigned parallel execution for a large automated test suite, reducing its runtime by several hours.</li>
-                            <li>Contributed to the migration of tests from Jelly to TestNG.</li>
-                            <li>Investigated defects and collaborated with engineers on testing and releases.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Leadership -->
-                <div id="leadership">
-                    <h2 class="font-bold text-lg mb-2 prompt">cat ./leadership/ai-society.log</h2>
-                    <div class="ml-4 pl-4 border-l border-dashed">
-                        <h3 class="font-bold text-md">Incoming President — University of Portsmouth AI Society</h3>
-                        <p class="text-sm text-gray-600">Formal appointment: 20 October 2026</p>
-                        <p class="text-sm mt-2">Already carrying out president responsibilities ahead of the formal appointment.</p>
-                    </div>
-                </div>
-
-                <!-- Education -->
-                <div id="education">
-                    <h2 class="font-bold text-lg mb-2 prompt">ls ./education</h2>
-                    <div class="ml-4 pl-4 border-l border-dashed">
-                        <p class="text-sm"><span class="font-bold">BSc (Hons) Computer Science and Advanced Technologies</span> — University of Portsmouth (2026–2027, expected July 2027)</p>
-                        <p class="text-sm"><span class="font-bold">Higher Technician in Multiplatform Application
-                                Development (DAM)</span> — CPR Plurilingüe Liceo La Paz (2021 – 2023)</p>
-                    </div>
-                </div>
-
-                <!-- Certs & Languages -->
-                <div id="misc">
-                    <h2 class="font-bold text-lg mb-2 prompt">get-misc-info</h2>
-                    <div class="ml-4 pl-4 border-l border-dashed text-sm">
-                        <p><span class="font-bold">Certifications:</span> Programming Foundations: Software Testing/QA
-                        </p>
-                        <p><span class="font-bold">Languages:</span> Spanish (Native), Galician (Native), English
-                            (Professional)</p>
-                    </div>
-                </div>
-
-            </div>
-          </div>
+        <div class="showcase-copy">
+          <p class="project-context">Personal project · Working prototype</p>
+          <h3 id="surfay-heading">Surf forecasts<br> for Galicia.</h3>
+          <p>A surf forecast for Galicia. I built the map interface and backend that turn marine forecasts and local coastal profiles into hourly spot forecasts.</p>
+          <p class="technical-detail">The backend keeps spot updates and forecast snapshots in sync, and preserves the forecast behind each condition report.</p>
+          <p class="stack">React, TypeScript, MapLibre<br> Cloudflare Workers &amp; D1</p>
+          <div class="project-links"><a href="https://github.com/carlosmezquita/surfay">Explore the code <span aria-hidden="true">↗</span></a><a href="https://github.com/carlosmezquita/surfay/blob/main/docs/engineering.md">Engineering notes <span aria-hidden="true">↗</span></a></div>
+          <p class="project-limit">Experimental scoring; forecast accuracy hasn’t been independently validated.</p>
         </div>
-        <div id="project-pane" class="project-pane" hidden></div>
-    </div>
-
-
-<!-- Easter Egg Alert Box -->
-    <div id="alert-box"
-        class="hidden fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-yellow-100 border-2 border-black p-6 rounded-lg alert-shadow w-72">
-        <div class="flex items-start gap-4">
-            <div class="text-2xl">🤔</div>
-            <div>
-                <h3 class="font-bold">Hey, wait a minute!</h3>
-                <p class="text-sm mt-1">Closing this resume seems like a bug, not a feature. Are you sure you want to
-                    proceed?</p>
-                <button id="alert-ok-button"
-                    class="mt-4 bg-black text-white text-sm px-4 py-1 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">Okay,
-                    I'll reconsider</button>
-            </div>
+        <p class="map-credit">Map imagery: OpenFreeMap / OpenMapTiles / OpenStreetMap contributors. <a href="./img/surfay-forecast.png">View full interface <span aria-hidden="true">↗</span></a></p>
+      </article>
+      <div class="other-work">
+        <article class="project-row" id="urbot" aria-labelledby="urbot-heading">
+          <div class="project-identity"><p class="project-context">For NMarq · In development</p><h3 id="urbot-heading">Urbot</h3></div>
+          <div class="project-description"><p>An internal urban-planning tool. I’m building guided project intake, deterministic planning checks and evidence tracking, with unresolved cases left for human review.</p><p class="stack">React · TypeScript · Cloudflare Workers · D1 / R2 · MCP</p></div>
+          <a class="row-link" href="mailto:mezquitalobato@gmail.com?subject=Urbot%20project">Ask about Urbot <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="project-row" id="cadeira" aria-labelledby="cadeira-heading">
+          <div class="project-identity"><p class="project-context">Independent project · Prototype</p><h3 id="cadeira-heading">CadeiraAI</h3></div>
+          <div class="project-description"><p>Restaurant reservations by phone. I worked across the web client and TypeScript backend, connecting telephone calls, speech services, an AI agent and booking workflows.</p><p class="stack">React · TypeScript · Bun · Twilio · LangGraph</p></div>
+          <a class="row-link" href="mailto:mezquitalobato@gmail.com?subject=CadeiraAI%20project">Ask about CadeiraAI <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
+    <section class="background" id="about" aria-labelledby="about-heading">
+      <div class="background-inner wrap">
+        <div class="about-intro"><p class="section-kicker">A little background</p><h2 id="about-heading">From A Coruña<br> to Portsmouth.</h2><p>I worked at Denodo before moving to the UK to finish my Computer Science degree. Alongside my projects, I’m rebuilding the university’s AI Society.</p><p>Away from software, I swim and surf.</p><p class="languages">Spanish · Galician · English</p></div>
+        <div class="background-details">
+          <section class="background-entry" id="experience" aria-labelledby="denodo-heading"><div class="entry-heading"><h3 id="denodo-heading">Denodo</h3><p>2023–2025</p></div><p class="role">QA Testing and Development</p><p class="employment">Full-time internship, Mar–Jun 2023<br> Part-time, Jun 2023–Oct 2025</p><ul><li>Owned the redesign of parallel execution for an automated test suite.</li><li>Contributed to migrating legacy tests from Jelly to TestNG; developed automated and unit tests.</li><li>Investigated defects, verified fixes and supported release testing.</li></ul></section>
+          <section class="background-entry" id="education" aria-labelledby="education-heading"><h3 id="education-heading">Education</h3><div class="education-item"><div class="entry-heading"><h4>University of Portsmouth</h4><p>2026–2027</p></div><p>BSc (Hons) Computer Science and Advanced Technologies (Top-Up), in progress.</p></div><div class="education-item"><div class="entry-heading"><h4>Liceo La Paz</h4><p>2021–2023</p></div><p>Higher Technician in Multiplatform Application Development (DAM).</p></div></section>
+          <section class="background-entry" id="leadership" aria-labelledby="leadership-heading"><h3 id="leadership-heading">President, AI Society</h3><p>University of Portsmouth. Rebuilding the committee and planning practical AI workshops, projects and industry talks.</p></section>
         </div>
-    </div>
-
-
-    <script>
-
-        // One shared OS shell. Only the selected case-study document is loaded.
-        const resumeWindow = document.getElementById('resume-window');
-        const homePane = document.getElementById('home-pane');
-        const projectPane = document.getElementById('project-pane');
-        const backButton = document.getElementById('back-to-resume');
-        const fullPage = document.getElementById('project-full-page');
-        const windowPath = document.getElementById('window-path');
-        const documentLabel = document.getElementById('document-label');
-        const maximizeButton = document.getElementById('maximize-window');
-        const titles = { cadeira:'Cadeira', urbot:'Urbot', surfay:'Surfay' };
-        let activeProject = null;
-        let projectOpener = null;
-        let resumeScroll = 0;
-
-        function showProject(slug) {
-            if (!titles[slug] || activeProject === slug) return;
-            if (!activeProject) resumeScroll = homePane.scrollTop;
-            activeProject = slug;
-            homePane.hidden = true;
-            projectPane.hidden = false;
-            const frame = document.createElement('iframe');
-            frame.className = 'project-frame';
-            frame.title = `${titles[slug]} case study`;
-            frame.src = `./projects/${slug}/`;
-            projectPane.replaceChildren(frame);
-            updateDocument(slug);
-            backButton.focus({preventScroll:true});
-        }
-        function updateDocument(slug) {
-            windowPath.textContent = `MezquitaOS / projects / ${slug}`;
-            documentLabel.textContent = `${titles[slug]} / case study`;
-            fullPage.href = `./projects/${slug}/`;
-            fullPage.hidden = false;
-            backButton.disabled = false;
-        }
-        function showResume() {
-            const wasProject = !!activeProject;
-            activeProject = null;
-            projectPane.replaceChildren();
-            projectPane.hidden = true;
-            homePane.hidden = false;
-            backButton.disabled = true;
-            fullPage.hidden = true;
-            windowPath.textContent = 'MezquitaOS / documents / resume.md';
-            documentLabel.textContent = 'Personal portfolio';
-            homePane.scrollTop = resumeScroll;
-            if (wasProject) projectOpener?.focus({preventScroll:true});
-        }
-        function returnToResume() {
-            if (!activeProject) return;
-            if (history.state?.portfolioProject) {
-                history.back();
-            } else {
-                history.replaceState(null, '', location.pathname + location.search + '#projects');
-                showResume();
-            }
-        }
-        function syncDocument() {
-            const match = /^#project\/(cadeira|urbot|surfay)$/.exec(location.hash);
-            if (match) showProject(match[1]);
-            else if (activeProject) showResume();
-        }
-        document.querySelectorAll('[data-open-project]').forEach(link => {
-            link.addEventListener('click', event => {
-                if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-                event.preventDefault();
-                projectOpener = link;
-                history.pushState({portfolioProject:true}, '', `#project/${link.dataset.openProject}`);
-                showProject(link.dataset.openProject);
-            });
-        });
-        backButton.addEventListener('click', returnToResume);
-        window.addEventListener('popstate', syncDocument);
-        window.addEventListener('hashchange', syncDocument);
-        window.addEventListener('message', event => {
-            const frame = projectPane.querySelector('iframe');
-            if (!frame || event.origin !== location.origin || event.source !== frame.contentWindow) return;
-            if (event.data === 'portfolio:close-project') returnToResume();
-            if (event.data?.type === 'portfolio:project-ready') {
-                const match = /^\/projects\/(cadeira|urbot|surfay)\/$/.exec(event.data.path);
-                if (!match) return;
-                activeProject = match[1];
-                history.replaceState(history.state, '', `#project/${activeProject}`);
-                frame.title = `${titles[activeProject]} case study`;
-                updateDocument(activeProject);
-            }
-        });
-        document.addEventListener('keydown', event => {
-            if (event.key === 'Escape' && activeProject) returnToResume();
-        });
-        maximizeButton.addEventListener('click', () => {
-            const expanded = resumeWindow.classList.toggle('is-maximized');
-            maximizeButton.setAttribute('aria-pressed', String(expanded));
-            maximizeButton.setAttribute('aria-label', expanded ? 'Restore window size' : 'Maximize window');
-            maximizeButton.title = expanded ? 'Restore window size' : 'Maximize window';
-            maximizeButton.textContent = expanded ? '❐' : '□';
-            resetPosition();
-        });
-        // Drag only the title bar; keep controls and document interaction independent.
-        const titleBar = document.getElementById('title-bar');
-        let drag = null;
-        function resetPosition() {
-            drag = null;
-            ['position','left','top'].forEach(name => resumeWindow.style.removeProperty(name));
-        }
-        titleBar.style.touchAction = 'none';
-        titleBar.addEventListener('pointerdown', event => {
-            if (event.target.closest('button,a') || event.button !== 0 || innerWidth <= 768 || resumeWindow.classList.contains('is-maximized')) return;
-            const rect = resumeWindow.getBoundingClientRect();
-            drag = { x:event.clientX-rect.left, y:event.clientY-rect.top };
-            resumeWindow.style.position = 'fixed';
-            resumeWindow.style.left = `${rect.left}px`;
-            resumeWindow.style.top = `${rect.top}px`;
-            titleBar.setPointerCapture(event.pointerId);
-            event.preventDefault();
-        });
-        titleBar.addEventListener('pointermove', event => {
-            if (!drag) return;
-            resumeWindow.style.left = `${Math.max(0, Math.min(event.clientX-drag.x, innerWidth-resumeWindow.offsetWidth))}px`;
-            resumeWindow.style.top = `${Math.max(0, Math.min(event.clientY-drag.y, innerHeight-resumeWindow.offsetHeight))}px`;
-        });
-        titleBar.addEventListener('pointerup', () => { drag=null; });
-        titleBar.addEventListener('lostpointercapture', () => { drag=null; });
-        window.addEventListener('resize', resetPosition);
-        syncDocument();
-
-        // --- Easter Egg Logic ---
-        const closeButton = document.getElementById('close-button');
-        const alertBox = document.getElementById('alert-box');
-        const alertOkButton = document.getElementById('alert-ok-button');
-
-        closeButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (activeProject) { returnToResume(); return; }
-            alertBox.classList.remove('hidden');
-        });
-
-        alertOkButton.addEventListener('click', () => {
-            alertBox.classList.add('hidden');
-        });
-
-        // --- Winking Animation Logic ---
-        const hedgehogIcon = document.getElementById('winking-emoji');
-
-        function scheduleNextAnimation() {
-            // Random interval between 3-8 seconds
-            const randomDelay = Math.random() * 5000 + 3000;
-            setTimeout(() => {
-                wink();
-                scheduleNextAnimation();
-            }, randomDelay);
-        }
-
-        function wink() {
-            // Switch to wink.png
-            hedgehogIcon.src = './img/wink.png';
-
-            // Switch back to smile.png after 150ms (brief wink)
-            setTimeout(() => {
-                hedgehogIcon.src = './img/smile.png';
-            }, 150);
-        }
-
-        // Hover wink effect
-        hedgehogIcon.addEventListener('mouseenter', () => {
-            wink();
-        });
-
-        // Wink effect for links
-        const links = document.querySelectorAll('a');
-        links.forEach(link => {
-            let hoverTimeout;
-            link.addEventListener('mouseenter', () => {
-                hoverTimeout = setTimeout(() => {
-                    wink();
-                }, 250); // 250ms delay
-            });
-
-            link.addEventListener('mouseleave', () => {
-                clearTimeout(hoverTimeout);
-            });
-        });
-
-        // Start the winking cycle
-        scheduleNextAnimation();
-
-        // --- Animated Favicon Logic ---
-        const favicon = document.querySelector('link[rel="icon"]');
-
-        function scheduleFaviconAnimation() {
-            // Random interval between 5-10 seconds for favicon
-            const randomDelay = Math.random() * 5000 + 5000;
-            setTimeout(() => {
-                faviconSunglasses();
-                scheduleFaviconAnimation();
-            }, randomDelay);
-        }
-
-        function faviconSunglasses() {
-            // Switch favicon to wink
-            favicon.href = './img/sunglasses.png';
-
-            // Switch back to smile after 200ms
-            setTimeout(() => {
-                favicon.href = './img/smile.png';
-            }, 200);
-        }
-
-        // Start the favicon winking cycle
-        scheduleFaviconAnimation();
-
-    </script>
+      </div>
+    </section>
+  </main>
+  <footer class="footer wrap" id="contact"><div><p class="section-kicker">Contact</p><h2>Get in touch.</h2><a class="contact-email" href="mailto:mezquitalobato@gmail.com">mezquitalobato@gmail.com <span aria-hidden="true">↗</span></a></div><div class="footer-links"><a href="https://github.com/carlosmezquita">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/carlosmezquitalobato">LinkedIn <span aria-hidden="true">↗</span></a><a href="./Carlos-Mezquita-CV.pdf" download>Download CV</a><p>Based in Portsmouth, UK</p></div></footer>
 </body>
-
 </html>
-
-
-
