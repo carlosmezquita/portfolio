@@ -67,3 +67,5 @@ Research informing these choices:
 - [Material: Duration and easing](https://m1.material.io/motion/duration-easing.html) — short, responsive feedback and decelerating transitions. The exact timings above are design choices for this portfolio.
 - [Instrument contact form](https://www.instrument.com/contact/contact-form) and [Linear support](https://linear.app/contact/support) — reference examples for concise contact content and a clear submission action. Their page content was reviewed; no claim of testing their animations is made.
 - [Cloudflare widget configuration](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/) — interaction-only appearance, callbacks and supported compact sizing.
+
+Submission feedback sits beside the action button when space permits. The email-use explanation sits underneath that row. On phones, feedback stacks directly below the button, followed by the explanation; the live-region semantics remain unchanged.
