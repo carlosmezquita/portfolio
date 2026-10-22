@@ -1,91 +1,51 @@
-# MezquitaOS — Carlos Mezquita's portfolio
+# Carlos Mezquita's portfolio
 
 [Visit the portfolio](https://carlosmezquita.dev)
 
-A personal portfolio presented as a small desktop operating system. The résumé and project case studies share one OS-style document window, with Back navigation and a maximize control.
-
-## About
-
-This portfolio brings together my software projects and experience in a small OS-inspired interface. Project write-ups explain the problem, my contribution, and the engineering decisions behind the work.
-
-The design prioritizes fast loading, accessible navigation, and clear project descriptions.
-
-## Featured projects
-
-| Project | Focus |
-| --- | --- |
-| Cadeira | AI telephone conversations and restaurant reservations. |
-| Urbot | Guided urban-planning checks and case review. |
-| Surfay | Local surf forecasts for the Galician coast. |
-
-When updating a project, explain:
-
-- The problem and who experiences it.
-- My contribution and the current state of the work.
-- The important implementation decisions and their trade-offs.
-- Evidence: a public demo, code where shareable, or verified results.
-- Limitations and what I am improving next.
-
-Keep descriptions specific and honest. Distinguish working features from planned work; only include outcome metrics that can be substantiated. Publish only material cleared for public sharing.
+A concise overview of my software work, Denodo experience, education and contact details. Surfay links directly to its public repository and engineering notes. Urbot and Cadeira have brief summaries and contact links.
 
 ## Implementation
 
-The site is static HTML, CSS, and vanilla JavaScript. There is no package installation or build step.
+Static HTML, CSS and a small compatibility script. No installation, build step, font CDN or client-side libraries are required. Instrument Sans and Instrument Serif are self-hosted; their licences are in `fonts/`.
 
-| File | Purpose |
-| --- | --- |
-| `index.html` | Résumé, project launchers, OS window styles, interaction logic, and metadata. |
-| `os-theme.css` | Shared typography and color tokens for the résumé and case studies. |
-| `projects/` | Standalone case-study pages, shared styles, diagrams, and authoring instructions. |
-| `img/` | Existing pixel emoji assets used by the window and favicon. |
-| `CNAME` | Custom domain: `carlosmezquita.dev`. |
+- `index.html`: content, navigation and metadata.
+- `direction-b.html`: alternative split composition for design review.
+- `img/identity-field.jpg`: original supplied blue/teal identity artwork.
+- `site.css`: responsive warm editorial layout, dark alternative, focus states and print styles.
+- `img/surfay-forecast.png`: real application screenshot with synthetic forecast inputs and original map attribution.
+- `docs/design.md`: visual and editorial decisions, with research sources.
+- `docs/evidence-review.md`: claim review, LinkedIn inconsistencies and remaining publication gates.
+- `hero-motion.js`: cursor- and touch-reactive blue/teal field with damped bubble springs, pause/play, reduced-motion fallback and offscreen/tab suspension.
+- `site.js`: maps old `#project/<name>` links to the current project anchors.
+- `Carlos-Mezquita-CV.pdf`: downloadable public CV.
+- `scripts/build_cv.py`: rebuilds the CV with Python and ReportLab.
+- `projects/<name>/index.html`: redirects old case-study URLs to their summaries, with a visible fallback link.
+- `CNAME`: existing custom domain for GitHub Pages.
 
-The existing page loads Tailwind through its CDN script and Google Analytics. It is therefore not entirely dependency-free or offline.
-
-The shared window replaces the résumé view with one static case-study page in an iframe when opened. Returning to the résumé removes the frame and restores the previous scroll position. The pages have direct URLs, section navigation, static SVG architecture diagrams, and captioned-image support. Shared CSS and a small script load on demand; there are no new external services or UI libraries. The window supports desktop dragging, maximize/restore, browser Back/Forward, Escape to return, and focus restoration.
-
-## Run locally
-
-From the repository root, with Python 3 installed:
+## Preview
 
 ```sh
-python3 -m http.server 8000 --bind 127.0.0.1
+python3 -m http.server 8000 --bind 0.0.0.0
 ```
 
-Open `http://127.0.0.1:8000` in your browser. Internet access is needed for the existing external styling and analytics resources.
+Open `http://localhost:8000`. To rebuild the CV, install ReportLab and run `python3 scripts/build_cv.py`.
 
-## Maintain the portfolio
+## Updating content
 
-Edit résumé content in `index.html` and project content in `projects/<slug>/index.html`. See [Editing project case studies](projects/AUTHORING.md) for screenshot and diagram examples.
+Keep role dates, project status, ownership and degree completion accurate. Use concrete descriptions and evidence links. Do not add unverified outcomes, forecast accuracy claims or links to unverified deployments. The CV is a public summary: keep personal addresses, phone numbers and private project details out of it.
 
-To add a project, create its standalone page and add a home-page launcher linking to it with a unique `data-open-project` value. Extend the allowed project-path list in the window message handler so embedded navigation updates the title bar and full-page link. Reuse the shared styles and keep names, descriptions, metadata, and public links consistent.
+Old case studies and diagrams were removed in the first simplification pass. Their earlier versions remain in Git history. Any future case study should earn its space with a real product image, specific decisions and shareable evidence.
 
-Keep résumé dates, education, contact links, and social metadata accurate.
+## Before publishing
 
-## Performance and accessibility
+Check the desktop and mobile layouts, keyboard focus, downloadable CV, contact links and old project URLs. Verify any new external evidence link before adding it. Submit changes through a pull request; review before merging to the GitHub Pages publishing branch.
 
-- Preserve the lightweight static architecture. Justify any new dependency.
-- Keep project content on demand; avoid embedded live apps, autoplay media, polling, and continuous animation loops.
-- Optimize any new images and reserve their dimensions.
-- Keep all actions keyboard-accessible and clearly labelled.
-- Preserve readable mobile layouts, scrolling, and visible focus states.
-- Measure performance before claiming an improvement; do not treat an unmeasured score as a result.
+## Design review preview
 
-## Check changes before merging
+Draft preview: https://portfolio-review-20261022.cadeiraai.workers.dev/
 
-For content-only edits, proofread the copy and check affected links. For interaction or layout changes, also check:
+Alternative: `/direction-b.html`. Mobile review frame: `/review/mobile` (preview service only). This is separate from GitHub Pages; PR #6 stays a draft and the production domain is unchanged.
 
-- All three project launchers, section navigation, diagrams, and standalone URLs.
-- Closing with the close button and Escape, then restoring launcher focus.
-- Desktop dragging and resizing without losing the window off-screen.
-- Mobile scrolling and text at 200% zoom.
-- Keyboard navigation, console errors, and unexpected network requests.
-- The résumé, print view, and existing window behavior.
+## Interaction checks
 
-Document which checks were actually performed in the pull request. There is currently no automated test suite or build command in this repository.
-
-## Publishing
-
-The portfolio uses GitHub Pages with the custom domain recorded in `CNAME`. Confirm the configured publishing source in repository settings before changing deployment behavior. Submit changes through a pull request; merging and publication are separate from preparing the change.
-
-
+Run `node scripts/test-hero-motion.cjs` for event and spring behaviour checks. On a phone, tap to nudge the field or sweep sideways to stir; vertical scrolling and pinch zoom remain browser gestures. Physical-device review is still required before production.
