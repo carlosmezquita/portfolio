@@ -2,6 +2,8 @@
 
 The owner selected aggregate statistics without visitor/session identifiers. The existing owner-protected dashboard now includes traffic/engagement alongside actions for 7, 30 and 90 UTC days. See [research](analytics-research.md) for project comparisons and legal scope. New collection requires deployment; historical traffic is not backfilled.
 
+The owner subsequently chose to retain Cloudflare Web Analytics as a complement. `performance-analytics.js` loads the official manual beacon for Web Vitals/network timing using the same `portfolioAnalytics.page()` privacy gate. Automatic injection stays disabled. Cloudflare and custom traffic counts may overlap or differ and must not be added together. The custom D1 report is the action/engagement record; Cloudflare supplies richer performance diagnostics.
+
 ## Measurements
 
 | Metric | Meaning |
@@ -31,17 +33,19 @@ Client collection never interrupts navigation or contact. Requests omit credenti
 
 Both layouts link to `privacy.html`, which loads no collector. GPC/DNT disable client/server collection. Explicit Disable writes only `portfolio.analytics.disabled=1`, solely to remember the choice; nothing is written by default or transmitted. Every send and contact analytics-page lookup checks it. Enable removes it but never overrides GPC/DNT. Choices are per origin/browser (www separate), and storage failure is explained. Cloudflare still processes network metadata; application request logging remains disabled. See the research for processor/transfer and site-wide-beacon review requirements.
 
+The Cloudflare loader shares the initial choice and waits for a visible document, excludes arbitrary queries/fragments, prevents duplicate loading and disables SPA measurement. Its public site token comes from the dashboard's official snippet. The official beacon has its own payloads (including an ephemeral page-load identifier/referrer/performance timings) and processing/retention; the custom collector's marginal-only storage and 90-day cleanup do not describe Cloudflare's backend. Already loaded Cloudflare measurement in other tabs stops on closing/reloading those tabs; the notice states this limit instead of promising removal of previously sent reports. No forced reload discards unsent contact forms.
+
 ## Rollout and rollback
 
-1. Review public notice, applicable basis/exemption and Cloudflare processing/transfer terms. Inspect independent Web Analytics injection and disable it or align its preference handling.
+1. Review public notice, applicable basis/exemption and Cloudflare processing/transfer terms. Set Web Analytics to **Enable with JS Snippet installation**, retaining the existing site; automatic injection must remain off.
 2. Run tests/dry runs below. Apply additive migrations before either updated Worker, preserving old counters/inbox/content.
 3. Deploy collector and Access-protected dashboard, preserving origins, secrets, Access and logging configuration. No contact-Worker change, new secret/service/subscription is needed.
-4. Publish analytics.js, both layouts and privacy.html/js/css through the reviewed frontend PR, with the notice available before collection starts.
+4. Publish analytics.js, performance-analytics.js, both layouts and privacy.html/js/css through the reviewed frontend PR, with the notice available before collection starts.
 5. Verify live validation, privacy signals, explicit opt-out, private reports and cleanup. Label any smoke-test count; do not send real enquiries just to test analytics.
 
 ```sh
 npm ci --prefix dashboard-worker
-node --test scripts/test-traffic.mjs scripts/test-analytics.mjs dashboard-worker/test/*.mjs scripts/test-contact.mjs scripts/test-contact-ui.cjs scripts/test-site-content.cjs
+node --test scripts/test-performance-analytics.cjs scripts/test-traffic.mjs scripts/test-analytics.mjs dashboard-worker/test/*.mjs scripts/test-contact.mjs scripts/test-contact-ui.cjs scripts/test-site-content.cjs
 node scripts/check-public-contact.cjs
 wrangler deploy --dry-run --config analytics-worker/wrangler.jsonc
 wrangler deploy --dry-run --config dashboard-worker/wrangler.jsonc

@@ -10,7 +10,7 @@ for (const file of ['index.html', 'direction-b.html', 'contact.js', 'analytics.j
 }
 console.log('PASS: pages, client/server source, config and CV generator expose no personal inbox or mail links.');
 
-for (const file of ['privacy.html', 'privacy.js', 'analytics-worker/traffic.mjs', 'dashboard-worker/traffic-report.mjs']) {
+for (const file of ['privacy.html', 'privacy.js', 'performance-analytics.js', 'analytics-worker/traffic.mjs', 'dashboard-worker/traffic-report.mjs']) {
   const source = fs.readFileSync(path.join(root, file), 'utf8');
   assert(!/mailto:/i.test(source), `${file} exposes a mail link`);
   assert(!/[A-Z0-9._%+-]+@(?:gmail|hotmail|outlook|yahoo)\.[A-Z.]+/i.test(source), `${file} exposes a personal inbox`);
