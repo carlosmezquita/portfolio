@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "portfolio-contact",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-10-22",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "vars": {
+    "TURNSTILE_SITEKEY": "0x4AAAAAAFhcZ8l-qOzAG6SD",
+    "CONTACT_FROM": "portfolio@carlosmezquita.dev",
+    "CONTACT_ORIGINS": "https://carlosmezquita.dev,https://www.carlosmezquita.dev,https://portfolio-review-20261022.cadeiraai.workers.dev"
+  },
+  "send_email": [{ "name": "CONTACT_EMAIL" }],
+  "ratelimits": [{
+    "name": "CONTACT_LIMITER",
+    "namespace_id": "2026102201",
+    "simple": { "limit": 3, "period": 60 }
+  }],
+  "observability": { "enabled": true, "head_sampling_rate": 1 }
+}
