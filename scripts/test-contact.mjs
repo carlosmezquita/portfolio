@@ -97,12 +97,44 @@ test('validation blocks header injection, honeypot, overlong and invalid inputs'
     { name: 'Name\r\nBcc: victim@example.org' }, { name: '' }, { name: 'x'.repeat(101) },
     { email: 'visitor@example.net\r\nBcc: victim@example.org' },
     { email: 'bad address' }, { email: 'a@b.example,c@d.example' },
+    { email: '.visitor@example.net' }, { email: 'visitor.@example.net' },
+    { email: 'visit..or@example.net' }, { email: `${'a'.repeat(65)}@example.net` },
+    { email: `visitor@${'a'.repeat(64)}.net` },
+    { name: { toString: 'Visitor' } }, { email: ['visitor@example.net'] }, { message: 12345 },
     { website: 'spam' }, { message: 'short' }, { message: 'x'.repeat(5001) }, { message: '\0hidden message' },
   ]) {
     const f = fixture();
     assert.equal((await f.run(f.request({ ...valid, ...changes }))).status, 400);
     assert.equal(f.sent.length, 0);
     assert.equal(f.verified.length, 0);
+  }
+});
+
+test('visitor markup and header-like prose remain inert UTF-8 plain text', async () => {
+  const f = fixture();
+  const message = '<script>alert(1)</script>\r\nBcc: victim@example.net\nA project enquiry & details.';
+  const response = await f.run(f.request({ ...valid, name: '  Ana <Pérez>  ', message, cc: 'victim@example.net' }));
+  assert.equal(response.status, 202);
+  assert.equal(f.sent.length, 1);
+  const raw = f.sent[0][2];
+  const [headers, encoded] = raw.split('\r\n\r\n');
+  assert.match(headers, /Content-Type: text\/plain; charset=UTF-8/);
+  assert(!headers.includes('Bcc:'));
+  assert(!headers.includes('<script>'));
+  const body = Buffer.from(encoded.replace(/\r\n/g, ''), 'base64').toString('utf8');
+  assert(body.includes('Name: Ana <Pérez>\n'));
+  assert(body.includes(message));
+});
+
+test('malformed JSON and invalid UTF-8 never reach verification or delivery', async () => {
+  for (const body of ['{"name":', 'null', '[]', new Uint8Array([0xff, 0xfe])]) {
+    const f = fixture();
+    const request = new Request('https://contact.example.org/api/contact', {
+      method: 'POST', headers: { Origin: origin, 'Content-Type': 'application/json', 'CF-Connecting-IP': '192.0.2.1' }, body,
+    });
+    assert.equal((await f.run(request)).status, 400);
+    assert.equal(f.verified.length, 0);
+    assert.equal(f.sent.length, 0);
   }
 });
 
