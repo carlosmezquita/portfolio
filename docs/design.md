@@ -1,6 +1,6 @@
 # Portfolio design brief
 
-Status: two compositions implemented for review in draft PR #6. The production domain is unchanged. The main page uses the warm editorial composition; `direction-b.html` offers a dark split composition with comparable content.
+Status: PR #6 has been merged. This follow-up removes personal email and adds autonomous lava flow with cursor interaction. The main page uses the warm editorial composition; `direction-b.html` offers a dark split composition with comparable content. The references below record earlier design iterations.
 
 ## Audience and purpose
 
@@ -42,7 +42,7 @@ The exact supplied artwork is the visual reference. Do not regenerate it, recons
 - Use the original artwork as a deliberate visible image surface, not a faint decorative glow behind text.
 - Set the name on one line on desktop where it fits. Establish the relationship among name, introduction and image before selecting exact font sizes.
 - Explain software work in two short sentences. Place Denodo credibility and degree timing close by without turning the hero into a CV.
-- Keep email and work navigation immediately available.
+- Keep LinkedIn contact and work navigation immediately available.
 - Avoid the default oversized headline, glowing dot and stock button-group arrangement from the current draft.
 - The composition must still work at 390px and 200% text size; do not hide information to preserve an art-directed desktop layout.
 
@@ -110,3 +110,11 @@ A short tap nudges nearby fields outward. A horizontal sweep stirs them, then ha
 Vertical intent yields before applying an interaction. Pointer cancellation, multi-touch, control taps and long presses do not create accidental tap impulses. Mouse and pen attraction, pause/play, reduced motion and visibility suspension are retained. The mobile pause control has at least a 44px target and a small touch hint sits below the name.
 
 Validation: `node scripts/test-hero-motion.cjs` checks tap displacement, squash/stretch, rebound, eventual settling, horizontal stirring, vertical/cancel/pinch/control/long-press guards, desktop attraction, pause, reduced motion and visibility. Syntax and whitespace checks pass. Native iOS/Android gesture behaviour and final perceived feel still require physical-device review. The online preview update was blocked when Cloudflare required reauthentication; do not treat the existing preview as verification of this touch revision.
+
+## Contact privacy and desktop lava flow
+
+Contact routes use LinkedIn instead of a published personal inbox. Remove the address from visible copy, hrefs, CV links/annotations, the CV generator and embedded standalone previews; do not use client-side address obfuscation as a substitute. This policy concerns current output and does not erase Git history or earlier distributed copies.
+
+Desktop animation now has six independently buoyant colour lobes that rise and fall, deform with approximately conserved ellipse area, and blend over a subdued identity-colour wash. Different periods avoid a synchronised loop. Cursor attraction and ribbon bending remain active; leaving eases back into the ongoing flow. The fixed dark lower edge preserves the name’s contrast. Touch springs, pause, reduced motion and visibility suspension remain shared across screen sizes.
+
+Verification: real canvas code rendered at several times using the Canvas 2D runtime; frame compositions inspected. Desktop geometry tests cover vertical movement, deformation, cursor response and return to the ambient path. Existing touch/pause/preference tests pass. The rebuilt one-page CV was rendered and inspected; extracted text and PDF link annotations contain no personal email or mail link. The new standalone preview is independent of Cloudflare. Native device review remains appropriate before production publication.

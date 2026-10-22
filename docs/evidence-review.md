@@ -14,7 +14,7 @@ Reviewed 22 October 2026. This is a bounded source and claims review, not a prod
 | Surfay image | Public README and third-party notices describe synthetic forecasts with real cartography. The local image's Git blob hash matches the public file: feb4da4bf0b0ba4caf5c59d366653d7ad8c7f517. | Add the actual screenshot, retain map attribution, label synthetic data and link the full-size image. It proves an interface exists, not forecast skill or live service health. |
 | Urbot | Private repository README and current documentation index describe the guided workflow, deterministic evaluation, evidence and human review. | Keep a short in-development summary. No private code, customer information or application screenshots are published. No production, legal-completeness or customer-impact claim. |
 | CadeiraAI | Private client/server manifests, server README and reservation-tool implementation. They support React, TypeScript/JavaScript, voice/telephone integration, LangGraph and reservation creation. Current server scripts invoke Bun, while the older README still describes Node.js. | Label prototype and describe work across client and TypeScript backend; update the stack to Bun to match executable scripts. Source presence does not prove reliable live calls, customers, latency or booking success. No private excerpts are published. |
-| Contact and CV | Email and professional profile destinations match current site/profile context. CV rebuilt and rendered as one page. | Links are available directly. Email deliverability and responses have not been tested. |
+| Contact and CV | The user requested removal of personal email. Contact now routes to the established LinkedIn profile. CV rebuilt and rendered as one page without an email address or mail link. | No personal inbox is published by the current page or CV. Older commits, downloaded copies and independently hosted previews are separate copies. |
 
 ## Public evidence
 
@@ -50,3 +50,7 @@ Browser review was blocked because the connected browser could not reach the wor
 ## Subsequent design implementation
 
 The user requested application of the replacement design. The original identity banner is included; the unused Portfolio card is excluded. An isolated review Worker serves the revised static files, fonts, screenshot and public CV without changing the production domain. The earlier browser/publication limitations above describe the first pass and no longer describe the current draft. No merge or production deployment has been performed.
+
+## Follow-up after merge
+
+PR #6 was merged to main. The follow-up removes personal email from both page compositions, all project contact routes, the CV generator and rebuilt public PDF. LinkedIn is the contact destination. Generated standalone previews must use the rebuilt PDF and updated pages. Historical statements above describe earlier revisions. The unavailable Cloudflare connection prevents changing the older independently hosted review copy.

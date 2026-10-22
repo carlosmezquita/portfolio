@@ -15,7 +15,7 @@ Static HTML, CSS and a small compatibility script. No installation, build step, 
 - `img/surfay-forecast.png`: real application screenshot with synthetic forecast inputs and original map attribution.
 - `docs/design.md`: visual and editorial decisions, with research sources.
 - `docs/evidence-review.md`: claim review, LinkedIn inconsistencies and remaining publication gates.
-- `hero-motion.js`: cursor- and touch-reactive blue/teal field with damped bubble springs, pause/play, reduced-motion fallback and offscreen/tab suspension.
+- `hero-motion.js`: lava-lamp-inspired blue/teal field with cursor attraction and touch springs, pause/play, reduced-motion fallback and offscreen/tab suspension.
 - `site.js`: maps old `#project/<name>` links to the current project anchors.
 - `Carlos-Mezquita-CV.pdf`: downloadable public CV.
 - `scripts/build_cv.py`: rebuilds the CV with Python and ReportLab.
@@ -42,10 +42,12 @@ Check the desktop and mobile layouts, keyboard focus, downloadable CV, contact l
 
 ## Design review preview
 
-Draft preview: https://portfolio-review-20261022.cadeiraai.workers.dev/
-
-Alternative: `/direction-b.html`. Mobile review frame: `/review/mobile` (preview service only). This is separate from GitHub Pages; PR #6 stays a draft and the production domain is unchanged.
+Use the local server above to review this branch. The standalone preview packages the same pages, fonts, images, rebuilt CV and motion code without a hosting dependency. The former Cloudflare review copy is stale and cannot be updated while its connection is unavailable. Do not use it to verify this follow-up.
 
 ## Interaction checks
 
 Run `node scripts/test-hero-motion.cjs` for event and spring behaviour checks. On a phone, tap to nudge the field or sweep sideways to stir; vertical scrolling and pinch zoom remain browser gestures. Physical-device review is still required before production.
+
+## Public contact policy
+
+Use LinkedIn for contact. Keep personal email addresses and mail links out of the public pages, CV, its generator and standalone previews. Run `node scripts/check-public-contact.cjs` alongside the interaction checks.

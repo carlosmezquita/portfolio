@@ -4,7 +4,7 @@ const vm = require('node:vm');
 const assert = require('node:assert/strict');
 const source = fs.readFileSync(require('node:path').join(__dirname, '../hero-motion.js'), 'utf8');
 
-function scene({ reduced = false, unavailable = false } = {}) {
+function scene({ reduced = false, unavailable = false, width = 390, height = 250 } = {}) {
   const frames = new Map(), events = {}, classes = new Set(), positions = [], scales = [];
   let sequence = 0, observer, paints = 0;
   const gradient = { addColorStop() {} };
@@ -14,8 +14,8 @@ function scene({ reduced = false, unavailable = false } = {}) {
     fillRect() { paints++; }
   }, { get: (o, k) => o[k] ?? (() => {}), set: (o, k, v) => (o[k] = v, true) });
   const poster = {
-    clientWidth: 390, clientHeight: 250,
-    getBoundingClientRect: () => ({ left: 10, top: 20, width: 390, height: 250 }),
+    clientWidth: width, clientHeight: height,
+    getBoundingClientRect: () => ({ left: 10, top: 20, width, height }),
     classList: { toggle(k, v) { v ? classes.add(k) : classes.delete(k); } },
     addEventListener(k, fn) { events[k] = fn; }
   };
@@ -42,7 +42,7 @@ function scene({ reduced = false, unavailable = false } = {}) {
     visible: value => observer([{ isIntersecting: value }]),
     send(type, x, y, time, options = {}) {
       events[type]({ pointerId: 1, pointerType: 'touch', isPrimary: true,
-        clientX: 10 + x * 390, clientY: 20 + y * 250, timeStamp: time,
+        clientX: 10 + x * width, clientY: 20 + y * height, timeStamp: time,
         target: { closest: () => null }, ...options });
     },
     step(time) { const callbacks = [...frames.values()]; frames.clear(); callbacks.forEach(fn => fn(time)); }
@@ -96,3 +96,17 @@ mouse.media.matches = true; mouse.events.media(); assert.equal(mouse.frames.size
 const reduced = scene({ reduced: true }); tap(reduced); assert.equal(reduced.frames.size, 0);
 const fallback = scene({ unavailable: true }); assert.equal(fallback.frames.size, 0); assert(fallback.button.hidden);
 console.log('PASS: tap impulse, squash/stretch, spring rebound and settling, horizontal stirring, vertical-scroll cancellation, pinch/cancel/control/long-press guards, desktop cursor, pause, reduced motion and visibility.');
+
+// Desktop wax must move vertically and change shape even when no pointer is present.
+const lava = scene({ width: 1200, height: 447 });
+advance([lava], 16, 16); const first = lava.geometry();
+advance([lava], 32, 8016); const later = lava.geometry();
+assert(later.positions.some((position, index) => Math.abs(position[1] - first.positions[index][1]) > 30), 'autonomous desktop rise/fall');
+assert.notDeepEqual(first.scales, later.scales, 'autonomous wax deformation');
+const rest = scene({ width: 1200, height: 447 }), cursor = scene({ width: 1200, height: 447 });
+cursor.send('pointermove', .95, .4, 20, { pointerType: 'mouse' });
+advance([rest, cursor], 16, 800);
+assert(difference(rest, cursor) > 20, 'cursor affects desktop lava flow');
+cursor.events.pointerleave(); advance([rest, cursor], 816, 10800);
+assert(difference(rest, cursor) < .01, 'cursor release returns to the lava path');
+console.log('PASS: autonomous desktop rise/fall, wax deformation, cursor attraction and release at desktop width.');
