@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "portfolio-events",
+  "account_id": "1db26bf02a050c742294458d1adc328b",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-10-22",
+  "workers_dev": true,
+  "vars": { "EVENT_ORIGINS": "https://carlosmezquita.dev,https://www.carlosmezquita.dev" },
+  "d1_databases": [{ "binding": "EVENTS_DB", "database_name": "portfolio-events", "database_id": "3a9e1416-6515-431b-95d1-3d4e54a31dca" }],
+  "ratelimits": [{ "name": "EVENT_LIMITER", "namespace_id": "2026102202", "simple": { "limit": 30, "period": 60 } }],
+  "triggers": { "crons": ["15 3 * * *"] },
+  "observability": { "enabled": false }
+}

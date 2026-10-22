@@ -85,7 +85,7 @@ function fixture({ width = 540, reduced = false, post } = {}) {
   const initialise = () => form.events.get('focusin')();
   const submit = () => form.events.get('submit')({ preventDefault() {} });
   const fill = () => { fields[0].value = 'Visitor'; fields[1].value = 'visitor@example.net'; fields[2].value = 'A sufficiently detailed project enquiry.'; };
-  return { fields, errors, button, label, form, status, widget, calls, resets, observers, initialise, submit, fill,
+  return { window, fields, errors, button, label, form, status, widget, calls, resets, observers, initialise, submit, fill,
     options: () => renderOptions, focused: () => focused,
   };
 }
@@ -175,6 +175,16 @@ test('sending locks the form and duplicate submissions do not send twice', async
   assert.equal(f.calls.filter((c) => c.options?.method === 'POST').length, 1);
   finish(Response.json({ success: true }, { status: 202 })); await pending;
   assert(f.fields.every((field) => !field.disabled));
+});
+
+test('contact payload includes only an optional allowlisted analytics page from the tracker', async () => {
+  for (const page of ['/', null]) {
+    const f = fixture();
+    f.window.portfolioAnalytics = { page: () => page };
+    await f.initialise(); f.options().callback('fresh-token'); f.fill(); await f.submit();
+    const send = f.calls.find((c) => c.options?.method === 'POST');
+    assert.equal(JSON.parse(send.options.body).analytics_page, page);
+  }
 });
 
 test('reduced-motion users do not get an entrance-animation observer', () => {
