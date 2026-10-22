@@ -5,6 +5,21 @@ const vm = require('node:vm');
 const path = require('node:path');
 const source = fs.readFileSync(path.join(__dirname, '../contact.js'), 'utf8');
 
+test('both forms associate visible labels, errors and email hint with autofill fields', () => {
+  for (const file of ['index.html', 'direction-b.html']) {
+    const html = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
+    for (const name of ['name', 'email', 'message']) {
+      assert(html.includes(`<label for="contact-${name}">`));
+      assert.equal((html.match(new RegExp(`id="contact-${name}"`, 'g')) || []).length, 1);
+      assert(html.includes(`id="contact-${name}-error"`));
+    }
+    assert.match(html, /name="name" type="text" autocomplete="name"/);
+    assert.match(html, /type="email" autocomplete="email" inputmode="email" autocapitalize="none" autocorrect="off"/);
+    assert.match(html, /aria-describedby="contact-email-error contact-email-hint"/);
+    assert.match(html, /id="contact-email-hint"/);
+  }
+});
+
 function element(extra = {}) {
   const attrs = new Map();
   const events = new Map();
@@ -120,6 +135,16 @@ test('failed send preserves content and requires a new token before retry', asyn
   await f.submit();
   const sends = f.calls.filter((c) => c.options?.method === 'POST');
   assert.equal(JSON.parse(sends[1].options.body)['cf-turnstile-response'], 'second-token');
+});
+
+test('invalid or overlong values show an inline error without making a request', async () => {
+  for (const [index, value] of [[0, 'x'.repeat(101)], [1, 'visit..or@example.net'], [1, 'x'.repeat(65) + '@example.net'], [2, 'x'.repeat(5001)], [2, 'A message with a \0 control character']]) {
+    const f = fixture(); await f.initialise(); f.options().callback('fresh-token'); f.fill();
+    f.fields[index].value = value;
+    await f.submit();
+    assert.equal(f.fields[index].getAttribute('aria-invalid'), 'true');
+    assert.equal(f.calls.filter((c) => c.options?.method === 'POST').length, 0);
+  }
 });
 
 test('success survives token refresh, clears content and allows a new message after typing', async () => {

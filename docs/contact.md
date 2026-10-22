@@ -23,6 +23,8 @@ The managed widget is registered for the two production hostnames, named review 
 
 The sender domain must have Cloudflare Email Routing configured. Sending only to a verified destination is free on Workers Free and Paid. No email acknowledgement is sent to visitors; the page shows confirmation. Worker execution remains subject to the account's plan and usage limits. This implementation requires no paid plan upgrade.
 
+The owner confirmed on 22 October 2026 that this must stay free and that on-page confirmation is preferred for now. Do not enable a paid sending plan or add visitor acknowledgement emails. The success message confirms submission to the inbox and explains that Carlos will reply personally using the supplied email address.
+
 ## Request handling
 
 The endpoint accepts only JSON POSTs from an approved origin, bounds the streamed body to 24 KB, validates fields (name 1–100 characters, email up to 254, message 10–5,000), rejects a filled honeypot, and rate-limits before verification.
@@ -30,6 +32,10 @@ The endpoint accepts only JSON POSTs from an approved origin, bounds the streame
 Siteverify runs on the server and must return `success === true`, action `contact`, and a hostname equal to the exact requesting frontend hostname. Invalid, expired and redeemed tokens cannot send. The frontend resets its widget after every attempt and preserves typed content after failures. Missing configuration, verification outages and email errors fail closed.
 
 Only server recipient/sender settings are used. Visitor `to`, `from`, `cc` and similar fields are ignored. Visitor prose is UTF-8/base64 encoded in a plain-text MIME body; only the strictly validated visitor email enters Reply-To. Delivery is awaited before reporting acceptance.
+
+Email validation also rejects leading, trailing and consecutive dots in the local part, local parts longer than 64 characters and domain labels longer than 63 characters. The browser mirrors these checks and reports oversized values and control characters inline; server validation remains authoritative. Names are trimmed, and message prose is preserved as plain text rather than interpreted as HTML. Script-like text and header-like message lines cannot become markup or mail headers.
+
+Both forms retain explicit visible labels associated by `for`/`id`, stable field names and standard `autocomplete="name"` / `autocomplete="email"` tokens. The email field requests an email keyboard and disables capitalization, correction and spellcheck. Its privacy/confirmation hint and error are associated through `aria-describedby`.
 
 ## Privacy
 
@@ -44,6 +50,8 @@ node scripts/test-hero-motion.cjs
 ```
 
 Server tests cover fixed-recipient delivery, UTF-8 MIME/Reply-To, replay rejection, action/hostname checks, provider failures, header injection, body size, rate limits, origin restrictions, private configuration and error redaction. They mock external services and do not establish production delivery by themselves.
+
+The follow-up security/autofill changes pass all 21 server/client tests, including malformed JSON/UTF-8, wrong field types, malformed address parts, inert script/header-like prose, label/autofill/hint associations and inline length errors. Public-contact privacy and hero-motion checks also pass. These changes have not been deployed or checked with a live email submission; the earlier live results below apply to the preceding revision.
 
 For a live check, open the approved review page, complete verification if requested, submit one labelled test message, verify acceptance and receipt in the owner's inbox, then confirm replay rejection with the redeemed token. Never substitute a production verification bypass for this check.
 

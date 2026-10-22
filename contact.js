@@ -47,11 +47,21 @@
 
   function validateField(field) {
     const value = field.value.trim();
+    const maxLength = { name: 100, email: 254, message: 5000 }[field.name];
+    const emailPattern = /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)+$/;
     let message = '';
     if (!value) message = field.name === 'name' ? 'Please enter your name.'
       : field.name === 'email' ? 'Please enter your email address.' : 'Please write a message.';
-    else if (field.name === 'email' && (field.validity.typeMismatch || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))) {
+    else if (value.length > maxLength) {
+      message = `Please use no more than ${maxLength} characters.`;
+    } else if (field.name !== 'message' && /[\u0000-\u001f\u007f]/.test(value)) {
+      message = 'Please use a single line without control characters.';
+    } else if (field.name === 'email' && (field.validity.typeMismatch || !emailPattern.test(value)
+        || value.split('@')[0].length > 64 || /^\.|\.@|\.\./.test(value)
+        || value.split('@')[1].split('.').some((label) => label.length > 63))) {
       message = 'Please enter a valid email address.';
+    } else if (field.name === 'message' && /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(value)) {
+      message = 'Please remove control characters from your message.';
     } else if (field.name === 'message' && value.length < 10) {
       message = 'Please add a little more detail—at least 10 characters.';
     }
@@ -172,7 +182,7 @@
       }
       form.reset();
       buttonLabel.textContent = 'Message sent';
-      setStatus('Thank you. Your message is on its way to my inbox.', 'success');
+      setStatus('Thank you. Your message has been sent to my inbox. I’ll reply personally using your email address.', 'success');
     } catch (error) {
       buttonLabel.textContent = 'Try again';
       setStatus(error.name === 'TimeoutError'

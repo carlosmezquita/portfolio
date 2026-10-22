@@ -2,7 +2,12 @@ const MAX_BYTES = 24000;
 const emailPattern = /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)+$/;
 const singleLine = (value, max) => typeof value === 'string' && value.trim().length > 0
   && value.length <= max && !/[\u0000-\u001f\u007f]/.test(value);
-const validEmail = (value) => singleLine(value, 254) && emailPattern.test(value);
+const validEmail = (value) => {
+  if (!singleLine(value, 254) || !emailPattern.test(value)) return false;
+  const [local, domain] = value.split('@');
+  return local.length <= 64 && !local.startsWith('.') && !local.endsWith('.')
+    && !local.includes('..') && domain.split('.').every((label) => label.length <= 63);
+};
 
 function reply(status, data, origin, extra = {}) {
   return Response.json(data, {
