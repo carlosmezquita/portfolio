@@ -15,7 +15,7 @@ Static HTML, CSS and a small compatibility script. No installation, build step, 
 - `img/surfay-forecast.png`: real application screenshot with synthetic forecast inputs and original map attribution.
 - `docs/design.md`: visual and editorial decisions, with research sources.
 - `docs/evidence-review.md`: claim review, LinkedIn inconsistencies and remaining publication gates.
-- `hero-motion.js`: blue/teal canvas field, pause/play, reduced-motion fallback and offscreen/tab suspension.
+- `hero-motion.js`: cursor-reactive blue/teal canvas field, pause/play, reduced-motion fallback and offscreen/tab suspension.
 - `site.js`: maps old `#project/<name>` links to the current project anchors.
 - `Carlos-Mezquita-CV.pdf`: downloadable public CV.
 - `scripts/build_cv.py`: rebuilds the CV with Python and ReportLab.

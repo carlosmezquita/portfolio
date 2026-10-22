@@ -15,8 +15,33 @@
   let lastTime = 0;
   let elapsed = 0;
   let lastPaint = 0;
+  const pointer = { x: .5, y: .35, strength: 0 };
+  const pointerTarget = { x: .5, y: .35, strength: 0 };
+
+  function releasePointer() {
+    pointerTarget.strength = 0;
+  }
+
+  function trackPointer(event) {
+    if (paused || reducedMotion.matches || document.hidden || !visible) return;
+    if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return;
+    const bounds = poster.getBoundingClientRect();
+    if (!bounds.width || !bounds.height) return;
+    pointerTarget.x = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
+    pointerTarget.y = Math.max(0, Math.min(1, (event.clientY - bounds.top) / bounds.height));
+    pointerTarget.strength = 1;
+  }
 
   function blob(x, y, radiusX, radiusY, angle, color, opacity = 1) {
+    // Pull existing colour fields toward the pointer rather than add a cursor glow.
+    const dx = pointer.x - x;
+    const dy = pointer.y - y;
+    const proximity = Math.exp(-(dx * dx * 3 + dy * dy));
+    const pull = pointer.strength * (.055 + proximity * .19);
+    x += dx * pull;
+    y += dy * pull;
+    angle += (pointer.x - .5) * pointer.strength * .12;
+    radiusX *= 1 + proximity * pointer.strength * .08;
     context.save();
     context.translate(x * canvas.width, y * canvas.height);
     context.rotate(angle);
@@ -54,7 +79,9 @@
     context.filter = `blur(${w * .017}px)`;
     context.beginPath();
     context.moveTo(-w * .08, h * (.64 + b * .06));
-    context.bezierCurveTo(w * .08, h * .49, w * (.27 + a * .035), h * .29, w * .28, -h * .16);
+    const bendX = (pointer.x - .5) * pointer.strength * .16;
+    const bendY = (pointer.y - .35) * pointer.strength * .18;
+    context.bezierCurveTo(w * (.08 + bendX), h * (.49 + bendY), w * (.27 + a * .035 + bendX), h * (.29 + bendY), w * .28, -h * .16);
     context.strokeStyle = 'rgba(174,214,240,.68)';
     context.lineWidth = w * .028;
     context.stroke();
@@ -81,8 +108,14 @@
   }
 
   function tick(time) {
-    if (lastTime) elapsed += Math.min(time - lastTime, 100);
+    const delta = lastTime ? Math.min(time - lastTime, 100) : 0;
+    elapsed += delta;
     lastTime = time;
+    // Respond promptly, then settle more slowly when the pointer leaves.
+    const easing = 1 - Math.exp(-delta / (pointerTarget.strength ? 180 : 650));
+    pointer.x += (pointerTarget.x - pointer.x) * easing;
+    pointer.y += (pointerTarget.y - pointer.y) * easing;
+    pointer.strength += (pointerTarget.strength - pointer.strength) * easing;
     // Slow movement stays smooth at 24fps while leaving the rest of the page idle.
     if (time - lastPaint >= 1000 / 24) {
       paint();
@@ -96,6 +129,8 @@
     frame = 0;
     lastTime = 0;
     const enabled = !reducedMotion.matches;
+    if (paused || !enabled || !visible || document.hidden) releasePointer();
+    if (!enabled) pointer.strength = 0;
     poster.classList.toggle('motion-ready', enabled);
     toggle.hidden = !enabled;
     if (enabled && !paused && visible && !document.hidden) frame = requestAnimationFrame(tick);
@@ -106,6 +141,10 @@
     toggle.textContent = paused ? 'Play motion' : 'Pause motion';
     sync();
   });
+  poster.addEventListener('pointermove', trackPointer, { passive: true });
+  poster.addEventListener('pointerleave', releasePointer, { passive: true });
+  poster.addEventListener('pointercancel', releasePointer, { passive: true });
+  window.addEventListener('blur', releasePointer);
   reducedMotion.addEventListener('change', sync);
   document.addEventListener('visibilitychange', sync);
   if ('ResizeObserver' in window) new ResizeObserver(resize).observe(poster);

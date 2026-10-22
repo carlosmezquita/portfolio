@@ -87,3 +87,11 @@ Following the user’s request, the hero now draws moving blue, cyan and teal fi
 A visible keyboard-operable pause/play control freezes and resumes the current composition. Reduced-motion preference displays the original artwork and removes the motion control. JavaScript or canvas unavailability also leaves the artwork visible. Rendering is capped at 24fps and 1000px canvas width, suspended when the hero is outside the viewport or the tab is hidden, and resumed without advancing time across that pause. No animation dependency was added.
 
 Validation: desktop and 390px-frame browser rendering reviewed, mobile control placement and no horizontal overflow confirmed. Pause changed to Play in the browser; keyboard playback was also observed. A Node VM behavioural harness verified rendering, pause/resume, viewport and tab suspension, preference changes, unavailable-canvas fallback and resolution cap. Syntax and whitespace checks pass. The draft preview is updated; production remains unchanged.
+
+## Cursor interaction
+
+Mouse and pen movement inside the hero attracts the existing colour fields, with stronger influence on nearby fields, a small change in their shape and a bend in the diagonal ribbon. Coordinates are relative to the hero so the response adapts to both compositions and viewport sizes. Input is eased with a 180ms response and a 650ms release rather than following each pointer event directly. Leaving or cancelling the pointer, losing window focus or hiding the hero releases the attraction. The lower-edge shade remains fixed for text contrast.
+
+Touch input is ignored and no default gesture is prevented. Pausing freezes both ambient and pointer motion; reduced motion retains the static artwork. Event handlers only update a target; drawing stays in the existing capped animation loop.
+
+Validation: cloud-browser pointer positions on both sides visibly changed the field composition. A behavioural harness verified horizontal and vertical attraction, return to the ambient path, ignored touch input, frozen output while paused, reduced motion and visibility suspension. JavaScript syntax and whitespace checks pass. The review preview and draft PR are updated; production remains unchanged.
