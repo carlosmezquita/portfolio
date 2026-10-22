@@ -4,3 +4,4 @@ node_modules/
 .env*
 !.env.example
 contact-worker/worker-configuration.d.ts
+analytics-worker/worker-configuration.d.ts

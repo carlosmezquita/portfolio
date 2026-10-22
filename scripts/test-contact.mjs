@@ -57,6 +57,35 @@ test('redeemed token cannot send a second email', async () => {
   assert.equal(f.sent.length, 1);
 });
 
+test('successful sends are counted only after acceptance; analytics failure cannot request a resend', async () => {
+  for (const analyticsFails of [false, true]) {
+    const f = fixture(); const pages = [];
+    f.services.recordSuccess = async (page) => {
+      assert.equal(f.sent.length, 1);
+      pages.push(page);
+      if (analyticsFails) throw new Error('database quota');
+    };
+    const request = f.request({ ...valid, analytics_page: '/' });
+    assert.equal((await f.run(request)).status, 202);
+    assert.deepEqual(pages, ['/']);
+    assert.equal((await f.run(f.request({ ...valid, analytics_page: '/' }))).status, 403);
+    assert.equal(pages.length, 1);
+  }
+});
+
+test('failed sends, opt-outs and unknown pages cannot create success counts', async () => {
+  for (const scenario of ['delivery', 'verification', 'no-page', 'unknown-page', 'dnt', 'gpc']) {
+    const f = fixture(); let counted = false;
+    f.services.recordSuccess = async () => { counted = true; };
+    if (scenario === 'delivery') f.services.deliver = async () => { throw new Error('delivery failed'); };
+    if (scenario === 'verification') f.services.verify = async () => Response.json({ success: false });
+    const fields = { ...valid, analytics_page: scenario === 'no-page' ? null : scenario === 'unknown-page' ? '/?secret' : '/' };
+    const headers = scenario === 'dnt' ? { DNT: '1' } : scenario === 'gpc' ? { 'Sec-GPC': '1' } : {};
+    await f.run(f.request(fields, { headers }));
+    assert.equal(counted, false, scenario);
+  }
+});
+
 test('rejects missing, forged, cross-action and cross-frontend verification', async () => {
   for (const result of [
     { success: false, action: 'contact', hostname: 'carlosmezquita.dev' },

@@ -170,6 +170,7 @@
         body: JSON.stringify({
           name: values.get('name').trim(), email: values.get('email').trim(),
           message: values.get('message').trim(), website: values.get('website'),
+          analytics_page: window.portfolioAnalytics?.page() ?? null,
           'cf-turnstile-response': token,
         }),
       });

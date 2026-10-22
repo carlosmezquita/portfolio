@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "portfolio-contact",
+  "account_id": "1db26bf02a050c742294458d1adc328b",
   "main": "worker.mjs",
   "compatibility_date": "2026-10-22",
   "compatibility_flags": ["nodejs_compat"],
@@ -11,6 +12,7 @@
     "CONTACT_ORIGINS": "https://carlosmezquita.dev,https://www.carlosmezquita.dev,https://portfolio-review-20261022.cadeiraai.workers.dev"
   },
   "send_email": [{ "name": "CONTACT_EMAIL" }],
+  "d1_databases": [{ "binding": "EVENTS_DB", "database_name": "portfolio-events", "database_id": "3a9e1416-6515-431b-95d1-3d4e54a31dca" }],
   "ratelimits": [{
     "name": "CONTACT_LIMITER",
     "namespace_id": "2026102201",

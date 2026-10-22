@@ -125,6 +125,14 @@ export async function handleContact(request, env, services) {
 
     await services.deliver(env.CONTACT_FROM, env.CONTACT_TO,
       rawEmail(env.CONTACT_FROM, env.CONTACT_TO, { name: name.trim(), email }, message.trim()));
+    // Count acceptance on the server, never a browser-claimed success event.
+    // Analytics cannot turn an already delivered enquiry into a failed send.
+    if (['https://carlosmezquita.dev', 'https://www.carlosmezquita.dev'].includes(approved)
+        && ['/', '/direction-b.html'].includes(fields.analytics_page)
+        && request.headers.get('Sec-GPC') !== '1' && request.headers.get('DNT') !== '1') {
+      try { await services.recordSuccess?.(fields.analytics_page); }
+      catch { console.warn(JSON.stringify({ event: 'contact_analytics_unavailable' })); }
+    }
     return reply(202, { success: true }, approved);
   } catch {
     // Do not log messages, names, email addresses, tokens or provider errors.
