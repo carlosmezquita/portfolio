@@ -14,3 +14,9 @@
 @media(max-width:360px){.wrap{padding-inline:18px}.site-header nav{gap:12px}.wordmark{font-size:15px}.hero-poster h1{font-size:38px;left:17px}.poster-top{left:17px}.intro-links{gap:10px 18px}.contact-email span{margin-left:5px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.product-frame img{transition:none}.product-frame:hover img{transform:none}}
 @media print{.site-header,.hero-poster,.surfay-stage,.map-credit,.footer,.skip-link{display:none}body,.direction-b{--paper:white;--ink:#111;--muted:#444;--line:#bbb;color:#111;background:white;font-size:10pt}.wrap{padding:0;max-width:none}.hero,.direction-b .hero{display:block;padding:0}.intro{padding:0 0 15px}.intro-copy>p:first-child{font-size:14pt}.work{padding:0}.section-heading{padding:15px 0}.showcase,.direction-b .showcase{display:block}.showcase-copy h3{font-size:24pt}.project-row{padding:15px 0}.background{background:white}.background-inner{padding:20px 0;gap:35px}.about-intro h2{font-size:24pt}.background-entry{break-inside:avoid}}
+
+/* The original image remains the no-JS and reduced-motion fallback. */
+.identity-motion{position:absolute;inset:0;width:100%;height:100%;display:none;pointer-events:none}.motion-ready .identity-motion{display:block}.motion-toggle{position:absolute;bottom:29px;right:35px;z-index:1;border:1px solid #ffffff52;border-radius:2px;padding:7px 10px;background:#02132b59;color:#fff;font:11px var(--sans);cursor:pointer}.motion-toggle:hover{background:#02132b99}.motion-toggle:focus-visible{outline:2px solid #fff;outline-offset:4px}.motion-toggle[hidden]{display:none}
+@media(max-width:760px){.motion-toggle{right:16px;top:15px;bottom:auto;font-size:10px;padding:5px 8px}}
+@media(prefers-reduced-motion:reduce){.identity-motion,.motion-toggle{display:none!important}}
+@media print{.identity-motion,.motion-toggle{display:none!important}}
