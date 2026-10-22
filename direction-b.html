@@ -19,12 +19,13 @@
   <link rel="stylesheet" href="./site.css">
   <script defer src="./site.js"></script>
   <script defer src="./hero-motion.js"></script>
+  <script defer src="./contact.js"></script>
 </head>
 <body class="direction-b">
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header wrap">
     <a class="wordmark" href="./" aria-label="Carlos Mezquita, home">Carlos Mezquita</a>
-    <nav aria-label="Main navigation"><a href="#projects">Selected work</a><a href="#about">About</a><a class="header-contact" href="https://www.linkedin.com/in/carlosmezquitalobato">Get in touch <span aria-hidden="true">↗</span></a></nav>
+    <nav aria-label="Main navigation"><a href="#projects">Selected work</a><a href="#about">About</a><a class="header-contact" href="#contact">Get in touch <span aria-hidden="true">↗</span></a></nav>
   </header>
   <main id="main">
     <section class="hero wrap" aria-labelledby="name">
@@ -84,6 +85,18 @@
       </div>
     </section>
   </main>
-  <footer class="footer wrap" id="contact"><div><p class="section-kicker">Contact</p><h2>Get in touch.</h2><a class="contact-link" href="https://www.linkedin.com/in/carlosmezquitalobato">Message me on LinkedIn <span aria-hidden="true">↗</span></a></div><div class="footer-links"><a href="https://github.com/carlosmezquita">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/carlosmezquitalobato">LinkedIn <span aria-hidden="true">↗</span></a><a href="./Carlos-Mezquita-CV.pdf" download>Download CV</a><p>Based in Portsmouth, UK</p></div></footer>
+  <footer class="footer wrap contact-footer" id="contact">
+    <div class="contact-intro"><p class="section-kicker">Contact</p><h2>Get in touch.</h2><p>Have something in mind? Leave me a message.</p><a class="contact-alternative" href="https://www.linkedin.com/in/carlosmezquitalobato">Or find me on LinkedIn <span aria-hidden="true">↗</span></a></div>
+    <form class="contact-form" data-contact-form action="https://portfolio-contact.cadeiraai.workers.dev/api/contact" method="post" aria-label="Send Carlos a message">
+      <div class="contact-fields"><label>Your name<input name="name" autocomplete="name" maxlength="100" required></label><label>Your email<input name="email" type="email" autocomplete="email" maxlength="254" required></label></div>
+      <label>Your message<textarea name="message" rows="4" minlength="10" maxlength="5000" required></textarea></label>
+      <div class="contact-trap" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <p class="contact-note">Your details are only used to reply to your message.</p>
+      <div class="contact-verification" data-contact-verification></div>
+      <div class="contact-submit"><button type="submit" disabled>Send message <span aria-hidden="true">↗</span></button><p class="contact-status" data-contact-status role="status" aria-live="polite" aria-atomic="true"></p></div>
+      <noscript><p>Please enable JavaScript to use this form, or message me on LinkedIn.</p></noscript>
+    </form>
+    <div class="footer-links"><a href="https://github.com/carlosmezquita">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/carlosmezquitalobato">LinkedIn <span aria-hidden="true">↗</span></a><a href="./Carlos-Mezquita-CV.pdf" download>Download CV</a><p>Based in Portsmouth, UK</p></div>
+  </footer>
 </body>
 </html>
