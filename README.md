@@ -21,6 +21,7 @@ Static HTML, CSS and small scripts for navigation, motion and contact. No build 
 - `contact-worker/`: Cloudflare email endpoint; recipient and Turnstile secret live in Worker secrets.
 - `analytics-worker/`: bounded aggregate traffic/engagement and action counters, plus the public text/link endpoint. See [analytics research](docs/analytics-research.md) and [rollout](docs/analytics-implementation.md).
 - `privacy.html`, `privacy.js`, `privacy.css`: public analytics notice and explicit browser opt-out.
+- `performance-analytics.js`: manually loads Cloudflare's complementary Web Vitals beacon using the same privacy preference; automatic injection stays off.
 - `dashboard-worker/`: private statistics, contact inbox and text/link editor protected by Cloudflare Access.
 - `site-content.js`: loads published plain-text content overrides, retaining static content on failure.
 - `Carlos-Mezquita-CV.pdf`: downloadable public CV.
