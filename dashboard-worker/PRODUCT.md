@@ -24,7 +24,7 @@ The portfolio design brief rejects generic repeated feature cards, gratuitous mo
 
 ## Design Principles
 
-- Report the aggregate data already collected; do not expand tracking.
+- Report only bounded site-measurement aggregates. The owner approved page/source/device/country and engagement breakdowns on 23 October 2026; retain no visitor identifiers or joined profiles.
 - Keep SQL and infrastructure controls out of the owner's reading flow.
 - Use explicit labels, plain language and transparent count definitions.
 - Authentication and availability failures must not expose stored metrics.

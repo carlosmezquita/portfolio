@@ -4,7 +4,7 @@
 
 The canonical hostname is `admin.carlosmezquita.dev`, configured as a Worker Custom Domain with HTTPS. Direct `workers.dev` access and version previews are disabled. The existing Worker-wide Access application also covers this custom domain; its owner policy and audience are unchanged. On 23 October 2026 (Canary Islands time), live checks confirmed owner sign-in, successful same-origin saving and Access redirects for unauthenticated/forged-identity requests at the new hostname. Custom domains follow [Cloudflare's Worker configuration](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
 
-- **Statistics:** 7, 30 or 90 UTC days of action totals, daily activity and link/page breakdowns. The traffic-source link opens Cloudflare's existing Web Analytics report.
+- **Statistics:** 7, 30 or 90 UTC days of action totals and link/page breakdowns. The aggregate extension adds page-view charts, source/device/browser/viewport/country totals and engagement/load milestones in this panel; see [rollout](analytics-implementation.md). The extension must be deployed before these new measurements appear.
 - **Requests:** new contact enquiries after email acceptance, with new/read/archived statuses and 25 requests per page. Earlier emails are not imported. Archiving is reversible and does not delete the record.
 - **Site content:** homepage introduction, contact introduction, Surfay code/notes URLs and Urbot/CadeiraAI destinations. Publish updates both portfolio compositions after their content loader is deployed. Allow about a minute for public-content cache expiry. Original content can be restored.
 
