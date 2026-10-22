@@ -90,14 +90,14 @@ endobj
 /URI (https\072\057\057github\056com\057carlosmezquita\057surfay)
 >>
 /Border [ 0 0 0 ]
-/Rect [ 48 429.7648 201.9624 442.7648 ]
+/Rect [ 48 425.7648 201.9624 438.7648 ]
 /Subtype /Link
 /Type /Annot
 >>
 endobj
 9 0 obj
 <<
-/Length 5320
+/Length 5450
 >>
 stream
 1 0 0 1 0 0 cm
@@ -169,7 +169,7 @@ Q
 q
 1 0 0 1 48 645.8898 cm
 q
-0.070588 0.4 0.321569 rg
+0.070588 0.419608 0.501961 rg
 BT
 1 0 0 1 0 4 Tm
 /F2+0 10 Tf
@@ -182,13 +182,12 @@ Q
 q
 1 0 0 1 48 623.8898 cm
 q
+0.090196 0.184314 0.231373 rg
 BT
 1 0 0 1 0 4 Tm
-14 TL
-0.090196 0.184314 0.231373 rg
 /F2+0 10 Tf
 14 TL
-(Denodo \174 QA \046 Software Development \050Part\055time\051) Tj
+(Denodo \174 QA Testing and Development) Tj
 T*
 ET
 Q
@@ -207,24 +206,35 @@ ET
 Q
 Q
 q
-1 0 0 1 48 574.8898 cm
+1 0 0 1 48 589.8898 cm
 q
-0.090196 0.184314 0.231373 rg
+0.32549 0.380392 0.415686 rg
 BT
-1 0 0 1 10 18 Tm
--8 0 Td
-/F3+0 10 Tf
-14 TL
-(\055 Owned the redesign of parallel execution for a large automated test suite\054 reducing runtime by) Tj
-T*
-8 0 Td
-(several hours\056) Tj
+1 0 0 1 0 4 Tm
+/F3+0 9 Tf
+13 TL
+(Full\055time internship\054 Mar\055Jun 2023\073 part\055time\054 Jun 2023\055Oct 2025\056) Tj
 T*
 ET
 Q
 Q
 q
-1 0 0 1 48 556.8898 cm
+1 0 0 1 48 570.8898 cm
+q
+0.090196 0.184314 0.231373 rg
+BT
+1 0 0 1 10 4 Tm
+-8 0 Td
+/F3+0 10 Tf
+14 TL
+(\055 Owned the redesign of parallel execution for an automated test suite\056) Tj
+T*
+8 0 Td
+ET
+Q
+Q
+q
+1 0 0 1 48 552.8898 cm
 q
 0.090196 0.184314 0.231373 rg
 BT
@@ -239,7 +249,7 @@ ET
 Q
 Q
 q
-1 0 0 1 48 538.8898 cm
+1 0 0 1 48 534.8898 cm
 q
 0.090196 0.184314 0.231373 rg
 BT
@@ -254,9 +264,9 @@ ET
 Q
 Q
 q
-1 0 0 1 48 512.8898 cm
+1 0 0 1 48 508.8898 cm
 q
-0.070588 0.4 0.321569 rg
+0.070588 0.419608 0.501961 rg
 BT
 1 0 0 1 0 4 Tm
 /F2+0 10 Tf
@@ -267,7 +277,7 @@ ET
 Q
 Q
 q
-1 0 0 1 48 490.8898 cm
+1 0 0 1 48 486.8898 cm
 q
 0.090196 0.184314 0.231373 rg
 BT
@@ -280,7 +290,7 @@ ET
 Q
 Q
 q
-1 0 0 1 48 445.8898 cm
+1 0 0 1 48 441.8898 cm
 q
 0.090196 0.184314 0.231373 rg
 BT
@@ -297,7 +307,7 @@ ET
 Q
 Q
 q
-1 0 0 1 48 426.8898 cm
+1 0 0 1 48 422.8898 cm
 q
 0.32549 0.380392 0.415686 rg
 BT
@@ -310,7 +320,7 @@ ET
 Q
 Q
 q
-1 0 0 1 48 407.8898 cm
+1 0 0 1 48 403.8898 cm
 q
 0.090196 0.184314 0.231373 rg
 BT
@@ -323,7 +333,7 @@ ET
 Q
 Q
 q
-1 0 0 1 48 362.8898 cm
+1 0 0 1 48 358.8898 cm
 q
 0.090196 0.184314 0.231373 rg
 BT
@@ -340,41 +350,39 @@ ET
 Q
 Q
 q
-1 0 0 1 48 342.8898 cm
+1 0 0 1 48 338.8898 cm
 q
 0.090196 0.184314 0.231373 rg
 BT
 1 0 0 1 0 4 Tm
 /F2+0 10 Tf
 14 TL
-(Cadeira \174 Personal project) Tj
+(CadeiraAI \174 Prototype) Tj
 T*
 ET
 Q
 Q
 q
-1 0 0 1 48 297.8898 cm
+1 0 0 1 48 293.8898 cm
 q
 0.090196 0.184314 0.231373 rg
 BT
 1 0 0 1 0 32 Tm
 /F3+0 10 Tf
 14 TL
-(Worked across a React\057TypeScript client and Node\056js backend for AI restaurant reservations\054) Tj
+(Worked across a React\057TypeScript client and TypeScript backend for AI restaurant reservations\054) Tj
 T*
--0.149751 Tw
-(integrating telephone calls\054 speech services\054 agent orchestration and booking workflows\056 Twilio and) Tj
+(integrating telephone calls\054 speech services\054 agent orchestration and booking workflows\056 Bun\054) Tj
 T*
-0 Tw
-(LangGraph\056) Tj
+(Twilio and LangGraph\056) Tj
 T*
 ET
 Q
 Q
 q
-1 0 0 1 48 271.8898 cm
+1 0 0 1 48 267.8898 cm
 q
-0.070588 0.4 0.321569 rg
+0.070588 0.419608 0.501961 rg
 BT
 1 0 0 1 0 4 Tm
 /F2+0 10 Tf
@@ -385,20 +393,20 @@ ET
 Q
 Q
 q
-1 0 0 1 48 249.8898 cm
+1 0 0 1 48 245.8898 cm
 q
 0.090196 0.184314 0.231373 rg
 BT
 1 0 0 1 0 4 Tm
 /F2+0 10 Tf
 14 TL
-(University of Portsmouth \174 Sep 2026 \055 Jul 2027 \050expected\051) Tj
+(University of Portsmouth \174 2026 \055 2027 \050expected\051) Tj
 T*
 ET
 Q
 Q
 q
-1 0 0 1 48 232.8898 cm
+1 0 0 1 48 228.8898 cm
 q
 0.090196 0.184314 0.231373 rg
 BT
@@ -411,7 +419,7 @@ ET
 Q
 Q
 q
-1 0 0 1 48 212.8898 cm
+1 0 0 1 48 208.8898 cm
 q
 0.090196 0.184314 0.231373 rg
 BT
@@ -424,7 +432,7 @@ ET
 Q
 Q
 q
-1 0 0 1 48 195.8898 cm
+1 0 0 1 48 191.8898 cm
 q
 0.090196 0.184314 0.231373 rg
 BT
@@ -437,12 +445,12 @@ ET
 Q
 Q
 q
-1 0 0 1 48 169.8898 cm
+1 0 0 1 48 165.8898 cm
 q
 BT
 1 0 0 1 0 4 Tm
 14 TL
-0.070588 0.4 0.321569 rg
+0.070588 0.419608 0.501961 rg
 /F2+0 10 Tf
 14 TL
 (LEADERSHIP \046 SKILLS) Tj
@@ -451,22 +459,22 @@ ET
 Q
 Q
 q
-1 0 0 1 48 133.8898 cm
+1 0 0 1 48 129.8898 cm
 q
 0.090196 0.184314 0.231373 rg
 BT
 1 0 0 1 0 18 Tm
 /F3+0 10 Tf
 14 TL
-(President\054 University of Portsmouth AI Society\056 Organising practical workshops\054 build nights and) Tj
+(President\054 University of Portsmouth AI Society\056 Rebuilding the society and planning practical AI) Tj
 T*
-(industry connections\056) Tj
+(workshops\054 projects and industry talks\056) Tj
 T*
 ET
 Q
 Q
 q
-1 0 0 1 48 99.88976 cm
+1 0 0 1 48 95.88976 cm
 q
 0.090196 0.184314 0.231373 rg
 BT
@@ -738,17 +746,17 @@ xref
 0000000954 00000 n 
 0000001175 00000 n 
 0000001379 00000 n 
-0000006751 00000 n 
-0000006810 00000 n 
-0000006918 00000 n 
-0000008240 00000 n 
-0000008514 00000 n 
-0000025770 00000 n 
-0000026528 00000 n 
-0000027841 00000 n 
-0000028110 00000 n 
-0000046106 00000 n 
-0000046870 00000 n 
+0000006881 00000 n 
+0000006940 00000 n 
+0000007048 00000 n 
+0000008370 00000 n 
+0000008644 00000 n 
+0000025900 00000 n 
+0000026658 00000 n 
+0000027971 00000 n 
+0000028240 00000 n 
+0000046236 00000 n 
+0000047000 00000 n 
 trailer
 <<
 /Size 21
@@ -757,5 +765,5 @@ trailer
 /ID [ <d23abed339e8328eba2e660eec93da6b> <d23abed339e8328eba2e660eec93da6b> ]
 >>
 startxref
-47229
+47359
 %%EOF
