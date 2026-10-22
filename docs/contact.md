@@ -47,4 +47,6 @@ Server tests cover fixed-recipient delivery, UTF-8 MIME/Reply-To, replay rejecti
 
 For a live check, open the approved review page, complete verification if requested, submit one labelled test message, verify acceptance and receipt in the owner's inbox, then confirm replay rejection with the redeemed token. Never substitute a production verification bypass for this check.
 
+Setup checks on 22 October 2026: the sender domain's Email Routing is ready, the owner destination is verified, the Worker and widget are configured, the approved-origin configuration request returns 200, an unapproved origin returns 403, and an invalid token returns 403. The real submission, inbox receipt and production-token replay checks remain pending because the review browser requires an interactive human check. Desktop form layout was inspected; physical-phone review remains outstanding.
+
 References: [Email pricing](https://developers.cloudflare.com/email-service/platform/pricing/), [send bindings](https://developers.cloudflare.com/email-service/configuration/send-bindings/), [Siteverify](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/), [rate limiting](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/).
