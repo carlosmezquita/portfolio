@@ -4,7 +4,7 @@ Cloudflare Web Analytics remains responsible for traffic sources, page views, co
 
 ## Open the reports
 
-Open the [private portfolio admin](https://portfolio-dashboard.cadeiraai.workers.dev/) and sign in with the configured owner Cloudflare account. Statistics provides 7, 30 and 90 day totals, a daily chart and a breakdown by action, target and page. No SQL is required. Requests and Site content are described in [admin.md](admin.md).
+Open the [private portfolio admin](https://admin.carlosmezquita.dev/) and sign in with the configured owner Cloudflare account. Statistics provides 7, 30 and 90 day totals, a daily chart and a breakdown by action, target and page. No SQL is required. Requests and Site content are described in [admin.md](admin.md).
 
 For optional SQL access, in the CadeiraAI Cloudflare account, open **Storage & databases → D1 → portfolio-events → Console**.
 

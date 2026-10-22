@@ -63,4 +63,4 @@ The site stays on GitHub Pages; the form posts JSON to a separate Cloudflare Wor
 
 ## Private admin
 
-Open the [portfolio admin](https://portfolio-dashboard.cadeiraai.workers.dev/) using the configured owner's Cloudflare login. It shows action statistics, manages new/read/archived contact requests, and edits intro/contact copy and project links. See [admin setup](docs/admin.md) for deployment, security, retention and free-plan limits. The editor's frontend loader must be published through the normal reviewed GitHub Pages PR.
+Open the [portfolio admin](https://admin.carlosmezquita.dev/) using the configured owner's Cloudflare login. It shows action statistics, manages new/read/archived contact requests, and edits intro/contact copy and project links. See [admin setup](docs/admin.md) for deployment, security, retention and free-plan limits. The editor's frontend loader must be published through the normal reviewed GitHub Pages PR.

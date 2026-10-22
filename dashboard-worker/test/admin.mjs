@@ -6,7 +6,7 @@ import { DEFAULT_CONTENT, validateContent, getContent, handleContent } from '../
 import { storeRequest } from '../../contact-worker/inbox.mjs';
 import { handleAdmin, readForm, saveContent, requestsPage } from '../admin.mjs';
 
-const origin = 'https://portfolio-dashboard.cadeiraai.workers.dev';
+const origin = 'https://admin.carlosmezquita.dev';
 function fixture() {
   const sql = new DatabaseSync(':memory:');
   for (const migration of ['0001_events.sql', '0002_admin.sql']) sql.exec(fs.readFileSync(new URL(`../../analytics-worker/migrations/${migration}`, import.meta.url), 'utf8'));
