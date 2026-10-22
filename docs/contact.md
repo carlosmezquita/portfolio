@@ -54,15 +54,15 @@ References: [Email pricing](https://developers.cloudflare.com/email-service/plat
 
 ## Form design and motion
 
-The form follows the portfolio's cream paper, Instrument Serif/Sans and blue/teal accents. A larger two-line heading anchors the left column; all three fields follow one vertical reading order on the right. Labels remain visible above lightly filled, clearly outlined inputs. Errors are associated with their fields using `aria-describedby` and `aria-invalid`; errors appear on submit, not on first-time typing.
+The form follows the portfolio's cream paper, Instrument Serif/Sans and blue/teal accents. The original single-line, dark serif heading anchors the left column; all three fields follow one vertical reading order on the right. There is no extra form title or rule. Real associated labels begin inside empty fields and move up/shrink on focus or when a value is present. They stay visible while a value is entered, including after blur; clearing a field returns its label only after focus leaves. The same CSS value selector responds to autofill without adding an input-state script. Errors are associated with their fields using `aria-describedby` and `aria-invalid`; errors appear on submit, not on first-time typing.
 
-Motion is bounded and tied to events: one entrance sequence (550–650 ms with short offsets), 180–320 ms focus/hover transitions, an in-flight spinner and a 420 ms success check. Focus does not shift layout, pointer movement does not move inputs, keyboard focus cancels the entrance animation, and reduced-motion preference disables the form's animations and transitions. No animation library is loaded.
+Motion is bounded and tied to events: one entrance sequence (550–650 ms with short offsets), 180–320 ms focus/hover transitions, including a 240 ms floating-label transition, an in-flight spinner and a 420 ms success check. Focus does not shift layout, pointer movement does not move inputs, keyboard focus cancels the entrance animation, and reduced-motion preference disables the form's animations and transitions. No animation library is loaded.
 
 Verification loads when the form approaches the viewport or receives focus. Turnstile uses its supported `interaction-only` appearance, not CSS concealment: verification still runs and the widget appears if interaction is required. At less than 300 px of available form width, the supported compact widget prevents horizontal overflow. Sending locks fields until completion; failure preserves entered text; success stays visible during token refresh.
 
 Research informing these choices:
 
-- [NN/g: Website Forms Usability](https://www.nngroup.com/articles/web-form-design/) — single-column flow, persistent labels and appropriate field sizes.
+- [NN/g: Website Forms Usability](https://www.nngroup.com/articles/web-form-design/) — single-column flow, persistent labels and appropriate field sizes. Floating labels are a requested portfolio design choice; they remain semantic labels rather than disappearing placeholders.
 - [GOV.UK: Text input](https://design-system.service.gov.uk/components/text-input/) — explicit labels, associated hints/errors and specific error messages. Its visual branding is not copied.
 - [Material: Duration and easing](https://m1.material.io/motion/duration-easing.html) — short, responsive feedback and decelerating transitions. The exact timings above are design choices for this portfolio.
 - [Instrument contact form](https://www.instrument.com/contact/contact-form) and [Linear support](https://linear.app/contact/support) — reference examples for concise contact content and a clear submission action. Their page content was reviewed; no claim of testing their animations is made.
