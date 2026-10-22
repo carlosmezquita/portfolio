@@ -41,7 +41,7 @@ Both forms retain explicit visible labels associated by `for`/`id`, stable field
 
 Anonymous action counts are documented in [analytics.md](analytics.md). When enabled, the browser sends only an allowlisted page path alongside the form; after email acceptance the server increments a daily `contact_success` counter. No form values enter that counter. Collection respects the tracker opt-out and request privacy signals; telemetry failure never changes delivery success.
 
-The recipient address and Turnstile secret are never returned by the API. Names, email addresses, messages, IP addresses and tokens are not written to application logs or a database. The message and reply address pass through Cloudflare to the owner's inbox. Cloudflare processes the request and verification for delivery and abuse prevention. The inbox retains delivered email normally.
+The recipient address and Turnstile secret are never returned by the API. Names, email addresses and messages are not written to application logs. After email acceptance, a background task mirrors the validated enquiry into the private admin inbox in D1, separately from anonymous counters. It retains at most 1,000 requests for up to 90 days; the scheduled collector cleanup removes older requests. IP addresses and verification tokens are never stored there. Inbox storage is best effort: a failure does not change an already accepted submission or resend email. Earlier emails are not imported. The email inbox retains delivered messages normally. See [admin.md](admin.md) for access controls and request management.
 
 ## Validation
 

@@ -5,3 +5,4 @@ node_modules/
 !.env.example
 contact-worker/worker-configuration.d.ts
 analytics-worker/worker-configuration.d.ts
+dashboard-worker/worker-configuration.d.ts

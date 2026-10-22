@@ -1,7 +1,7 @@
 export const PAGES = new Set(['/', '/direction-b.html', '/projects/surfay/', '/projects/urbot/', '/projects/cadeira/']);
 const TARGETS = {
   cv_download: ['cv'], project_click: ['surfay', 'urbot', 'cadeira'],
-  github_click: ['profile', 'surfay', 'surfay-engineering'], contact_start: ['contact'],
+  github_click: ['profile', 'surfay', 'surfay-engineering', 'urbot', 'cadeira'], contact_start: ['contact'],
 };
 
 // One atomic, parameter-bound statement. Both Workers share the same daily cap.
