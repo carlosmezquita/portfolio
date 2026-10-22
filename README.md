@@ -56,4 +56,4 @@ Use the contact form, with LinkedIn as an alternative. Keep personal email addre
 
 ## Contact form
 
-The site stays on GitHub Pages; the form posts JSON to a separate Cloudflare Worker. See [contact setup](docs/contact.md) for configuration, privacy, limits and validation. Run `node --test scripts/test-contact.mjs` for server-side checks.
+The site stays on GitHub Pages; the form posts JSON to a separate Cloudflare Worker. See [contact setup](docs/contact.md) for configuration, privacy, limits and validation. Run `node --test scripts/test-contact.mjs scripts/test-contact-ui.cjs` for server and client interaction checks.
