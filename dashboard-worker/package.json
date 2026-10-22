@@ -1,0 +1,7 @@
+{
+  "name": "portfolio-private-dashboard",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node --test test/*.mjs" },
+  "dependencies": { "jose": "^6.2.13" }
+}

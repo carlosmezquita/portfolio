@@ -21,6 +21,7 @@
   <script defer src="./hero-motion.js"></script>
   <script defer src="./contact.js"></script>
   <script defer src="./analytics.js"></script>
+  <script defer src="./site-content.js"></script>
 </head>
 <body class="direction-b">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -39,7 +40,7 @@
         <h1 id="name">Carlos Mezquita</h1>
       </div>
       <div class="intro">
-        <div class="intro-copy"><p>I build web applications and AI systems.<br> Previously at Denodo, now finishing Computer Science at Portsmouth.</p><p class="intro-detail">My work spans surf forecasts, urban planning and restaurant reservations.</p></div>
+        <div class="intro-copy"><p data-content="intro">I build web applications and AI systems.<br> Previously at Denodo, now finishing Computer Science at Portsmouth.</p><p class="intro-detail">My work spans surf forecasts, urban planning and restaurant reservations.</p></div>
         <div class="intro-links"><a href="#contact">Message me <span aria-hidden="true">↗</span></a><a href="./Carlos-Mezquita-CV.pdf" download>Download CV <span class="file-type">PDF</span></a><a href="https://github.com/carlosmezquita">GitHub <span aria-hidden="true">↗</span></a></div>
       </div>
     </section>
@@ -57,7 +58,7 @@
           <p>A surf forecast for Galicia. I built the map interface and backend that turn marine forecasts and local coastal profiles into hourly spot forecasts.</p>
           <p class="technical-detail">The backend keeps spot updates and forecast snapshots in sync, and preserves the forecast behind each condition report.</p>
           <p class="stack">React, TypeScript, MapLibre<br> Cloudflare Workers &amp; D1</p>
-          <div class="project-links"><a href="https://github.com/carlosmezquita/surfay">Explore the code <span aria-hidden="true">↗</span></a><a href="https://github.com/carlosmezquita/surfay/blob/main/docs/engineering.md">Engineering notes <span aria-hidden="true">↗</span></a></div>
+          <div class="project-links"><a data-content-link="surfay_code" data-project-target="surfay" data-github-target="surfay" href="https://github.com/carlosmezquita/surfay">Explore the code <span aria-hidden="true">↗</span></a><a data-content-link="surfay_notes" data-project-target="surfay" data-github-target="surfay-engineering" href="https://github.com/carlosmezquita/surfay/blob/main/docs/engineering.md">Engineering notes <span aria-hidden="true">↗</span></a></div>
           <p class="project-limit">Experimental scoring; forecast accuracy hasn’t been independently validated.</p>
         </div>
         <p class="map-credit">Map imagery: OpenFreeMap / OpenMapTiles / OpenStreetMap contributors. <a href="./img/surfay-forecast.png">View full interface <span aria-hidden="true">↗</span></a></p>
@@ -66,12 +67,12 @@
         <article class="project-row" id="urbot" aria-labelledby="urbot-heading">
           <div class="project-identity"><p class="project-context">For NMarq · In development</p><h3 id="urbot-heading">Urbot</h3></div>
           <div class="project-description"><p>An internal urban-planning tool. I’m building guided project intake, deterministic planning checks and evidence tracking, with unresolved cases left for human review.</p><p class="stack">React · TypeScript · Cloudflare Workers · D1 / R2 · MCP</p></div>
-          <a class="row-link" href="#contact">Ask about Urbot <span aria-hidden="true">↗</span></a>
+          <a class="row-link" data-content-link="urbot_link" data-project-target="urbot" data-github-target="urbot" href="#contact">Ask about Urbot <span aria-hidden="true">↗</span></a>
         </article>
         <article class="project-row" id="cadeira" aria-labelledby="cadeira-heading">
           <div class="project-identity"><p class="project-context">Independent project · Prototype</p><h3 id="cadeira-heading">CadeiraAI</h3></div>
           <div class="project-description"><p>Restaurant reservations by phone. I worked across the web client and TypeScript backend, connecting telephone calls, speech services, an AI agent and booking workflows.</p><p class="stack">React · TypeScript · Bun · Twilio · LangGraph</p></div>
-          <a class="row-link" href="#contact">Ask about CadeiraAI <span aria-hidden="true">↗</span></a>
+          <a class="row-link" data-content-link="cadeira_link" data-project-target="cadeira" data-github-target="cadeira" href="#contact">Ask about CadeiraAI <span aria-hidden="true">↗</span></a>
         </article>
       </div>
     </section>
@@ -90,7 +91,7 @@
     <div class="contact-intro">
       <p class="section-kicker">Contact</p>
       <h2>Get in touch.</h2>
-      <p>Have a project or a role in mind?<br>I’d like to hear about it.</p>
+      <p data-content="contact">Have a project or a role in mind?<br>I’d like to hear about it.</p>
       <a class="contact-alternative" href="https://www.linkedin.com/in/carlosmezquitalobato">Find me on LinkedIn <span aria-hidden="true">↗</span></a>
     </div>
     <form class="contact-form" data-contact-form action="https://portfolio-contact.cadeiraai.workers.dev/api/contact" method="post" aria-label="Send Carlos a message">
@@ -112,7 +113,7 @@
         <button type="submit" disabled><span data-submit-label>Send message</span><span class="contact-button-icon" aria-hidden="true"><svg class="contact-arrow" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14"/></svg><svg class="contact-check" viewBox="0 0 24 24" fill="none"><path d="m5 12 4 4L19 6"/></svg><span class="contact-spinner"></span></span></button>
         <p class="contact-status" data-contact-status role="status" aria-live="polite" aria-atomic="true"></p>
       </div>
-      <p class="contact-note" id="contact-email-hint">Your email is only used to reply to your message. Confirmation appears here after sending.</p>
+      <p class="contact-note" id="contact-email-hint">Your email is only used to reply. Messages are stored privately for up to 90 days to manage your enquiry. Confirmation appears here after sending.</p>
       <noscript><p>Please enable JavaScript to use this form, or message me on LinkedIn.</p></noscript>
     </form>
     <div class="footer-links"><a href="https://github.com/carlosmezquita">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/carlosmezquitalobato">LinkedIn <span aria-hidden="true">↗</span></a><a href="./Carlos-Mezquita-CV.pdf" download>Download CV</a><p>Based in Portsmouth, UK</p></div>

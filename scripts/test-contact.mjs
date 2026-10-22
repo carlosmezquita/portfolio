@@ -86,6 +86,18 @@ test('failed sends, opt-outs and unknown pages cannot create success counts', as
   }
 });
 
+test('inbox receives only accepted submissions and storage failures do not cause duplicate email retries', async () => {
+  const f = fixture(); const stored = [];
+  f.services.storeRequest = async fields => { assert.equal(f.sent.length, 1); stored.push(fields); throw new Error('quota'); };
+  assert.equal((await f.run(f.request())).status, 202);
+  assert.deepEqual(stored, [{ name: valid.name, email: valid.email, message: valid.message }]);
+  const rejected = fixture(); let saved = false;
+  rejected.services.storeRequest = async () => { saved = true; };
+  rejected.services.deliver = async () => { throw new Error('mail unavailable'); };
+  assert.equal((await rejected.run(rejected.request())).status, 503);
+  assert.equal(saved, false);
+});
+
 test('rejects missing, forged, cross-action and cross-frontend verification', async () => {
   for (const result of [
     { success: false, action: 'contact', hostname: 'carlosmezquita.dev' },

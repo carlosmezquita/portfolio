@@ -4,7 +4,9 @@ Cloudflare Web Analytics remains responsible for traffic sources, page views, co
 
 ## Open the reports
 
-In the CadeiraAI Cloudflare account, open **Storage & databases → D1 → portfolio-events → Console**.
+Open the [private portfolio admin](https://admin.carlosmezquita.dev/) and sign in with the configured owner Cloudflare account. Statistics provides 7, 30 and 90 day totals, a daily chart and a breakdown by action, target and page. No SQL is required. Requests and Site content are described in [admin.md](admin.md).
+
+For optional SQL access, in the CadeiraAI Cloudflare account, open **Storage & databases → D1 → portfolio-events → Console**.
 
 [Open the portfolio-events database](https://dash.cloudflare.com/1db26bf02a050c742294458d1adc328b/workers/d1/databases/3a9e1416-6515-431b-95d1-3d4e54a31dca).
 
@@ -28,7 +30,7 @@ SELECT event, SUM(total) AS total
 FROM events_last_30_days GROUP BY event ORDER BY total DESC;
 ```
 
-SQL reports and retention use UTC calendar dates. Reports are available only through the authenticated Cloudflare dashboard/CLI; there is no public reporting endpoint.
+Reports and retention use UTC calendar dates. Reports are available only through the owner-authenticated admin panel or Cloudflare dashboard/CLI; there is no public reporting endpoint.
 
 ## What the actions mean
 
@@ -36,7 +38,7 @@ SQL reports and retention use UTC calendar dates. Reports are available only thr
 | --- | --- | --- |
 | `cv_download` | Click on a CV download link; it does not establish that the download completed | `cv` |
 | `project_click` | Click on a project's screenshot, enquiry link, section navigation or legacy summary link | `surfay`, `urbot`, `cadeira` |
-| `github_click` | Click on an allowlisted profile, repository or engineering-notes link | `profile`, `surfay`, `surfay-engineering` |
+| `github_click` | Click on an allowlisted profile, repository or engineering-notes link | `profile`, `surfay`, `surfay-engineering`, `urbot`, `cadeira` |
 | `contact_start` | First trusted input in name, email or message per page load; focus and honeypot input do not count | `contact` |
 | `contact_success` | Email provider accepted the enquiry after server validation and Turnstile verification | `contact` |
 
@@ -48,7 +50,7 @@ These are action totals, not unique visitors or session funnels. Repeat visits/c
 
 ## Privacy and free-plan bounds
 
-The only retained fields are UTC day, event name, fixed target, allowlisted page path and aggregate count. No cookies, browser storage, visitor IDs, referrer/query strings, names, emails, message contents, precise event timestamps or IP addresses are stored in D1. Cloudflare still processes network metadata to serve requests and enforce rate limits. The client omits credentials and referrer information. Global Privacy Control and Do Not Track disable browser collection; the server also checks those request headers.
+The anonymous counters retain only UTC day, event name, fixed target, allowlisted page path and aggregate count. They contain no cookies, browser storage, visitor IDs, referrer/query strings, names, emails, message contents, precise event timestamps or IP addresses. Separately, the same database now holds the private operational contact inbox and published site text; see [admin.md](admin.md). Cloudflare still processes network metadata to serve requests and enforce rate limits. The client omits credentials and referrer information. Global Privacy Control and Do Not Track disable browser collection; the server also checks those request headers.
 
 The collector is a separate Worker, `portfolio-events`, with request logging disabled. It accepts only exact production origins and bounded JSON with exactly three fields. Prepared SQL and fixed page/event/target allowlists prevent arbitrary data collection. Its limiter allows 30 attempts per IP per minute per Cloudflare location (approximate, not a global quota). IPs are only used transiently as rate-limit keys. The client allows at most 30 tracked link clicks per page load and never retries failed tracking.
 
@@ -78,4 +80,4 @@ Tests use Node 22+ with its built-in SQLite module and no runtime npm dependenci
 
 Setup validation on 22 October 2026: all 34 tests passed, both Workers passed Wrangler build checks, the collector and cleanup schedule were deployed, and the contact Worker retained its verified-recipient restriction and both secret bindings. Live collector checks returned 403 for an unapproved origin, 400 for a forged success, 204 for preflight and 202 for both an opted-out request and a valid event. The D1 report contained exactly one event, confirming the opt-out did not add a count. That one `cv_download` on `/direction-b.html` is a setup smoke-test count, not a visitor download. Contact configuration returned only its sitekey, and invalid Turnstile verification still returned 403 without sending email. Successful-send counting is covered by mocked email delivery tests; no new live enquiry was sent during this setup.
 
-The frontend hooks are included in the analytics PR. Collection from actual visitors starts when that frontend change is merged and the portfolio's GitHub Pages deployment finishes.
+The analytics frontend PR has been merged. The separate admin PR adds the public content loader and editable-link tracking; publishing that PR is required for admin text/link edits to appear on the portfolio. The dashboard and private inbox backend are deployed separately.

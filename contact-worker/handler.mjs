@@ -125,6 +125,9 @@ export async function handleContact(request, env, services) {
 
     await services.deliver(env.CONTACT_FROM, env.CONTACT_TO,
       rawEmail(env.CONTACT_FROM, env.CONTACT_TO, { name: name.trim(), email }, message.trim()));
+    // Email remains the delivery record if private inbox storage is unavailable.
+    try { await services.storeRequest?.({ name: name.trim(), email, message: message.trim() }); }
+    catch { console.warn(JSON.stringify({ event: 'contact_inbox_unavailable' })); }
     // Count acceptance on the server, never a browser-claimed success event.
     // Analytics cannot turn an already delivered enquiry into a failed send.
     if (['https://carlosmezquita.dev', 'https://www.carlosmezquita.dev'].includes(approved)
