@@ -1,6 +1,6 @@
 # Portfolio design brief
 
-Status: design exploration. The current visual draft is not approved for publication. Retain the factual content and evidence review; replace its visual treatment. PR #6 remains a draft.
+Status: two compositions implemented for review in draft PR #6. The production domain is unchanged. The main page uses the warm editorial composition; `direction-b.html` offers a dark split composition with comparable content.
 
 ## Audience and purpose
 
@@ -35,7 +35,7 @@ The current homepages below were inspected in the cloud browser. This table reco
 
 A personal site with the supplied blue/teal artwork, a compact introduction and a small set of deliberately composed project presentations.
 
-The exact supplied artwork is the visual reference. Do not regenerate it, reconstruct it with radial gradients or darken it so heavily that its defining shapes disappear. The previous publication approval block remains unresolved: the uploaded banner and Portfolio card have not been added to the public repository. Their publication needs the previously requested explicit approval.
+The exact supplied artwork is the visual reference. Do not regenerate it, reconstruct it with radial gradients or darken it so heavily that its defining shapes disappear. Following the user’s instruction to apply this direction, the original banner is included as `img/identity-field.jpg`. The separate Portfolio card is unused and excluded.
 
 ### Opening view
 
@@ -72,8 +72,10 @@ Use motion only when it helps a visitor understand or inspect something: switchi
 
 These are practitioner perspectives and reference analysis. They do not establish a universal detector for AI-generated design or predict hiring success.
 
-## Next visual review
+## Implemented compositions and review
 
-Compose two genuinely different alternatives for the opening and Surfay showcase before extending either into a full page. Compare them with the actual references and supplied identity at the same viewport sizes. Evaluate image placement, type proportions, alignment, density and how work is introduced. Keep the factual content comparable so the choice is about design rather than different claims.
+Composition A uses the original wide artwork, a single-line desktop name, warm paper, Instrument Serif headings and Instrument Sans body text. Surfay sits in a warm stage beside its explanation; the other projects use shorter rows. Composition B uses a dark surface, a split opening and a reversed Surfay layout. Fonts are self-hosted under the SIL Open Font License.
+
+Both compositions were inspected in the cloud browser at approximately 1350px. The main composition was also inspected in a 390px iframe; the content width was 375px after the scrollbar, with no horizontal overflow. Images loaded and fonts reported loaded. Responsive line-break spacing and the alternative background inheritance were corrected after inspection. This is visual review, not user approval or a complete accessibility audit. 200% text enlargement remains to be checked before production publication.
 
 Do not call the design finished based on source checks, a passing contrast calculation or a successful deployment. Inspect its rendered result and revise it. Preserve the working production domain until a design is approved.

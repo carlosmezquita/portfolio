@@ -39,10 +39,14 @@ No LinkedIn fields were edited during this review.
 
 ## Remaining gates
 
-Stage 1 content and source simplification is implemented in PR #6. The revised visual direction still needs a real desktop/mobile browser review.
+Stage 1 content and source simplification is implemented in draft PR #6. The replacement visual direction has now been inspected in the cloud browser at desktop and in a 390px review iframe. See docs/design.md for the implemented compositions and limits of that review.
 
 Stage 2 source review is complete within the bounds above. Full stage 2 remains open for live demo verification, independent substantiation of impact figures, and any shareable Urbot/CadeiraAI media. A missing item is not replaced by an invented statistic, mock product screenshot or unverified demo link.
 
 Before adding a Surfay live demo, confirm migration 0009 and verify navigation, forecast display/refresh, sign-in and an authorized report on the actual deployment. Its public README explicitly says the deployment remains unverified. The optional source-coastline regression also remains unverified; do not present it as fully reproduced.
 
 Browser review was blocked because the connected browser could not reach the workspace server. A self-contained data URL was explicitly denied by browser policy; no bypass was attempted. No Sites preview, public deployment or merge was performed. Automatic review blocked publication of the two supplied artwork files pending explicit approval; they are excluded from the public PR. The existing public CV contact details were checked against the public generator before its replacement was accepted.
+
+## Subsequent design implementation
+
+The user requested application of the replacement design. The original identity banner is included; the unused Portfolio card is excluded. An isolated review Worker serves the revised static files, fonts, screenshot and public CV without changing the production domain. The earlier browser/publication limitations above describe the first pass and no longer describe the current draft. No merge or production deployment has been performed.
