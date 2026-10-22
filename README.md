@@ -19,6 +19,9 @@ Static HTML, CSS and small scripts for navigation, motion and contact. No build 
 - `site.js`: maps old `#project/<name>` links to the current project anchors.
 - `contact.js`: contact-form submission, verification lifecycle and accessible feedback.
 - `contact-worker/`: Cloudflare email endpoint; recipient and Turnstile secret live in Worker secrets.
+- `analytics-worker/`: bounded anonymous event counters and the public text/link endpoint.
+- `dashboard-worker/`: private statistics, contact inbox and text/link editor protected by Cloudflare Access.
+- `site-content.js`: loads published plain-text content overrides, retaining static content on failure.
 - `Carlos-Mezquita-CV.pdf`: downloadable public CV.
 - `scripts/build_cv.py`: rebuilds the CV with Python and ReportLab.
 - `projects/<name>/index.html`: redirects old case-study URLs to their summaries, with a visible fallback link.
@@ -57,3 +60,7 @@ Use the contact form, with LinkedIn as an alternative. Keep personal email addre
 ## Contact form
 
 The site stays on GitHub Pages; the form posts JSON to a separate Cloudflare Worker. See [contact setup](docs/contact.md) for configuration, privacy, limits and validation. Run `node --test scripts/test-contact.mjs scripts/test-contact-ui.cjs` for server and client interaction checks.
+
+## Private admin
+
+Open the [portfolio admin](https://portfolio-dashboard.cadeiraai.workers.dev/) using the configured owner's Cloudflare login. It shows action statistics, manages new/read/archived contact requests, and edits intro/contact copy and project links. See [admin setup](docs/admin.md) for deployment, security, retention and free-plan limits. The editor's frontend loader must be published through the normal reviewed GitHub Pages PR.
