@@ -1,6 +1,6 @@
 # Portfolio event analytics
 
-Cloudflare Web Analytics remains responsible for traffic sources, page views, countries, devices and page performance. Custom action counts live separately in D1, since Web Analytics does not accept custom events. No paid plan or third-party analytics service is needed.
+The new aggregate traffic extension adds page views, source categories, device/browser/viewport/country breakdowns, scroll/visible-time milestones and load-time bands to the existing dashboard. See [implementation and rollout](analytics-implementation.md) and [research](analytics-research.md). The documentation below records the original action-counter system and deployment; it does not mean the new extension is deployed. Review independent Cloudflare Web Analytics injection before rollout so it cannot bypass the explicit opt-out. No new paid plan or analytics provider is required.
 
 ## Open the reports
 

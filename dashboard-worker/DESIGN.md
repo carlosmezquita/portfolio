@@ -16,8 +16,10 @@ The header connects Statistics, Requests and Site content. Requests uses expanda
 
 ## States
 
-Server-render the current report. Empty results explain that tracking begins after the frontend PR is published. Database errors offer retry and never masquerade as zero traffic. A signed-in report links to Cloudflare Web Analytics for traffic sources and a local Access logout link. Controls have clear hover/focus/disabled states.
+Server-render the current report. Empty results explain that tracking begins after the frontend PR is published. Database errors offer retry and never masquerade as zero traffic. A signed-in report links to public analytics privacy choices and a local Access logout link. Controls have clear hover/focus/disabled states.
 
 ## Data presentation
 
 Days are UTC and explicitly labelled. Date choices are 7, 30 and 90 days. No visitor count, conversion percentage or fabricated sample chart. Each daily chart bar has an accessible date/count label, and the same daily values are available in a details table.
+
+The aggregate extension places traffic above the existing action strip. A daily page-view chart and page table are followed by native disclosure tables for separate source/device/browser/viewport/country and engagement/load breakdowns. Sources start expanded; other tables can be opened with the keyboard. Explain overlapping milestones, new-data start and incomplete capped days. Reuse existing tokens and table/empty/error patterns; no animation or additional panel system.

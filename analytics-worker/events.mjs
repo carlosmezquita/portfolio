@@ -19,7 +19,7 @@ export async function recordEvent(db, event, target, page, now = new Date()) {
   return result.success && result.meta.changes > 0;
 }
 
-function response(status, origin) {
+export function response(status, origin) {
   return new Response(null, { status, headers: {
     'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', Vary: 'Origin',
     ...(origin ? { 'Access-Control-Allow-Origin': origin } : {}),
@@ -27,7 +27,7 @@ function response(status, origin) {
   } });
 }
 
-async function readEvent(request) {
+export async function readEvent(request) {
   // Bound streamed input even when Content-Length is absent or dishonest.
   if (!request.body || Number(request.headers.get('Content-Length')) > 512) throw new Error('invalid');
   const reader = request.body.getReader();

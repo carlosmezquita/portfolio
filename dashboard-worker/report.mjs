@@ -1,3 +1,5 @@
+import { readTraffic, renderTraffic } from './traffic-report.mjs';
+
 export const EVENTS = [
   ['cv_download', 'CV clicks'], ['project_click', 'Project clicks'], ['github_click', 'GitHub clicks'],
   ['contact_start', 'Contact starts'], ['contact_success', 'Successful sends'],
@@ -37,22 +39,24 @@ export async function readReport(db, days, now = new Date()) {
     const group = groups.get(key) || { event: row.event, target: row.target, page: row.page, count: 0 };
     group.count += row.count; groups.set(key, group);
   }
-  return { days, start, end, totals, daily, breakdown: [...groups.values()].sort((a, b) => b.count - a.count), updated: now.toISOString() };
+  const traffic = await readTraffic(db, start, end);
+  return { days, start, end, totals, daily, traffic, breakdown: [...groups.values()].sort((a, b) => b.count - a.count), updated: now.toISOString() };
 }
 
 const number = value => value.toLocaleString('en-GB');
 const dateLabel = value => new Date(`${value}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
-function chart(report) {
+export function chart(report, kind = 'actions') {
+  const unit = kind === 'views' ? 'page views' : 'actions';
   const max = Math.max(1, ...report.daily.map(row => row.total));
   const width = 1000; const height = 146; const plot = 130;
   const gap = report.days === 90 ? 2 : 5;
   const band = width / report.days;
   const bars = report.daily.map((row, index) => {
     const h = row.total / max * plot;
-    return `<rect class="bar" x="${(index * band + gap / 2).toFixed(2)}" y="${(plot - h + 12).toFixed(2)}" width="${Math.max(1, band - gap).toFixed(2)}" height="${h.toFixed(2)}"><title>${escapeHtml(row.day)}: ${number(row.total)} actions</title></rect>`;
+    return `<rect class="bar" x="${(index * band + gap / 2).toFixed(2)}" y="${(plot - h + 12).toFixed(2)}" width="${Math.max(1, band - gap).toFixed(2)}" height="${h.toFixed(2)}"><title>${escapeHtml(row.day)}: ${number(row.total)} ${unit}</title></rect>`;
   }).join('');
-  return `<div class="chart-head"><h2>Daily activity</h2><span>All actions · highest day ${number(max === 1 && !report.daily.some(row => row.total) ? 0 : max)}</span></div>
-  <svg class="chart" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="chart-title chart-desc"><title id="chart-title">Daily portfolio actions</title><desc id="chart-desc">${report.days} days, from ${report.start} to ${report.end}. The table below provides the exact daily values.</desc>
+  return `<div class="chart-head"><h2>${kind === 'views' ? 'Daily page views' : 'Daily activity'}</h2><span>All ${unit} · highest day ${number(max === 1 && !report.daily.some(row => row.total) ? 0 : max)}</span></div>
+  <svg class="chart" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="chart-title-${kind} chart-desc-${kind}"><title id="chart-title-${kind}">Daily portfolio ${unit}</title><desc id="chart-desc-${kind}">${report.days} days, from ${report.start} to ${report.end}. The table below provides the exact daily values.</desc>
     <line class="baseline" x1="0" y1="142" x2="1000" y2="142"/>${bars}
   </svg><div class="chart-dates"><span>${dateLabel(report.start)}</span><span>${dateLabel(report.end)}</span></div>`;
 }
@@ -68,13 +72,15 @@ export function renderReport(report) {
   <header><a class="identity" href="/">Carlos Mezquita <span>/ admin</span></a><nav class="section-nav" aria-label="Sections"><a href="/" aria-current="page">Statistics</a><a href="/requests">Requests</a><a href="/content">Site content</a></nav><nav aria-label="Account"><span class="private">Owner access</span><a href="/cdn-cgi/access/logout">Sign out</a></nav></header>
   <main id="report"><div class="heading"><div><p class="eyebrow">PORTFOLIO REPORT</p><h1>Interest in your work.</h1><p class="period">${dateLabel(report.start)} to ${dateLabel(report.end)} ${report.end.slice(0, 4)} · UTC</p></div>
   <form method="get" action="/" class="filters"><label for="days">Date range</label><div><select name="days" id="days">${options}</select><button type="submit">Update report</button></div></form></div>
+  ${report.traffic ? renderTraffic(report.traffic, report.daily) : ''}
+  <h2 class="action-heading">Actions and enquiries</h2>
   <dl class="totals" aria-label="Action totals">${summaries}</dl>
   ${!total ? '<div class="empty"><h2>No recorded actions in this period.</h2><p>Once event tracking is published on your portfolio, new clicks and contact activity appear here. Try a longer date range if tracking is already active.</p></div>' : ''}
   <section class="activity" aria-label="Daily activity">${chart(report)}</section>
   <section class="breakdown"><div class="section-head"><h2>What people explored</h2><span>${number(total)} recorded actions</span></div>
   <div class="table-scroll" role="region" aria-label="Actions by target and page" tabindex="0"><table><caption class="sr-only">Action counts by link or project and page</caption><thead><tr><th scope="col">Action</th><th scope="col">Link or project</th><th scope="col">Page</th><th scope="col" class="numeric">Count</th></tr></thead><tbody>${rows || '<tr><td colspan="4" class="empty-cell">No actions to list yet.</td></tr>'}</tbody></table></div></section>
   <details class="daily"><summary>View daily numbers</summary><div class="table-scroll" role="region" aria-label="Daily action counts" tabindex="0"><table><caption class="sr-only">Daily values in UTC</caption><thead><tr><th scope="col">Day (UTC)</th>${EVENTS.map(([, label]) => `<th scope="col" class="numeric">${label}</th>`).join('')}</tr></thead><tbody>${dailyRows}</tbody></table></div></details>
-  <aside class="notes"><h2>Reading this report</h2><p>These are action counts, not unique visitors. CV clicks show download intent; successful sends mean the email provider accepted the enquiry. Privacy preferences, blockers and free-plan limits can leave some actions uncounted.</p><p>The first day includes one setup-test CV click on the alternative layout. Data is retained for 90 days.</p><a href="https://dash.cloudflare.com/1db26bf02a050c742294458d1adc328b/carlosmezquita.dev/analytics/web/overview/visits" rel="noreferrer">Open traffic sources and page views in Cloudflare <span aria-hidden="true">↗</span></a></aside>
+  <aside class="notes"><h2>Reading this report</h2><p>These are action counts, not unique visitors. CV clicks show download intent; successful sends mean the email provider accepted the enquiry. Privacy preferences, blockers and free-plan limits can leave some actions uncounted.</p><p>The first day includes one setup-test CV click on the alternative layout. Data is retained for 90 days.</p><p>Cloudflare complements these counts with Core Web Vitals and network-performance reports. Its traffic totals are separate and should not be added to these counts.</p><a href="https://dash.cloudflare.com/1db26bf02a050c742294458d1adc328b/web-analytics/overview?siteTag~in=fdcb86d469f840b6b5bc6d1e70c33e54&amp;excludeBots=Yes" rel="noreferrer">Open Cloudflare performance reports <span aria-hidden="true">↗</span></a><br><a href="https://carlosmezquita.dev/privacy.html" rel="noreferrer">Analytics privacy and choices <span aria-hidden="true">↗</span></a></aside>
   </main><footer><span>Private portfolio analytics</span><span>Updated ${escapeHtml(new Date(report.updated).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' }))} UTC · <a href="/?days=${report.days}">Refresh</a></span></footer></div></body></html>`;
 }
 
