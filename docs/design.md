@@ -95,3 +95,18 @@ Mouse and pen movement inside the hero attracts the existing colour fields, with
 Touch input is ignored and no default gesture is prevented. Pausing freezes both ambient and pointer motion; reduced motion retains the static artwork. Event handlers only update a target; drawing stays in the existing capped animation loop.
 
 Validation: cloud-browser pointer positions on both sides visibly changed the field composition. A behavioural harness verified horizontal and vertical attraction, return to the ambient path, ignored touch input, frozen output while paused, reduced motion and visibility suspension. JavaScript syntax and whitespace checks pass. The review preview and draft PR are updated; production remains unchanged.
+
+## Phone interaction research — 22 October 2026
+
+- [Yuki Kojima / Codrops: Interactive Droplet-like Metaballs](https://tympanus.net/codrops/2025/06/09/how-to-create-interactive-droplet-like-metaballs-with-three-js-and-glsl/) shows smoothly blending fields and elastic trails. It is a useful material reference; this design keeps the approved diffuse colour field and interprets the behaviour with 2D springs rather than copying its 3D shader or glass appearance. The tutorial was reviewed; its WebGL layer did not render in the cloud browser.
+- [Apple: Designing Fluid Interfaces](https://developer.apple.com/videos/play/wwdc2018/803/) and [Motion guidance](https://developer.apple.com/design/human-interface-guidelines/motion) connect fluid motion with gestures and predictable feedback. The design judgment here is to make touch produce a local response and let people interrupt it, while keeping text stationary.
+- [Android: Spring animation](https://developer.android.com/develop/ui/views/animations/spring-animation) explains stiffness, velocity and damping. A lightly damped spring gives a short rebound; an indefinitely oscillating effect would not settle. The implementation uses bounded input velocities and small integration steps.
+- [W3C Pointer Events](https://www.w3.org/TR/pointerevents3/#the-touch-action-css-property) defines touch gesture ownership and pointer cancellation. The hero uses `pan-y pinch-zoom`; event listeners stay passive and never prevent default scrolling.
+
+### Proposed touch behaviour, implemented in the draft
+
+A short tap nudges nearby fields outward. A horizontal sweep stirs them, then hands a small bounded velocity to the spring on release. Fields stretch/compress with approximately conserved ellipse area, softly resist extra compression against neighbours and settle back into the ambient composition. This is a stylised material response, not a fluid simulation or literal soap-bubble rendering.
+
+Vertical intent yields before applying an interaction. Pointer cancellation, multi-touch, control taps and long presses do not create accidental tap impulses. Mouse and pen attraction, pause/play, reduced motion and visibility suspension are retained. The mobile pause control has at least a 44px target and a small touch hint sits below the name.
+
+Validation: `node scripts/test-hero-motion.cjs` checks tap displacement, squash/stretch, rebound, eventual settling, horizontal stirring, vertical/cancel/pinch/control/long-press guards, desktop attraction, pause, reduced motion and visibility. Syntax and whitespace checks pass. Native iOS/Android gesture behaviour and final perceived feel still require physical-device review. The online preview update was blocked when Cloudflare required reauthentication; do not treat the existing preview as verification of this touch revision.

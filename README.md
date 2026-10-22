@@ -15,7 +15,7 @@ Static HTML, CSS and a small compatibility script. No installation, build step, 
 - `img/surfay-forecast.png`: real application screenshot with synthetic forecast inputs and original map attribution.
 - `docs/design.md`: visual and editorial decisions, with research sources.
 - `docs/evidence-review.md`: claim review, LinkedIn inconsistencies and remaining publication gates.
-- `hero-motion.js`: cursor-reactive blue/teal canvas field, pause/play, reduced-motion fallback and offscreen/tab suspension.
+- `hero-motion.js`: cursor- and touch-reactive blue/teal field with damped bubble springs, pause/play, reduced-motion fallback and offscreen/tab suspension.
 - `site.js`: maps old `#project/<name>` links to the current project anchors.
 - `Carlos-Mezquita-CV.pdf`: downloadable public CV.
 - `scripts/build_cv.py`: rebuilds the CV with Python and ReportLab.
@@ -45,3 +45,7 @@ Check the desktop and mobile layouts, keyboard focus, downloadable CV, contact l
 Draft preview: https://portfolio-review-20261022.cadeiraai.workers.dev/
 
 Alternative: `/direction-b.html`. Mobile review frame: `/review/mobile` (preview service only). This is separate from GitHub Pages; PR #6 stays a draft and the production domain is unchanged.
+
+## Interaction checks
+
+Run `node scripts/test-hero-motion.cjs` for event and spring behaviour checks. On a phone, tap to nudge the field or sweep sideways to stir; vertical scrolling and pinch zoom remain browser gestures. Physical-device review is still required before production.
