@@ -6,10 +6,12 @@ A concise overview of my software work, Denodo experience, education and contact
 
 ## Implementation
 
-Static HTML, CSS and a small compatibility script. No installation, build step, external fonts or client-side libraries are required.
+Static HTML, CSS and a small compatibility script. No installation, build step, font CDN or client-side libraries are required. Instrument Sans and Instrument Serif are self-hosted; their licences are in `fonts/`.
 
 - `index.html`: content, navigation and metadata.
-- `site.css`: responsive navy/blue/teal identity, focus states and print styles.
+- `direction-b.html`: alternative split composition for design review.
+- `img/identity-field.jpg`: original supplied blue/teal identity artwork.
+- `site.css`: responsive warm editorial layout, dark alternative, focus states and print styles.
 - `img/surfay-forecast.png`: real application screenshot with synthetic forecast inputs and original map attribution.
 - `docs/design.md`: visual and editorial decisions, with research sources.
 - `docs/evidence-review.md`: claim review, LinkedIn inconsistencies and remaining publication gates.
@@ -36,3 +38,9 @@ Old case studies and diagrams were removed in the first simplification pass. The
 ## Before publishing
 
 Check the desktop and mobile layouts, keyboard focus, downloadable CV, contact links and old project URLs. Verify any new external evidence link before adding it. Submit changes through a pull request; review before merging to the GitHub Pages publishing branch.
+
+## Design review preview
+
+Draft preview: https://portfolio-review-20261022.cadeiraai.workers.dev/
+
+Alternative: `/direction-b.html`. Mobile review frame: `/review/mobile` (preview service only). This is separate from GitHub Pages; PR #6 stays a draft and the production domain is unchanged.
