@@ -38,7 +38,7 @@ The recipient address and Turnstile secret are never returned by the API. Names,
 ## Validation
 
 ```sh
-node --test scripts/test-contact.mjs
+node --test scripts/test-contact.mjs scripts/test-contact-ui.cjs
 node scripts/check-public-contact.cjs
 node scripts/test-hero-motion.cjs
 ```
@@ -47,6 +47,23 @@ Server tests cover fixed-recipient delivery, UTF-8 MIME/Reply-To, replay rejecti
 
 For a live check, open the approved review page, complete verification if requested, submit one labelled test message, verify acceptance and receipt in the owner's inbox, then confirm replay rejection with the redeemed token. Never substitute a production verification bypass for this check.
 
-Setup checks on 22 October 2026: the sender domain's Email Routing is ready, the owner destination is verified, the Worker and widget are configured, the approved-origin configuration request returns 200, an unapproved origin returns 403, and an invalid token returns 403. The real submission, inbox receipt and production-token replay checks remain pending because the review browser requires an interactive human check. Desktop form layout was inspected; physical-phone review remains outstanding.
+Setup checks on 22 October 2026: the sender domain's Email Routing is ready, the owner destination is verified, the Worker and widget are configured, the approved-origin configuration request returns 200, an unapproved origin returns 403, and an invalid token returns 403. The prepared test was successfully submitted in the review browser and the resulting email was confirmed in the owner’s inbox. Production-token replay remains unverified; replay rejection is covered by the mocked server tests. Physical-phone review remains outstanding.
 
 References: [Email pricing](https://developers.cloudflare.com/email-service/platform/pricing/), [send bindings](https://developers.cloudflare.com/email-service/configuration/send-bindings/), [Siteverify](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/), [rate limiting](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/).
+
+
+## Form design and motion
+
+The form follows the portfolio's cream paper, Instrument Serif/Sans and blue/teal accents. A larger two-line heading anchors the left column; all three fields follow one vertical reading order on the right. Labels remain visible above lightly filled, clearly outlined inputs. Errors are associated with their fields using `aria-describedby` and `aria-invalid`; errors appear on submit, not on first-time typing.
+
+Motion is bounded and tied to events: one entrance sequence (550–650 ms with short offsets), 180–320 ms focus/hover transitions, an in-flight spinner and a 420 ms success check. Focus does not shift layout, pointer movement does not move inputs, keyboard focus cancels the entrance animation, and reduced-motion preference disables the form's animations and transitions. No animation library is loaded.
+
+Verification loads when the form approaches the viewport or receives focus. Turnstile uses its supported `interaction-only` appearance, not CSS concealment: verification still runs and the widget appears if interaction is required. At less than 300 px of available form width, the supported compact widget prevents horizontal overflow. Sending locks fields until completion; failure preserves entered text; success stays visible during token refresh.
+
+Research informing these choices:
+
+- [NN/g: Website Forms Usability](https://www.nngroup.com/articles/web-form-design/) — single-column flow, persistent labels and appropriate field sizes.
+- [GOV.UK: Text input](https://design-system.service.gov.uk/components/text-input/) — explicit labels, associated hints/errors and specific error messages. Its visual branding is not copied.
+- [Material: Duration and easing](https://m1.material.io/motion/duration-easing.html) — short, responsive feedback and decelerating transitions. The exact timings above are design choices for this portfolio.
+- [Instrument contact form](https://www.instrument.com/contact/contact-form) and [Linear support](https://linear.app/contact/support) — reference examples for concise contact content and a clear submission action. Their page content was reviewed; no claim of testing their animations is made.
+- [Cloudflare widget configuration](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/) — interaction-only appearance, callbacks and supported compact sizing.
