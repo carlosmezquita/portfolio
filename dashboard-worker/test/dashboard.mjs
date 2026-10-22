@@ -23,6 +23,7 @@ const sign = (payload = claims, options = {}) => new SignJWT(payload)
 function database() {
   const sql = new DatabaseSync(':memory:');
   sql.exec(fs.readFileSync(new URL('../../analytics-worker/migrations/0001_events.sql', import.meta.url), 'utf8'));
+  sql.exec(fs.readFileSync(new URL('../../analytics-worker/migrations/0003_traffic.sql', import.meta.url), 'utf8'));
   return { sql, binding: { prepare: query => ({ bind: (...args) => ({ all: async () => ({ success: true, results: sql.prepare(query).all(Object.fromEntries(args.map((value, index) => [String(index + 1), value]))) }) }) }) } };
 }
 const request = (token, path = '/', options = {}) => new Request(`https://${env.DASHBOARD_HOST}${path}`, { ...options, headers: { ...(token ? { 'Cf-Access-Jwt-Assertion': token } : {}), ...options.headers } });

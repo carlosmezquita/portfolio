@@ -12,6 +12,7 @@ function fixture() {
   const sql = new DatabaseSync(':memory:');
   sql.exec(fs.readFileSync(new URL('../analytics-worker/migrations/0001_events.sql', import.meta.url), 'utf8'));
   sql.exec(fs.readFileSync(new URL('../analytics-worker/migrations/0002_admin.sql', import.meta.url), 'utf8'));
+  sql.exec(fs.readFileSync(new URL('../analytics-worker/migrations/0003_traffic.sql', import.meta.url), 'utf8'));
   const db = { prepare: (query) => ({
     bind: (...args) => ({ run: async () => ({ success: true, meta: sql.prepare(query).run(Object.fromEntries(args.map((value, index) => [String(index + 1), value]))) }) }),
     run: async () => ({ success: true, meta: sql.prepare(query).run() }),
