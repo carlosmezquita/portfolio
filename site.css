@@ -29,6 +29,9 @@
 .contact-alternative span { transition: transform 280ms var(--contact-ease); }
 .contact-alternative:hover { border-color: var(--contact-accent); }
 .contact-alternative:hover span { transform: translate(3px, -3px); }
+.contact-email { position: relative; gap: 6px; border-bottom: 0; }
+.contact-email::after { content: ''; position: absolute; inset-inline: 0; bottom: 0; height: 1px; background: currentColor; pointer-events: none; transform: scaleX(0); transform-origin: center; transition: transform 260ms var(--contact-ease); }
+.contact-email:is(:hover, :focus-visible)::after { transform: scaleX(1); }
 .contact-form { min-width: 0; }
 .contact-field { margin-bottom: 22px; }
 .contact-input-shell > label { position: absolute; top: 19px; left: 16px; margin: 0; color: var(--muted); font: 16px/20px var(--sans); transform-origin: left top; pointer-events: none; transition: transform 240ms var(--contact-ease), color 180ms; }
@@ -37,9 +40,9 @@
 .contact-input-shell > textarea:not(:placeholder-shown) + label { transform: translateY(-12px) scale(.75); }
 .contact-input-shell:focus-within > label { color: var(--contact-accent); }
 .contact-input-shell { position: relative; }
-.contact-input-shell::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--contact-accent); transform: scaleX(0); transform-origin: left; transition: transform 320ms var(--contact-ease); pointer-events: none; }
-.contact-input-shell:focus-within::after { transform: scaleX(1); }
-.contact-field input, .contact-field textarea { display: block; width: 100%; margin: 0; border: 1px solid #7f8d87; border-radius: 2px; background: #fbfbf7; color: var(--ink); font: 16px/1.5 var(--sans); min-height: 64px; padding: 26px 15px 10px; box-shadow: none; transition: background-color 180ms, border-color 180ms, box-shadow 220ms; }
+.contact-input-shell::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--contact-accent); opacity: 0; transform: scaleX(0); transform-origin: left; transition: transform 320ms var(--contact-ease); pointer-events: none; }
+.contact-input-shell:focus-within::after { opacity: 1; transform: scaleX(1); }
+.contact-field input, .contact-field textarea { display: block; width: 100%; margin: 0; border: 1px solid #7f8d87; border-radius: 2px; background: #fbfbf7; color: var(--ink); font: 16px/1.5 var(--sans); min-height: 64px; padding: 26px 15px 10px; box-shadow: none; transition: background-color 180ms, border-color 180ms; }
 .contact-field textarea { resize: vertical; min-height: 156px; padding-top: 30px; }
 .contact-field input:hover, .contact-field textarea:hover { border-color: #4c6a63; }
 .contact-field input:focus, .contact-field textarea:focus { outline: 2px solid var(--contact-accent); outline-offset: 2px; border-color: var(--contact-accent); background: #fff; box-shadow: 0 0 0 5px #dce9e3; }
