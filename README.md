@@ -12,7 +12,7 @@ Static HTML, CSS and small scripts for navigation, motion and contact. No build 
 - `direction-b.html`: alternative split composition for design review.
 - `img/identity-field.jpg`: original supplied blue/teal identity artwork.
 - `img/carlos-mezquita.jpg`: optimized profile crop of Carlos's supplied photograph.
-- `img/social-card-v2.png`: current shared-link poster, composed for small WhatsApp-style previews; the previous `social-card.png` remains available for cached links.
+- `img/social-card-v2.png`: current shared-link poster with the original artwork, name and role, without a portrait; the previous `social-card.png` remains available for cached links.
 - `scripts/build_social_card.py`: rebuilds that 1200×630 image using the checked-in assets/fonts; requires `fonttools[woff]` and Inkscape.
 - `site.css`: responsive warm editorial layout, dark alternative, focus states and print styles.
 - `img/surfay-forecast.png`: current real Surfay map preview, retaining embedded map attribution; links to the live map.
