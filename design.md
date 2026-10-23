@@ -107,7 +107,7 @@ update this guide. Do not mechanically replace fluid type with token maxima.
 | Teal `#146379` | `--contact-accent` | Contact focus and verification feedback |
 | Field `#fbfbf7` / border `#7f8d87` | `.contact-field` | Legible input surface and boundary |
 
-Reserve blended blue/cyan/teal light for the identity field. Preserve its dark
+Reserve saturated blended blue/cyan/teal light for the identity field. Preserve its dark
 lower edge and luminous diagonal ribbon; a random radial gradient does not carry
 the same identity. Ordinary page sections remain flat. Error red and success green
 are semantic feedback, not new brand accents. Use text/icons as well as color to
@@ -164,7 +164,8 @@ admin tables and controls governed by the admin guide, not homepage display type
 Use whitespace, surface changes and 1px rules to establish hierarchy. No universal
 card shadow system. The real product frame has a restrained shadow, and contact
 focus has a soft sage ring; these are local cues. Do not spread glass blur, ambient
-glows or floating panels across the page.
+glows or floating panels across the page. The background section's faint sage/teal
+wash is a deliberately quiet, local exception; it must not become another hero.
 
 ## Shapes
 
@@ -230,8 +231,11 @@ brand continuity, not copying their dark palettes or assuming conversion gains.
 ### Selected work
 
 Surfay is a real map preview inside the sand stage, beside concise contribution
-copy and evidence links. Keep `img/surfay-forecast.png`, its readable map/forecast
-crop and embedded attribution. The current preview links to the live map; do not
+copy and evidence links. Keep the current `img/surfay-map-2026-10-23.webp` and its
+embedded attribution. Display the full 900:523 image at every breakpoint: do not
+crop the forecast panel or map to fill a taller phone frame. The sand stage uses
+24px padding on desktop and 12px at the phone sides/bottom, stays naturally sized
+beside the text, and stacks above the copy at 960px. The current preview links to the live map; do not
 restore the removed duplicate caption/credits or older full-image destination.
 If replacing the screenshot, reassess attribution and any synthetic/demo-data
 disclosure against the actual asset; an older image's status is not evidence for
@@ -250,12 +254,28 @@ society entries. Fine rules separate entries; factual dates and actual ownership
 provide credibility. Avoid timelines made of floating cards, skill meters and
 unverified impact counters.
 
+A single broad, low-opacity teal wash may drift behind the sage surface. Use a
+soft radial gradient with a maximum alpha of 17%, moving only with `transform`
+over a 28-second, eased, alternating cycle. Keep text and rules still. No animated
+blur, grain, glow outlines, pointer tracking or additional canvas. Clip the wash
+inside the section without intercepting input. Pause it offscreen and in hidden
+tabs, provide the quiet **Pause glow / Play glow** control, and preserve a static
+wash with reduced motion or no JavaScript. This is an atmospheric detail, not a
+second focal point. The dark alternative keeps its own underlying surface.
+
+Implementation references: [web.dev's animation guide](https://web.dev/articles/animations-guide)
+recommends transform/opacity to avoid layout/paint work; [reduced-motion guidance](https://web.dev/articles/prefers-reduced-motion)
+supports a still alternative; [W3C's pause guidance](https://www.w3.org/WAI/WCAG21/Understanding/pause-stop-hide.html)
+informs the explicit stop/resume control. Reviewed 23 October 2026.
+
 ### Contact
 
 Keep the small **Contact** kicker and single-line dark **Get in touch.** heading.
 No extra top rule or “A note to Carlos” heading. The approved public alias
 `hello@carlosmezquita.dev` has a subtle underline drawn on hover/focus and arrow
-movement; the private recipient never appears in public content.
+movement; the private recipient never appears in public content. The address uses
+16–20px fluid Instrument Sans, a minimum 44px tap target and safe wrapping inside
+its column. Keep only the arrow moving on hover; the address itself stays still.
 
 Use one column of outlined, subtly filled fields: 64px minimum input height,
 156px textarea, 16px editable text and 2px corners. Keep real associated labels;
