@@ -1,0 +1,7 @@
+# Public portfolio content may be indexed and used for AI answers.
+# No AI training preference is expressed by this file.
+User-agent: *
+Allow: /
+Content-Signal: search=yes, ai-input=yes
+
+Sitemap: https://carlosmezquita.dev/sitemap.xml
