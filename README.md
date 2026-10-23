@@ -11,6 +11,9 @@ Static HTML, CSS and small scripts for navigation, motion and contact. No build 
 - `index.html`: content, navigation and metadata.
 - `direction-b.html`: alternative split composition for design review.
 - `img/identity-field.jpg`: original supplied blue/teal identity artwork.
+- `img/carlos-mezquita.jpg`: optimized profile crop of Carlos's supplied photograph.
+- `img/social-card.png`: personal shared-link preview with portrait, original banner, name and role.
+- `scripts/build_social_card.py`: rebuilds that 1200×630 image using the checked-in assets/fonts; requires `fonttools[woff]` and Inkscape.
 - `site.css`: responsive warm editorial layout, dark alternative, focus states and print styles.
 - `img/surfay-forecast.png`: current real Surfay map preview, retaining embedded map attribution; links to the live map.
 - `design.md`: canonical visual contract, tokens, component patterns and motion/responsive rules.
