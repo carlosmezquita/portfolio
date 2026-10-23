@@ -16,7 +16,7 @@ The owner also requested a private contact inbox and editing of homepage/contact
 
 ## Brand Personality
 
-Quiet, precise and personal. Preserve the warm paper and blue/teal identity recorded in ../docs/design.md while prioritising familiar report controls and readable numbers.
+Quiet, precise and personal. Preserve the warm paper and blue/teal identity recorded in [../design.md](../design.md), while following this app's [DESIGN.md](DESIGN.md) for familiar report controls, system typography and readable numbers. The public portfolio's display typography and animated hero are not admin patterns.
 
 ## Anti-references
 
