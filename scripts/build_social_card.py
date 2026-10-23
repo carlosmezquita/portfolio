@@ -1,4 +1,4 @@
-"""Build the static share card from the checked-in portrait, artwork and fonts.
+"""Build the static share card from the checked-in identity artwork and fonts.
 
 Requires Python fonttools (with WOFF2 support) and Inkscape on PATH.
 Run from any directory: python3 scripts/build_social_card.py
@@ -14,8 +14,6 @@ from fontTools.ttLib import TTFont
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PAPER = "#f5f4ef"
-INK = "#172329"
 
 
 def image_data(name, mime):
@@ -45,22 +43,17 @@ def lettering(text, font_file, size, x, baseline, color, tracking=0):
 
 def main():
     banner = image_data("img/identity-field.jpg", "image/jpeg")
-    portrait = image_data("img/carlos-mezquita.jpg", "image/jpeg")
     name = lettering("Carlos Mezquita", "instrument-serif-latin-400-normal.woff2",
-                     108, 64, 415, "#ffffff", -2.6)
+                     112, 64, 466, "#ffffff", -2.6)
     role = lettering("Software Engineer", "instrument-sans-latin-400-normal.woff2",
-                     38, 66, 570, INK, -.5)
+                     38, 68, 535, "#ffffff", -.5)
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="630"
       viewBox="0 0 1200 630">
       <title>Carlos Mezquita — Software Engineer</title>
-      <desc>Carlos's large portrait and white serif name on his blue and teal
-      identity artwork, with Software Engineer on warm paper below.</desc>
-      <defs><clipPath id="portrait"><circle cx="978" cy="240" r="154"/></clipPath></defs>
-      <rect width="1200" height="630" fill="{PAPER}"/>
-      <image width="1200" height="480" preserveAspectRatio="xMidYMid slice" xlink:href="{banner}"/>
-      <circle cx="978" cy="240" r="160" fill="{PAPER}"/>
-      <image x="824" y="86" width="308" height="308" clip-path="url(#portrait)" xlink:href="{portrait}"/>
+      <desc>Carlos Mezquita in large white serif lettering, with Software Engineer
+      directly beneath, on the original blue and teal identity artwork.</desc>
+      <image width="1200" height="630" preserveAspectRatio="xMidYMid slice" xlink:href="{banner}"/>
       {name}{role}
     </svg>'''
     with TemporaryDirectory(prefix="portfolio-share-card-") as directory:
