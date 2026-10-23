@@ -61,7 +61,7 @@ Run checks relevant to the change:
 | Every PR | `git diff --check` |
 | Public contact surfaces or CV | `node scripts/check-public-contact.cjs` |
 | Hero interaction | `node scripts/test-hero-motion.cjs` |
-| Background light / site navigation | `node --test scripts/test-background-motion.cjs` |
+| Background light | `node --test scripts/test-background-motion.cjs` |
 | Contact form/backend | `node --test scripts/test-contact.mjs scripts/test-contact-ui.cjs` |
 | Editable content | `node --test scripts/test-site-content.cjs` |
 | Analytics/privacy behavior | `node --test scripts/test-analytics.mjs scripts/test-traffic.mjs scripts/test-performance-analytics.cjs` |
