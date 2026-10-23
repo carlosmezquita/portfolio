@@ -39,6 +39,6 @@ test('both compositions contain editable copy/link hooks and a fallback privacy 
     const html = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
     for (const key of ['intro', 'contact']) assert(html.includes(`data-content="${key}"`));
     for (const key of ['surfay_code', 'surfay_notes', 'urbot_link', 'cadeira_link']) assert(html.includes(`data-content-link="${key}"`));
-    assert(html.includes('Messages are stored privately for up to 90 days'));
+    assert(html.includes('Messages are kept for up to 90 days'));
   }
 });
