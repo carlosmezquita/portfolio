@@ -189,8 +189,8 @@ bounded spring rebound, squash/stretch and neighbour resistance. Keep the materi
 soft and slow, not literal outlined/glassy soap bubbles or a pointer trail.
 
 Preserve native vertical scroll and pinch zoom (`pan-y pinch-zoom`), passive input,
-vertical-intent cancellation and multi-touch/control/long-press guards. Pause/play
-must remain visible, keyboard operable and at least 44px tall on phones. Reduced
+vertical-intent cancellation and multi-touch/control/long-press guards. The shared
+footer motion preference controls the banner; do not add an in-banner control. Reduced
 motion, unavailable canvas or disabled JavaScript retain `img/identity-field.jpg`.
 Suspend offscreen/hidden-tab work; retain the 24fps and 1000px rendering caps.
 
@@ -260,7 +260,7 @@ over a 28-second, eased, alternating cycle. Keep text and rules still. No animat
 blur, grain, glow outlines, pointer tracking or additional canvas. Clip the wash
 inside the section with `overflow: clip` (not a scroll container), without
 intercepting input or scrolling its content when a control receives focus. Pause it offscreen and in hidden
-tabs, provide the quiet **Pause glow / Play glow** control, and preserve a static
+tabs, follow the shared footer motion preference, and preserve a static
 wash with reduced motion or no JavaScript. This is an atmospheric detail, not a
 second focal point. The dark alternative keeps its own underlying surface.
 
@@ -301,6 +301,17 @@ cancels entrance motion; reduced motion removes animation/transitions while
 preserving label position and all state information. Do not animate every section.
 
 ### Footer and supporting pages
+
+Use one **Pause motion / Resume motion** text button beside **Privacy Policy**,
+grouped with it so the two remain adjacent when the footer wraps on phones.
+This controls the hero canvas, background drift, decorative CSS animation,
+hover movement and smooth scrolling together. Both footer options have at least
+44px tap height, quiet 11px typography and visible keyboard focus. Do not add
+separate pause controls in individual sections. Hide the button without
+JavaScript or when the OS requests reduced motion; that preference takes
+precedence. Pausing must not hide form content, labels or status feedback, and
+resuming must not replay one-shot entrance effects. The choice lasts for the
+current page; it does not require storage or change privacy preferences.
 
 Use the existing fine divider and quiet utility links. **Privacy Policy** is small,
 muted and not underlined at rest; keyboard focus remains visible. Retain the current
