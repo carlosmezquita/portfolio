@@ -12,8 +12,9 @@ Static HTML, CSS and small scripts for navigation, motion and contact. No build 
 - `direction-b.html`: alternative split composition for design review.
 - `img/identity-field.jpg`: original supplied blue/teal identity artwork.
 - `site.css`: responsive warm editorial layout, dark alternative, focus states and print styles.
-- `img/surfay-forecast.png`: real application screenshot with synthetic forecast inputs and original map attribution.
-- `docs/design.md`: visual and editorial decisions, with research sources.
+- `img/surfay-forecast.png`: current real Surfay map preview, retaining embedded map attribution; links to the live map.
+- `design.md`: canonical visual contract, tokens, component patterns and motion/responsive rules.
+- `AGENTS.md`: agent entry point, source map, design workflow and relevant checks.
 - `docs/evidence-review.md`: claim review, LinkedIn inconsistencies and remaining publication gates.
 - `hero-motion.js`: lava-lamp-inspired blue/teal field with cursor attraction and touch springs, pause/play, reduced-motion fallback and offscreen/tab suspension.
 - `site.js`: maps old `#project/<name>` links to the current project anchors.
@@ -21,7 +22,6 @@ Static HTML, CSS and small scripts for navigation, motion and contact. No build 
 - `contact-worker/`: Cloudflare email endpoint; recipient and Turnstile secret live in Worker secrets.
 - `analytics-worker/`: bounded aggregate traffic/engagement and action counters, plus the public text/link endpoint. See [analytics research](docs/analytics-research.md) and [rollout](docs/analytics-implementation.md).
 - `privacy.html`, `privacy.js`, `privacy.css`: public analytics notice and explicit browser opt-out.
-- `docs/privacy-design.md`: public policy reading layout, preference controls and presentation rules.
 - `performance-analytics.js`: manually loads Cloudflare's complementary Web Vitals beacon using the same privacy preference; automatic injection stays off.
 - `dashboard-worker/`: private statistics, contact inbox and text/link editor protected by Cloudflare Access.
 - `site-content.js`: loads published plain-text content overrides, retaining static content on failure.
