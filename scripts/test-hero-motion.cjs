@@ -6,7 +6,7 @@ const source = fs.readFileSync(require('node:path').join(__dirname, '../hero-mot
 
 function scene({ reduced = false, unavailable = false, width = 390, height = 250 } = {}) {
   const frames = new Map(), events = {}, classes = new Set(), positions = [], scales = [];
-  let sequence = 0, observer, paints = 0;
+  let sequence = 0, observer, paints = 0, paused = false;
   const gradient = { addColorStop() {} };
   const context = new Proxy({
     createRadialGradient: () => gradient, createLinearGradient: () => gradient,
@@ -19,12 +19,12 @@ function scene({ reduced = false, unavailable = false, width = 390, height = 250
     classList: { toggle(k, v) { v ? classes.add(k) : classes.delete(k); } },
     addEventListener(k, fn) { events[k] = fn; }
   };
-  const button = { hidden: true, textContent: 'Pause motion', addEventListener(k, fn) { events[k] = fn; } };
   const canvas = { width: 0, height: 0, getContext: () => unavailable ? null : context };
   const media = { matches: reduced, addEventListener(k, fn) { events.media = fn; } };
   const document = {
     hidden: false,
-    querySelector: s => ({ '.hero-poster': poster, '.identity-motion': canvas, '.motion-toggle': button })[s],
+    documentElement: { classList: { contains: () => paused } },
+    querySelector: s => ({ '.hero-poster': poster, '.identity-motion': canvas })[s],
     addEventListener(k, fn) { events[k] = fn; }
   };
   const sandbox = {
@@ -37,9 +37,10 @@ function scene({ reduced = false, unavailable = false, width = 390, height = 250
   sandbox.window = sandbox;
   vm.runInNewContext(source, sandbox);
   return {
-    events, frames, document, media, button, classes, paints: () => paints,
+    events, frames, document, media, classes, paints: () => paints,
     geometry: () => ({ positions: positions.slice(-6), scales: scales.slice(-6) }),
     visible: value => observer([{ isIntersecting: value }]),
+    pause() { paused = !paused; events['portfolio:motionchange'](); },
     send(type, x, y, time, options = {}) {
       events[type]({ pointerId: 1, pointerType: 'touch', isPrimary: true,
         clientX: 10 + x * width, clientY: 20 + y * height, timeStamp: time,
@@ -86,15 +87,15 @@ assert(difference(plain, dragged) < .01, 'release settles after horizontal sweep
 const desktop = scene(), mouse = scene();
 mouse.send('pointermove', .1, .3, 20, { pointerType: 'mouse' });
 advance([desktop, mouse], 16, 800); assert(difference(desktop, mouse) > 10, 'desktop cursor attraction retained');
-mouse.events.click(); const count = mouse.paints(); tap(mouse); mouse.step(1000);
+mouse.pause(); const count = mouse.paints(); tap(mouse); mouse.step(1000);
 assert.equal(mouse.paints(), count, 'pause freezes touch and ambient motion');
-mouse.events.click(); assert(mouse.frames.size);
+mouse.pause(); assert(mouse.frames.size);
 mouse.visible(false); assert.equal(mouse.frames.size, 0);
 mouse.visible(true); mouse.document.hidden = true; mouse.events.visibilitychange(); assert.equal(mouse.frames.size, 0);
 mouse.document.hidden = false; mouse.events.visibilitychange(); assert(mouse.frames.size);
-mouse.media.matches = true; mouse.events.media(); assert.equal(mouse.frames.size, 0); assert(mouse.button.hidden);
+mouse.media.matches = true; mouse.events.media(); assert.equal(mouse.frames.size, 0);
 const reduced = scene({ reduced: true }); tap(reduced); assert.equal(reduced.frames.size, 0);
-const fallback = scene({ unavailable: true }); assert.equal(fallback.frames.size, 0); assert(fallback.button.hidden);
+const fallback = scene({ unavailable: true }); assert.equal(fallback.frames.size, 0);
 console.log('PASS: tap impulse, squash/stretch, spring rebound and settling, horizontal stirring, vertical-scroll cancellation, pinch/cancel/control/long-press guards, desktop cursor, pause, reduced motion and visibility.');
 
 // Desktop wax must move vertically and change shape even when no pointer is present.
