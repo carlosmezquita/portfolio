@@ -258,7 +258,8 @@ A single broad, low-opacity teal wash may drift behind the sage surface. Use a
 soft radial gradient with a maximum alpha of 17%, moving only with `transform`
 over a 28-second, eased, alternating cycle. Keep text and rules still. No animated
 blur, grain, glow outlines, pointer tracking or additional canvas. Clip the wash
-inside the section without intercepting input. Pause it offscreen and in hidden
+inside the section with `overflow: clip` (not a scroll container), without
+intercepting input or scrolling its content when a control receives focus. Pause it offscreen and in hidden
 tabs, provide the quiet **Pause glow / Play glow** control, and preserve a static
 wash with reduced motion or no JavaScript. This is an atmospheric detail, not a
 second focal point. The dark alternative keeps its own underlying surface.
