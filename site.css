@@ -168,6 +168,7 @@
 html.motion-paused, html.motion-paused * { scroll-behavior: auto !important; }
 html.motion-paused *, html.motion-paused *::before, html.motion-paused *::after { animation-play-state: paused !important; transition: none !important; }
 html.motion-settled .contact-intro, html.motion-settled .contact-field, html.motion-settled .contact-submit { animation: none !important; }
+html.motion-paused .contact-check path { animation: none !important; stroke-dashoffset: 0; }
 html.motion-paused .product-frame:is(:hover, :focus-visible) img,
 html.motion-paused .contact-submit button:hover:not(:disabled),
 html.motion-paused .contact-alternative:hover > [aria-hidden],
