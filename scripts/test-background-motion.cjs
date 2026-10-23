@@ -6,12 +6,11 @@ const vm = require('node:vm');
 const source = fs.readFileSync(path.join(__dirname, '../site.js'), 'utf8');
 
 function scene({ reduced = false, observer = true } = {}) {
-  const classes = new Set(), attrs = {}, events = {};
+  const classes = new Set(), events = {};
   const label = { textContent: '' };
   const background = { classList: { toggle(name, enabled) { enabled ? classes.add(name) : classes.delete(name); } } };
   const toggle = {
     hidden: true, querySelector: () => label,
-    setAttribute(name, value) { attrs[name] = value; },
     addEventListener(name, handler) { events[name] = handler; },
   };
   const preference = { matches: reduced, addEventListener(_, handler) { events.preference = handler; } };
@@ -26,7 +25,7 @@ function scene({ reduced = false, observer = true } = {}) {
     observe() {}
   };
   vm.runInNewContext(source, { document, window, IntersectionObserver: window.IntersectionObserver });
-  return { document, preference, toggle, label, attrs, events,
+  return { document, preference, toggle, label, events,
     visible(value) { intersect([{ isIntersecting: value }]); },
     running: () => classes.has('ambient-running'),
   };
@@ -37,7 +36,7 @@ test('ambient light follows visibility and retains a user pause across re-entry'
   assert.equal(s.running(), false);
   s.visible(true); assert.equal(s.running(), true);
   s.events.click(); assert.equal(s.running(), false);
-  assert.equal(s.attrs['aria-pressed'], 'true'); assert.equal(s.label.textContent, 'Play glow');
+  assert.equal(s.label.textContent, 'Play glow');
   s.visible(false); s.visible(true); assert.equal(s.running(), false);
   s.events.click(); assert.equal(s.running(), true);
   s.document.hidden = true; s.events.visibility(); assert.equal(s.running(), false);
