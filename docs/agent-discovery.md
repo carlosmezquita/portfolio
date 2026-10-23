@@ -9,6 +9,7 @@ This release adds a public professional contact route, clearer role interests, e
 - The role-preference paragraph is outside the editable `data-content="intro"` element. Existing admin overrides still work, without removing the static recruiting context or changing JSON-LD.
 - `hello@carlosmezquita.dev` is the public alias. Its forwarding rule was confirmed Active in Cloudflare on 23 October 2026, targeting the existing verified private inbox. Delivery has not been tested in this release.
 - The alias appears in visible HTML, a native mail link, the no-JavaScript form fallback and the Person JSON-LD. A mail link does not itself send email; agents need their own email capability and authorisation.
+- The visible email has no resting underline and a 6px gap before the arrow. Hover or keyboard focus reveals a 1px line from its centre over 260ms; the existing reduced-motion rule makes the change immediate.
 - The existing Turnstile form and footer LinkedIn link remain available. No private inbox is included in the markup. Replies may reveal the personal Gmail address to the correspondent, as requested by the owner.
 
 ## Discovery files

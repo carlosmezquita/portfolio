@@ -29,6 +29,9 @@
 .contact-alternative span { transition: transform 280ms var(--contact-ease); }
 .contact-alternative:hover { border-color: var(--contact-accent); }
 .contact-alternative:hover span { transform: translate(3px, -3px); }
+.contact-email { position: relative; gap: 6px; border-bottom: 0; }
+.contact-email::after { content: ''; position: absolute; inset-inline: 0; bottom: 0; height: 1px; background: currentColor; pointer-events: none; transform: scaleX(0); transform-origin: center; transition: transform 260ms var(--contact-ease); }
+.contact-email:is(:hover, :focus-visible)::after { transform: scaleX(1); }
 .contact-form { min-width: 0; }
 .contact-field { margin-bottom: 22px; }
 .contact-input-shell > label { position: absolute; top: 19px; left: 16px; margin: 0; color: var(--muted); font: 16px/20px var(--sans); transform-origin: left top; pointer-events: none; transition: transform 240ms var(--contact-ease), color 180ms; }
