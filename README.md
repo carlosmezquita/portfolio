@@ -57,7 +57,13 @@ Run `node scripts/test-hero-motion.cjs` for event and spring behaviour checks. O
 
 ## Public contact policy
 
-Use the contact form, with LinkedIn as an alternative. Keep personal email addresses and mail links out of public source, pages, CV and previews. Run `node scripts/check-public-contact.cjs` alongside the interaction checks.
+The public contact alias is `hello@carlosmezquita.dev`, forwarded by Cloudflare Email Routing to the existing verified private inbox. The homepage publishes the alias as text and a mail link; the contact form and footer LinkedIn link remain available. Personal inbox addresses must stay out of public source, pages, CV and previews. Only the exact `mailto:hello@carlosmezquita.dev` link is allowed by `node scripts/check-public-contact.cjs`; recipient query strings and other mail links are rejected. Replies may come from Carlos's personal Gmail address, as requested; no separate sending service is configured.
+
+## Search and agent discovery
+
+The homepage states interest in full-stack and AI product engineering roles at London startups and opportunities across the EU, while keeping Portsmouth as the current location. It includes `ProfilePage` / `Person` JSON-LD with the public alias and the existing GitHub/LinkedIn profiles. The role-preference paragraph is static, so the admin's intro override cannot remove it.
+
+`robots.txt` allows public crawling and declares search and AI-input use, without choosing a training policy. `sitemap.xml` lists the canonical homepage only; the alternative composition has `noindex, follow` and the old project URLs remain redirect stubs. See [agent discovery rollout](docs/agent-discovery.md) for review and post-merge checks. This uses the existing static hosting with no new service, paid plan, or runtime dependency.
 
 ## Contact form
 
