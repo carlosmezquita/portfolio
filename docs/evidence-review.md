@@ -39,7 +39,7 @@ No LinkedIn fields were edited during this review.
 
 ## Remaining gates
 
-Stage 1 content and source simplification is implemented in draft PR #6. The replacement visual direction has now been inspected in the cloud browser at desktop and in a 390px review iframe. See docs/design.md for the implemented compositions and limits of that review.
+Stage 1 content and source simplification was implemented in PR #6. The replacement visual direction was inspected in the cloud browser at desktop and in a 390px review iframe. Those revision-specific findings remain in the PR history; [the root design guide](../design.md) defines the current visual direction.
 
 Stage 2 source review is complete within the bounds above. Full stage 2 remains open for live demo verification, independent substantiation of impact figures, and any shareable Urbot/CadeiraAI media. A missing item is not replaced by an invented statistic, mock product screenshot or unverified demo link.
 

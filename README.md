@@ -15,8 +15,6 @@ Static HTML, CSS and small scripts for navigation, motion and contact. No build 
 - `img/surfay-forecast.png`: current real Surfay map preview, retaining embedded map attribution; links to the live map.
 - `design.md`: canonical visual contract, tokens, component patterns and motion/responsive rules.
 - `AGENTS.md`: agent entry point, source map, design workflow and relevant checks.
-- `docs/design.md`: historical visual research and earlier implementation decisions.
-- `docs/design-review-2026-10-23.md`: current style review, preserved refinements and remaining drift.
 - `docs/evidence-review.md`: claim review, LinkedIn inconsistencies and remaining publication gates.
 - `hero-motion.js`: lava-lamp-inspired blue/teal field with cursor attraction and touch springs, pause/play, reduced-motion fallback and offscreen/tab suspension.
 - `site.js`: maps old `#project/<name>` links to the current project anchors.

@@ -25,10 +25,10 @@ composition. A functional change is not a reason to redesign the surrounding pag
 | Private admin | `dashboard-worker/`; read its `PRODUCT.md` and `DESIGN.md` before admin UI changes |
 | Claims and CV | `docs/evidence-review.md`, `scripts/build_cv.py`, `Carlos-Mezquita-CV.pdf` |
 
-`docs/design.md` is historical research, not a second active style guide. Its
-earlier contact, image and motion instructions have been superseded. Current
-source and newer feature documentation establish implemented behavior; do not
-restore an obsolete instruction from the log. Keep the private admin's deliberate
+Keep public-site design rules and useful research references in the root
+`design.md`. Add new public-page patterns there rather than creating another
+style guide or dated design-review file. Use PR descriptions and Git history for
+revision-specific findings and validation. Keep the private admin's deliberate
 system-font, data-first design scoped to that app.
 
 ## Apply the design

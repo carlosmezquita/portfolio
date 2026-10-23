@@ -75,12 +75,11 @@ composition. `direction-b.html` is a separate dark comparison, not a theme to
 spread through the public site. The private admin has its own scoped guide at
 `dashboard-worker/DESIGN.md`.
 
-The baseline reviewed on 23 October 2026 is main commit
-`06683f1b970bcabfb100e4d6423be628d7ec5b1e`. Preserve newer accepted decisions:
-the live Surfay map preview, the public hello alias, shortened contact note and
-quiet footer privacy link. [The review](docs/design-review-2026-10-23.md) records
-remaining drift. [Earlier research](docs/design.md) explains the exploration;
-its chronological proposals do not override this contract.
+Preserve the accepted refinements: the live Surfay map preview, public hello
+alias, shortened contact note, quiet footer privacy link and editorial privacy
+page. This file contains the current rules and useful research references;
+revision-specific findings and validation belong in PR descriptions and Git
+history, rather than additional design documents.
 
 ### What gives this design its character
 
@@ -254,6 +253,46 @@ location/link alignment and stacked phone layout. A new support page should shar
 the paper, ink, serif display title and restrained control shapes. Do not copy the
 private admin's system-font headings into public pages.
 
+### Privacy policy
+
+The policy is a reading and preference-management surface within the public site.
+Use shared paper/ink and Instrument typography, fine rules and flat sections.
+Keep the title explicitly named **Privacy policy.** and retain the quiet wordmark
+and return link. Do not add the homepage's animated artwork or marketing claims.
+
+The opening pairs a short explanation and direct analytics-control link with an
+overview of browsing, enquiries and choice. The overview supplements the full
+policy. A section index sits beside the reading column on desktop and returns to
+normal flow on phones. All six policy sections remain expanded and readable
+without JavaScript; no accordion hides important disclosures.
+
+The first section contains the existing analytics controls, live setting text and
+browser-scope explanation on a pale sage surface. Both actions have equal visual
+weight, 2px corners, at least 46px height and visible keyboard focus. Use the
+stronger `#738179` boundary on sage to preserve essential control contrast.
+Controls stack across the available width on phones. GPC/DNT precedence and
+blocked-storage feedback remain governed by `privacy.js`.
+
+`privacy.css` uses a desktop title of `clamp(56px, 6.5vw, 88px)`, with
+`clamp(48px, 9vw, 65px)` at ≤760px. Section headings are regular serif, 38px on
+desktop and 34px/32px at the phone breakpoints. Reading text is 15px with 1.8 line
+height. Labelled definition rows make statistics and retention scannable; they
+stack on phones. Reuse the `.wrap` gutters and keep the index out of the reading
+column's way at narrow widths.
+
+Separate contact enquiries, custom statistics, Cloudflare processing and
+retention. Distinguish custom counters from the performance beacon and transient
+network processing, and the private inbox's cleanup from delivered email copies.
+Keep the operator, public hello alias, contact form and complaint route easy to
+find. Do not promise blanket anonymity, EU-only processing or deletion of email
+copies by the inbox cleanup. The page loads neither analytics collector; preserve
+that property. Print styles retain the full policy while removing navigation and
+choice buttons.
+
+Review index destinations, heading order, no-JavaScript readability, live status,
+off/on actions, privacy-signal precedence, blocked storage, keyboard focus and long
+links. Use the responsive checks and existing privacy tests in `AGENTS.md`.
+
 ## Do's and Don'ts
 
 | Do | Avoid |
@@ -275,9 +314,27 @@ touching contact. Confirm readable imagery, accurate content and no page overflo
 Describe any remaining limits rather than claiming tests prove visual quality.
 
 Update tokens and rationale together when a deliberate design decision changes.
-Keep research/history and deployment details in `docs/`; this file describes the
-current intended design. A supporting page that diverges is an audit finding, not
-automatic permission to redefine the baseline.
+Keep useful design references here, feature setup in `docs/`, and historical
+findings in PR descriptions and Git history. A supporting page that diverges is
+an audit finding, not automatic permission to redefine the baseline.
+
+### Visual and interaction references
+
+These references informed the composition; they are not templates to copy or
+evidence of an effect on hiring. The portfolio's own rules above take precedence.
+
+| Reference | Principle retained here |
+| --- | --- |
+| [Cursor](https://cursor.com/home), [Linear](https://linear.app/) | Present real product work at a readable scale with deliberate alignment and framing. |
+| [Granola](https://www.granola.ai/), [Resend](https://resend.com/) | Use expressive typography and a coherent material palette to create character. |
+| [Stripe](https://stripe.com/en-br), [Mistral](https://mistral.ai/) | Give identity artwork a specific shape and composition; repeat a small set of visual choices. |
+| [ElevenLabs](https://elevenlabs.io/), [Rauno's Craft](https://rauno.me/craft) | Prefer shareable evidence and meaningful interactions appropriate to the actual work. |
+| [Emil Kowalski](https://emilkowal.ski/), [Agents with Taste](https://emilkowal.ski/ui/agents-with-taste) | Keep language specific and explain the reason for design decisions. |
+| [Developing Taste](https://emilkowal.ski/ui/developing-taste), [Train Your Judgement](https://emilkowal.ski/ui/train-your-judgement), [Stripe: Craft and beauty](https://stripe.com/sessions/2024/craft-and-beauty-the-business-value-of-form-in-function) | Compare rendered results and assess craft instead of accepting functionality as visual quality. |
+| [Codrops: Interactive Droplet-like Metaballs](https://tympanus.net/codrops/2025/06/09/how-to-create-interactive-droplet-like-metaballs-with-three-js-and-glsl/) | Use soft blending as a material reference; retain our diffuse 2D identity rather than copying a glass shader. |
+| [Apple: Designing Fluid Interfaces](https://developer.apple.com/videos/play/wwdc2018/803/), [Motion](https://developer.apple.com/design/human-interface-guidelines/motion), [Android springs](https://developer.android.com/develop/ui/views/animations/spring-animation) | Connect input to local, interruptible response and bounded settling. |
+| [W3C Pointer Events](https://www.w3.org/TR/pointerevents3/#the-touch-action-css-property) | Preserve browser gesture ownership and cancellation. |
+| [ICO: Drafting privacy information](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/the-right-to-be-informed/how-should-we-draft-our-privacy-information/), [Layered notices](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/the-right-to-be-informed/what-methods-can-we-use-to-provide-privacy-information/) | Combine a brief overview, descriptive headings, visible detail and nearby controls. These are presentation references, not legal certification. |
 
 ### Format research
 
