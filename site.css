@@ -76,6 +76,10 @@
 .contact-trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .contact-footer > .footer-links { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 20px; border-top: 1px solid var(--line); padding-top: 25px; margin-top: 0; }
 .contact-footer > .footer-links p { margin: 0 0 0 auto; }
+.contact-footer > .footer-links .footer-meta { display: flex; align-items: baseline; gap: 18px; margin-left: auto; }
+.contact-footer > .footer-links .footer-meta p { width: auto; margin: 0; white-space: nowrap; }
+.footer-meta .footer-privacy { color: #687173; font-size: 11px; }
+.footer-meta .footer-privacy:hover { color: var(--ink); }
 @keyframes contact-arrive { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 @keyframes contact-spin { to { transform: rotate(360deg); } }
 @keyframes contact-check-draw { from { stroke-dashoffset: 22; } to { stroke-dashoffset: 0; } }
@@ -96,6 +100,7 @@
   .contact-field { margin-bottom: 20px; }
   .contact-footer > .footer-links { justify-content: flex-start; padding-top: 22px; }
   .contact-footer > .footer-links p { width: 100%; margin: 0; }
+  .contact-footer > .footer-links .footer-meta { flex-basis: 100%; flex-wrap: wrap; margin-left: 0; }
   .contact-submit { align-items: stretch; flex-direction: column; gap: 12px; }
   .contact-submit button { width: 100%; }
   .contact-status { flex: none; }
