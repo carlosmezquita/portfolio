@@ -1,6 +1,11 @@
 # Portfolio design brief
 
-Status: PR #6 has been merged. This follow-up removes personal email and adds autonomous lava flow with cursor interaction. The main page uses the warm editorial composition; `direction-b.html` offers a dark split composition with comparable content. The references below record earlier design iterations.
+> Historical research and implementation log. For the current visual contract,
+> read [../design.md](../design.md); for agent workflow, read
+> [../AGENTS.md](../AGENTS.md). The proposals, status reports and validation notes
+> below describe their own revisions, not current deployment status. In particular,
+> the public hello alias, live Surfay preview and current touch/contact behavior
+> supersede earlier directions here. Do not treat rejected drafts as instructions.
 
 ## Audience and purpose
 
