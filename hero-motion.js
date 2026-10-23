@@ -2,14 +2,13 @@
 (() => {
   const poster = document.querySelector('.hero-poster');
   const canvas = document.querySelector('.identity-motion');
-  const toggle = document.querySelector('.motion-toggle');
-  if (!poster || !canvas || !toggle) return;
+  if (!poster || !canvas) return;
   let context;
   try { context = canvas.getContext('2d', { alpha: false }); } catch { return; }
   if (!context) return;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let paused = false;
+  const isPaused = () => document.documentElement.classList.contains('motion-paused');
   let visible = true;
   let frame = 0;
   let lastTime = 0;
@@ -20,7 +19,7 @@
   const bubbles = Array.from({ length: 6 }, () => ({ x: 0, y: 0, vx: 0, vy: 0, squash: 0, vs: 0 }));
   let touch = null;
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
-  const interactive = () => !paused && !reducedMotion.matches && !document.hidden && visible;
+  const interactive = () => !isPaused() && !reducedMotion.matches && !document.hidden && visible;
 
   function pointAt(event) {
     const bounds = poster.getBoundingClientRect();
@@ -145,7 +144,7 @@
   }
 
   function trackPointer(event) {
-    if (paused || reducedMotion.matches || document.hidden || !visible) return;
+    if (isPaused() || reducedMotion.matches || document.hidden || !visible) return;
     if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return;
     const bounds = poster.getBoundingClientRect();
     if (!bounds.width || !bounds.height) return;
@@ -277,22 +276,17 @@
     frame = 0;
     lastTime = 0;
     const enabled = !reducedMotion.matches;
-    if (paused || !enabled || !visible || document.hidden) endTouch();
-    poster.classList.toggle('motion-paused', paused);
+    if (isPaused() || !enabled || !visible || document.hidden) endTouch();
+    poster.classList.toggle('motion-paused', isPaused());
     if (!enabled) {
       pointer.strength = 0;
       for (const bubble of bubbles) Object.assign(bubble, { x: 0, y: 0, vx: 0, vy: 0, squash: 0, vs: 0 });
     }
     poster.classList.toggle('motion-ready', enabled);
-    toggle.hidden = !enabled;
-    if (enabled && !paused && visible && !document.hidden) frame = requestAnimationFrame(tick);
+    if (enabled && !isPaused() && visible && !document.hidden) frame = requestAnimationFrame(tick);
   }
 
-  toggle.addEventListener('click', () => {
-    paused = !paused;
-    toggle.textContent = paused ? 'Play motion' : 'Pause motion';
-    sync();
-  });
+  document.addEventListener('portfolio:motionchange', sync);
   poster.addEventListener('pointerdown', startTouch, { passive: true });
   poster.addEventListener('pointermove', event => {
     if (event.pointerType === 'touch') moveTouch(event);
