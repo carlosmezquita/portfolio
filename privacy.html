@@ -4,36 +4,123 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="referrer" content="no-referrer">
-  <meta name="description" content="How this website handles contact enquiries, measures aggregate traffic and respects your privacy choices.">
-  <title>Privacy Policy | carlosmezquita.dev</title>
+  <meta name="description" content="What this portfolio collects, how contact messages and optional analytics are handled, and how to exercise your privacy choices.">
+  <title>Privacy Policy | Carlos Mezquita</title>
   <link rel="stylesheet" href="./site.css">
   <link rel="stylesheet" href="./privacy.css">
   <script defer src="./privacy.js"></script>
 </head>
-<body>
-  <main class="privacy-page wrap">
-    <a href="./">Back to the portfolio</a>
-    <h1>Privacy Policy.</h1>
-    <p>This website uses aggregate statistics to understand which pages and links are useful and to improve the site. The purpose is site measurement, not advertising or profiling.</p>
-    <p>This notice explains the measurement and your choices. Continuing to browse is not treated as consent. You can disable optional analytics below and continue using the portfolio normally.</p>
-    <h2>What is measured</h2>
-    <p>The optional collector counts page views, broad traffic-source categories, approximate country, browser family, device type and viewport-width bands. It also counts scroll milestones, visible-tab time milestones, page-load time bands, CV and project link clicks, contact-form starts and accepted enquiries. These are daily totals in separate breakdowns, with no stored link between them.</p>
-    <p>The collector uses no cookies, visitor or session identifiers, fingerprint hashes, session recordings or analytics storage in your browser. It sends only fixed page paths and predefined categories. It does not send query strings, URL fragments, raw referrers, form contents or precise screen sizes. Reloads can count again; these statistics cannot identify unique visitors.</p>
-    <h2>Your choice</h2>
-    <p>Global Privacy Control and Do Not Track disable optional collection. You can also save a preference below. Saving an opt-out writes one local browser preference solely to remember your choice; it contains no identifier and is never transmitted. The choice applies separately to each browser and site origin, including the www address. Clearing site data removes it.</p>
-    <p>The choice prevents both collectors from loading on subsequent portfolio visits. Custom measurements also check the choice before each send. If you have other portfolio tabs already open, reload or close them to stop performance measurement that was loaded before your choice. Reports already sent cannot be recalled.</p>
-    <p data-analytics-status role="status" aria-live="polite">Enable JavaScript to read or change your browser preference, or use Global Privacy Control or Do Not Track.</p>
-    <div class="privacy-choices"><button type="button" data-analytics-choice="off">Disable optional analytics</button><button type="button" data-analytics-choice="on">Enable optional analytics</button></div>
-    <h2>Processing and retention</h2>
-    <p>The custom collector and private dashboard run on Cloudflare Workers and D1. Daily aggregate counters are retained for 90 UTC calendar days and deleted by a daily cleanup. The dashboard is restricted to the portfolio owner. Counters are not joined to contact messages, sold or used to follow visitors across websites.</p>
-    <h2>Cloudflare performance reports</h2>
-    <p>Cloudflare Web Analytics complements the custom counters with page-performance measurements, including Core Web Vitals and navigation timings. Its cookie-free beacon also reports page/referral information and an ephemeral page-load identifier; it does not create a persistent visitor profile. It loads only when the same browser preference permits analytics. The privacy page itself loads neither collector. Cloudflare's processing and retention are separate from the custom database's 90-day cleanup. See <a href="https://developers.cloudflare.com/speed/observatory/rum-beacon/" rel="noreferrer">Cloudflare's performance-data and privacy documentation</a>.</p>
-    <p>Cloudflare processes IP addresses and other network information to deliver requests, estimate country and prevent abuse. The application uses the IP transiently for rate limiting and does not store it, the full User-Agent header or raw events in analytics tables. Application request logging is disabled for this collector. Cloudflare infrastructure processing is separate from these aggregate tables and is covered by its <a href="https://www.cloudflare.com/privacypolicy/" rel="noreferrer">privacy policy</a> and <a href="https://www.cloudflare.com/cloudflare-customer-dpa/" rel="noreferrer">data processing addendum</a>. This notice does not claim that all infrastructure processing takes place exclusively in the EU.</p>
-    <h2>Contact and your rights</h2>
-    <p>This website, carlosmezquita.dev, is operated by Carlos Mezquita, who is responsible for the personal information submitted through its contact form.</p>
-    <p>The intended legal basis for necessary site measurement is the legitimate interest in administering and improving this website. You may object using the controls above, or <a href="./#contact">contact the website operator through the contact form</a> about privacy, access, erasure or other applicable rights. You may also complain to your local data protection authority. Aggregate statistics contain no visitor identifier to look up a particular person's history.</p>
-    <p>The contact form processes the name, reply address and message you choose to submit, and uses Cloudflare Turnstile for abuse prevention. Contact enquiries are stored in the website's private inbox for up to 90 days, then removed by a daily cleanup. Copies delivered by email are handled separately. Contact handling and the private inbox are separate from optional analytics. Disabling analytics does not prevent using the contact form or browsing the website. This page itself does not load the analytics collector.</p>
-    <p class="privacy-date">Updated 23 October 2026.</p>
+<body class="privacy-site">
+  <a class="skip-link" href="#main">Skip to policy</a>
+  <header class="privacy-header wrap">
+    <a class="wordmark" href="./" aria-label="Carlos Mezquita, home">Carlos Mezquita</a>
+    <a class="privacy-back" href="./"><span aria-hidden="true">↖</span> Back to the portfolio</a>
+  </header>
+  <main class="privacy-page wrap" id="main">
+    <header class="privacy-intro">
+      <div class="privacy-intro-copy">
+        <p class="privacy-eyebrow">About your information</p>
+        <h1>Privacy policy.</h1>
+        <p class="privacy-lead">What this website collects, why it’s used, and the choices you have.</p>
+        <a class="privacy-manage" href="#your-choice">Manage optional analytics <span aria-hidden="true">↓</span></a>
+      </div>
+      <aside class="privacy-overview" aria-labelledby="overview-heading">
+        <h2 id="overview-heading">In brief</h2>
+        <dl>
+          <div><dt>When you browse</dt><dd>Optional statistics help me understand how the portfolio is used.</dd></div>
+          <div><dt>When you get in touch</dt><dd>Your name, email and message are used to handle your enquiry.</dd></div>
+          <div><dt>You have a choice</dt><dd>You can turn analytics off and keep using the website normally.</dd></div>
+        </dl>
+      </aside>
+    </header>
+    <div class="privacy-document">
+      <nav class="privacy-index" aria-label="Policy sections">
+        <p>In this policy</p>
+        <ol>
+          <li><a href="#your-choice"><span aria-hidden="true">01</span> Your choice</a></li>
+          <li><a href="#contact-messages"><span aria-hidden="true">02</span> Contact messages</a></li>
+          <li><a href="#site-statistics"><span aria-hidden="true">03</span> Site statistics</a></li>
+          <li><a href="#cloudflare"><span aria-hidden="true">04</span> Cloudflare services</a></li>
+          <li><a href="#retention"><span aria-hidden="true">05</span> Storage &amp; retention</a></li>
+          <li><a href="#your-rights"><span aria-hidden="true">06</span> Contact &amp; your rights</a></li>
+        </ol>
+        <p class="privacy-updated">Last updated<br><time datetime="2026-10-23">23 October 2026</time></p>
+      </nav>
+      <div class="privacy-sections">
+        <section class="privacy-section" id="your-choice" aria-labelledby="choice-heading">
+          <p class="privacy-section-number" aria-hidden="true">01 / Your choice</p>
+          <h2 id="choice-heading">Your analytics choice</h2>
+          <p>Optional analytics measures use of this website, not advertising or profiling. Continuing to browse is not treated as consent. Disabling analytics does not prevent browsing or using the contact form.</p>
+          <div class="privacy-preference" role="group" aria-labelledby="setting-heading" aria-describedby="preference-scope">
+            <h3 id="setting-heading">Current setting</h3>
+            <p data-analytics-status role="status" aria-live="polite" aria-atomic="true">Enable JavaScript to read or change your browser preference, or use Global Privacy Control or Do Not Track.</p>
+            <div class="privacy-choices">
+              <button type="button" data-analytics-choice="off">Disable optional analytics</button>
+              <button type="button" data-analytics-choice="on">Enable optional analytics</button>
+            </div>
+            <p class="privacy-hint" id="preference-scope">This choice applies to this browser and site address.</p>
+          </div>
+          <p>Global Privacy Control and Do Not Track disable optional collection, even if you select “Enable”. Saving an opt-out writes one local browser preference solely to remember your choice. It contains no identifier and is never transmitted. Clearing site data removes it. The www address and other browsers have separate preferences.</p>
+          <p>The choice prevents both collectors from loading on subsequent portfolio visits. Custom measurements also check it before each send. Reload or close other portfolio tabs to stop performance measurement loaded before your choice. Reports already sent cannot be recalled.</p>
+        </section>
+        <section class="privacy-section" id="contact-messages" aria-labelledby="contact-heading">
+          <p class="privacy-section-number" aria-hidden="true">02 / Contact messages</p>
+          <h2 id="contact-heading">When you get in touch</h2>
+          <p>The contact form processes the name, reply address and message you submit so I can read and respond to your enquiry. Cloudflare Turnstile helps prevent spam and abuse.</p>
+          <p>Accepted enquiries are delivered by email and stored in the website’s private inbox for up to 90 days. Email copies are handled separately. Contact handling and the private inbox are separate from optional analytics; turning analytics off does not stop your message from being delivered.</p>
+        </section>
+        <section class="privacy-section" id="site-statistics" aria-labelledby="statistics-heading">
+          <p class="privacy-section-number" aria-hidden="true">03 / Site statistics</p>
+          <h2 id="statistics-heading">How site use is measured</h2>
+          <p>The custom collector keeps daily totals in separate breakdowns, with no stored link between them. It measures:</p>
+          <dl class="privacy-facts">
+            <div><dt>Traffic</dt><dd>Page views, broad traffic-source categories, approximate country, browser family, device type and viewport-width bands.</dd></div>
+            <div><dt>Engagement</dt><dd>Scroll milestones, visible-tab time milestones and page-load time bands.</dd></div>
+            <div><dt>Actions</dt><dd>CV and project link clicks, contact-form starts and accepted enquiries.</dd></div>
+          </dl>
+          <h3>What the custom collector leaves out</h3>
+          <p>No cookies, visitor or session identifiers, fingerprint hashes, session recordings or analytics storage in your browser. It sends only fixed page paths and predefined categories: no query strings, URL fragments, raw referrers, form contents or precise screen sizes.</p>
+          <p>Reloads can count again. These statistics cannot identify unique visitors. Counters are not joined to contact messages, sold or used to follow visitors across websites.</p>
+        </section>
+        <section class="privacy-section" id="cloudflare" aria-labelledby="cloudflare-heading">
+          <p class="privacy-section-number" aria-hidden="true">04 / Cloudflare services</p>
+          <h2 id="cloudflare-heading">Performance and delivery</h2>
+          <h3>Performance reports</h3>
+          <p>Cloudflare Web Analytics complements the custom counters with page-performance measurements, including Core Web Vitals and navigation timings. Its cookie-free beacon also reports page/referral information and an ephemeral page-load identifier; it does not create a persistent visitor profile.</p>
+          <p>It loads only when the same browser preference permits analytics. Cloudflare’s processing and retention are separate from the custom database’s 90-day cleanup. This privacy page loads neither analytics collector.</p>
+          <p><a href="https://developers.cloudflare.com/speed/observatory/rum-beacon/" rel="noreferrer">Read Cloudflare’s performance-data documentation <span aria-hidden="true">↗</span></a></p>
+          <h3>Network information and abuse prevention</h3>
+          <p>Cloudflare processes IP addresses and other network information to deliver requests, estimate country and prevent abuse. The application uses the IP transiently for rate limiting. It does not store IP addresses, the full User-Agent header or raw events in analytics tables. Application request logging is disabled for the custom collector.</p>
+          <p>Cloudflare infrastructure processing is separate from those aggregate tables and is covered by its <a href="https://www.cloudflare.com/privacypolicy/" rel="noreferrer">privacy policy</a> and <a href="https://www.cloudflare.com/cloudflare-customer-dpa/" rel="noreferrer">data processing addendum</a>. This notice does not claim that all infrastructure processing takes place exclusively in the EU.</p>
+        </section>
+        <section class="privacy-section" id="retention" aria-labelledby="retention-heading">
+          <p class="privacy-section-number" aria-hidden="true">05 / Storage &amp; retention</p>
+          <h2 id="retention-heading">What is kept, and for how long</h2>
+          <p>The custom collector and private dashboard run on Cloudflare Workers and D1. The dashboard is restricted to the portfolio owner.</p>
+          <dl class="privacy-facts">
+            <div><dt>Aggregate counters</dt><dd>90 UTC calendar days, then deleted by a daily cleanup.</dd></div>
+            <div><dt>Private contact inbox</dt><dd>Enquiries are kept for up to 90 days, then removed by a daily cleanup.</dd></div>
+            <div><dt>Email copies</dt><dd>Handled separately from the website’s private inbox; its 90-day cleanup does not delete delivered emails.</dd></div>
+            <div><dt>Browser preference</dt><dd>Your opt-out remains in this browser until you enable analytics or clear the site’s stored data.</dd></div>
+          </dl>
+        </section>
+        <section class="privacy-section" id="your-rights" aria-labelledby="rights-heading">
+          <p class="privacy-section-number" aria-hidden="true">06 / Contact &amp; your rights</p>
+          <h2 id="rights-heading">Questions about your information?</h2>
+          <p>This website, carlosmezquita.dev, is operated by Carlos Mezquita, who is responsible for personal information submitted through its contact form.</p>
+          <p>The intended legal basis for necessary site measurement is the legitimate interest in administering and improving this website. You may object using the controls above, or contact me about privacy, access, correction, erasure or other applicable rights. Aggregate statistics contain no visitor identifier to look up a particular person’s history.</p>
+          <div class="privacy-contact">
+            <a href="mailto:hello@carlosmezquita.dev">hello@carlosmezquita.dev <span aria-hidden="true">↗</span></a>
+            <a href="./#contact">Or use the contact form <span aria-hidden="true">↗</span></a>
+          </div>
+          <p>You may also complain to your local data protection authority. In the UK, you can <a href="https://ico.org.uk/make-a-complaint/" rel="noreferrer">contact the Information Commissioner’s Office</a>.</p>
+        </section>
+      </div>
+    </div>
   </main>
+  <footer class="privacy-footer wrap">
+    <p>Carlos Mezquita <span> / Personal portfolio</span></p>
+    <a href="#main">Back to top <span aria-hidden="true">↑</span></a>
+  </footer>
 </body>
 </html>
