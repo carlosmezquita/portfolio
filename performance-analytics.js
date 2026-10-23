@@ -4,6 +4,10 @@
   let loaded = false;
   const load = () => {
     if (loaded || document.visibilityState !== 'visible' || !window.portfolioAnalytics?.page()) return;
+    // A previously cached tracker may expose page() without the new preference
+    // checks. Enforce privacy here too, independently of that cached script.
+    if (navigator.doNotTrack === '1' || navigator.globalPrivacyControl === true) return;
+    try { if (window.localStorage?.getItem('portfolio.analytics.disabled') === '1') return; } catch { /* Browser privacy signals still apply when storage is blocked. */ }
     // Do not expose arbitrary query/fragment values to a third-party script.
     if (location.search || !['', '#main', '#projects', '#about', '#contact', '#surfay', '#urbot', '#cadeira'].includes(location.hash)) return;
     loaded = true;

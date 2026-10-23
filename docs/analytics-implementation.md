@@ -35,6 +35,8 @@ Both layouts link to `privacy.html`, which loads no collector. GPC/DNT disable c
 
 The Cloudflare loader shares the initial choice and waits for a visible document, excludes arbitrary queries/fragments, prevents duplicate loading and disables SPA measurement. Its public site token comes from the dashboard's official snippet. The official beacon has its own payloads (including an ephemeral page-load identifier/referrer/performance timings) and processing/retention; the custom collector's marginal-only storage and 90-day cleanup do not describe Cloudflare's backend. Already loaded Cloudflare measurement in other tabs stops on closing/reloading those tabs; the notice states this limit instead of promising removal of previously sent reports. No forced reload discards unsent contact forms.
 
+Analytics script URLs carry an explicit release version to avoid old browser/CDN caches reusing the previous tracker during rollout. Bump that version when privacy behaviour changes. The Cloudflare loader also independently checks the preference/GPC/DNT, so a cached older tracker cannot bypass them.
+
 ## Rollout and rollback
 
 1. Review public notice, applicable basis/exemption and Cloudflare processing/transfer terms. Set Web Analytics to **Enable with JS Snippet installation**, retaining the existing site; automatic injection must remain off.
