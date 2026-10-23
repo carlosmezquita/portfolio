@@ -109,7 +109,7 @@ update this guide. Do not mechanically replace fluid type with token maxima.
 
 Reserve saturated blended blue/cyan/teal light for the identity field. Preserve its dark
 lower edge and luminous diagonal ribbon; a random radial gradient does not carry
-the same identity. Ordinary page sections remain flat. Error red and success green
+the same identity. Ordinary page sections remain flat; the sage band’s faint wash is the supporting exception. Error red and success green
 are semantic feedback, not new brand accents. Use text/icons as well as color to
 communicate state. Check normal text at 4.5:1 and large text/essential boundaries
 at 3:1; decorative rules are not field borders.
@@ -352,7 +352,7 @@ links. Use the responsive checks and existing privacy tests in `AGENTS.md`.
 | Do | Avoid |
 | --- | --- |
 | Compose real evidence at a readable scale | A miniature screenshot pasted into a generic template |
-| Let the hero supply expressive motion | New gradients, glowing dots, cursor trails or animated body text |
+| Let the hero supply expressive motion | Unrelated gradients, glowing dots, cursor trails or animated body text |
 | Use serif display titles and quiet sans utility text | Bold sans marketing headlines or extra font families |
 | Reuse flat sections, fine rules and asymmetry | Repeated rounded cards, pill badges and feature grids |
 | Preserve recent specific refinements | Reverting the public alias, live preview or shortened note from old docs |

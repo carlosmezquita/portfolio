@@ -18,7 +18,6 @@ if (destination) {
   function sync() {
     background.classList.toggle('ambient-running', visible && !paused && !preference.matches && !document.hidden);
     toggle.hidden = preference.matches;
-    toggle.setAttribute('aria-pressed', String(paused));
     toggle.querySelector('span').textContent = paused ? 'Play glow' : 'Pause glow';
   }
 
