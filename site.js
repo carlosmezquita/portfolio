@@ -52,7 +52,7 @@ if (destination) {
       }
       const x = (event.clientX - bounds.left) / bounds.width - .5;
       const y = (event.clientY - bounds.top) / bounds.height - .5;
-      light.style.setProperty('--background-pointer', `${x * 32}px ${y * 24}px`);
+      light.style.setProperty('--background-pointer', `${x * 12}px ${y * 8}px`);
     }, { passive: true });
     background.addEventListener('pointerleave', () => {
       if (background.classList.contains('ambient-running')) resetLight();

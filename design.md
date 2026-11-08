@@ -254,14 +254,15 @@ society entries. Fine rules separate entries; factual dates and actual ownership
 provide credibility. Avoid timelines made of floating cards, skill meters and
 unverified impact counters.
 
-Keep soft, stationary teal shapes behind the introduction on sage. Let a warm
-paper highlight drift across the shapes in an eased, alternating 28-second
-cycle. Keep the highlight and tint within the introduction area. Use the small,
-seamless SVG tile in the corners, where the grain can fade before it reaches
-the experience entries. Preserve the original text colors and divider rules.
+Anchor a broad, stationary teal wash behind the location heading and intro.
+Blend a soft, curved pearl highlight into the wash. Its transform moves 16px
+horizontally and 10px vertically with a slight rotation over each 32-second
+leg. Keep the wash and grain still. Concentrate grain along the outer edge and
+in the corners, fading it toward the text. Use slightly deeper ink for the two
+small intro labels and preserve the experience column's text and divider rules.
 
 Mouse and trackpad movement in the introduction nudge the highlight by up to
-16px horizontally and 12px vertically, easing back on exit. Let touch scroll
+6px horizontally and 4px vertically, easing back on exit. Let touch scroll
 naturally. Clip the decoration with `overflow: clip` and let input reach the
 content. Follow the shared footer motion preference and pause offscreen and in
 hidden tabs. Reduced motion and disabled JavaScript keep a still composition.
@@ -270,6 +271,7 @@ The dark alternative uses its original wash.
 Visual references include the airbrushed transitions in [Magnific's grainy
 gradient collection](https://www.magnific.com/free-photos-vectors/modern-grainy-gradient)
 and the tiled SVG approach in [gradients.sh's film-grain guide](https://gradients.sh/blog/film-grain-gradient-css).
+The restrained motion follows [Apple's motion guidance](https://developer.apple.com/design/human-interface-guidelines/motion).
 
 Implementation references: [web.dev's animation guide](https://web.dev/articles/animations-guide)
 recommends transform/opacity to avoid layout/paint work; [reduced-motion guidance](https://web.dev/articles/prefers-reduced-motion)

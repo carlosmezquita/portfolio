@@ -10,6 +10,7 @@
 .background.ambient-running::before{animation-play-state:running}
 @keyframes background-drift{to{transform:translate(35%,18%)}}
 .background-grain::before{display:none}
+.background-grain .about-intro :is(.section-kicker,.languages){color:color-mix(in srgb,var(--muted) 80%,var(--ink))}
 .background-light{display:none}
 .background-grain .background-light {
   display: block;
@@ -20,25 +21,25 @@
   overflow: clip;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 72% 58% at 18% 35%, #79aaa523, transparent),
-    radial-gradient(ellipse 64% 46% at 29% 73%, #92bab51a, transparent);
-  mask-image: linear-gradient(to right, #000 66%, transparent);
+    radial-gradient(ellipse 89% 50% at 33% 36%, #548e9a2e, #79aaa523 52%, transparent),
+    radial-gradient(ellipse 68% 38% at 18% 59%, #92bab516, transparent);
+  mask-image: linear-gradient(to right, #000 70%, transparent);
 }
 .background-light::before {
   content: '';
   position: absolute;
-  inset: -25%;
-  background: radial-gradient(ellipse 36% 29% at 35% 40%, var(--paper), transparent);
+  inset: 0;
+  background: url('./img/about-highlight.svg') center 42% / 112% auto no-repeat;
   translate: var(--background-pointer, 0 0);
-  transform: translate(-5%, -4%);
-  animation: background-light-drift 28s ease-in-out infinite alternate;
+  transform: translate(-6px, -4px) rotate(-1deg);
+  animation: background-light-drift 32s ease-in-out infinite alternate;
   animation-play-state: paused;
 }
 .background.ambient-running .background-light::before {
   animation-play-state: running;
-  transition: translate 800ms ease-out;
+  transition: translate 900ms ease-out;
 }
-@keyframes background-light-drift{to{transform:translate(15%,18%)}}
+@keyframes background-light-drift{to{transform:translate(10px,6px) rotate(1.5deg)}}
 .background-grain::after {
   content: '';
   position: absolute;
@@ -46,10 +47,11 @@
   z-index: -1;
   pointer-events: none;
   background: url('./img/about-grain.svg') repeat;
-  opacity: .40;
+  opacity: .38;
   mask-image:
-    radial-gradient(ellipse 18% 10% at 0 0, #000, transparent),
-    radial-gradient(ellipse 34% 36% at 8% 100%, #000, transparent);
+    radial-gradient(ellipse 18% 10% at 0 0, #000c, transparent),
+    radial-gradient(ellipse 35% 36% at 8% 95%, #0008, transparent),
+    radial-gradient(ellipse 46% 56% at 0 42%, #0007, transparent);
 }
 @media(max-width:760px){
   .background::before{width:145vw;height:700px;left:-30%;top:0}
@@ -59,6 +61,7 @@
     height: min(36%, 355px);
     mask-image: linear-gradient(#000 55%, transparent);
   }
+  .background-light::before{background-position:center 25%}
   .background-grain::after {
     mask-image:
       radial-gradient(ellipse 26% 4% at 0 0, #000, transparent),
