@@ -34,11 +34,18 @@ test('unsafe content links and offline responses leave checked-in fallbacks inta
   assert.equal(offline.intro.textContent, 'Original intro');
 });
 
-test('both compositions contain editable copy/link hooks and a fallback privacy notice', () => {
+test('both compositions preserve editable content and the fallback privacy notice', () => {
   for (const file of ['index.html', 'direction-b.html']) {
     const html = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
     for (const key of ['intro', 'contact']) assert(html.includes(`data-content="${key}"`));
-    for (const key of ['surfay_code', 'surfay_notes', 'urbot_link', 'cadeira_link']) assert(html.includes(`data-content-link="${key}"`));
+    for (const key of ['urbot_link', 'cadeira_link']) assert(html.includes(`data-content-link="${key}"`));
     assert(html.includes('id="contact-email-hint">Your email is only used to reply</p>'));
+  }
+});
+
+test('Surfay links stay editable on the project page and dark composition', () => {
+  for (const file of ['projects/surfay/index.html', 'direction-b.html']) {
+    const html = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
+    for (const key of ['surfay_code', 'surfay_notes']) assert(html.includes(`data-content-link="${key}"`));
   }
 });
