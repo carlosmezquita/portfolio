@@ -164,8 +164,8 @@ admin tables and controls governed by the admin guide, not homepage display type
 Use whitespace, surface changes and 1px rules to establish hierarchy. No universal
 card shadow system. The real product frame has a restrained shadow, and contact
 focus has a soft sage ring; these are local cues. Do not spread glass blur, ambient
-glows or floating panels across the page. The background section's faint sage/teal
-wash is a deliberately quiet, local exception; it must not become another hero.
+glows or floating panels across the page. The background section uses a quiet
+wash of sage and Atlantic blue with a fine paper texture.
 
 ## Shapes
 
@@ -254,15 +254,22 @@ society entries. Fine rules separate entries; factual dates and actual ownership
 provide credibility. Avoid timelines made of floating cards, skill meters and
 unverified impact counters.
 
-A single broad, low-opacity teal wash may drift behind the sage surface. Use a
-soft radial gradient with a maximum alpha of 17%, moving only with `transform`
-over a 28-second, eased, alternating cycle. Keep text and rules still. No animated
-blur, grain, glow outlines, pointer tracking or additional canvas. Clip the wash
-inside the section with `overflow: clip` (not a scroll container), without
-intercepting input or scrolling its content when a control receives focus. Pause it offscreen and in hidden
-tabs, follow the shared footer motion preference, and preserve a static
-wash with reduced motion or no JavaScript. This is an atmospheric detail, not a
-second focal point. The dark alternative keeps its own underlying surface.
+Layer soft teal and marine-blue gradients over sage, with a lift of warm paper at
+the upper left. Keep the color and fine, stationary monochrome grain strongest
+around the location story. Fade the texture toward the experience entries and
+use darker muted ink locally to retain contrast for dates and labels. Use a
+small, seamless SVG tile for the texture. Keep text and rules above both layers.
+
+Move the color field with `transform` over the existing eased, alternating
+28-second cycle. Use shorter travel on phones and keep the field's edges outside
+the visible gradient throughout the cycle. Clip the decoration with `overflow: clip`
+and let input reach the content. Follow the shared footer motion preference and
+pause offscreen and in hidden tabs. Reduced motion and disabled JavaScript keep
+the still wash and grain. The dark alternative uses its original wash.
+
+Visual references include the airbrushed transitions in [Magnific's grainy
+gradient collection](https://www.magnific.com/free-photos-vectors/modern-grainy-gradient)
+and the tiled SVG approach in [gradients.sh's film-grain guide](https://gradients.sh/blog/film-grain-gradient-css).
 
 Implementation references: [web.dev's animation guide](https://web.dev/articles/animations-guide)
 recommends transform/opacity to avoid layout/paint work; [reduced-motion guidance](https://web.dev/articles/prefers-reduced-motion)
