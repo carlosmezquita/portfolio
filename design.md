@@ -150,7 +150,7 @@ project evidence prominent. Empty space provides pacing; it is not a gap to fill
 with badges, ornamental text or another feature block.
 
 Surfay’s bordered card uses a 1.6:1 image/copy split on wide screens and
-1.2:1 from 761px to 1100px. At 760px it stacks the illustration above the copy. Keep the illustration flush with
+1.2:1 from 761px to 1100px, then 1.1:1 down to 600px. Below 600px it stacks. Keep the illustration flush with
 the card edge and keep the text inset. About uses 1:1.15 columns with a 105px gap
 (65px on tablet). Contact uses .8:1.2 columns at tablet width. At ≤760px these
 stack into a single reading order, along with the secondary project rows.
