@@ -238,8 +238,9 @@ label legible at every breakpoint. The stage uses 24px padding on desktop and
 The live map and engineering links provide product evidence. Preserve the
 experimental-scoring limitation in the copy.
 
-Keep the wordmark, horizon and grain still. The rider and board share one SVG
-layer that eases with mouse or trackpad movement and returns to rest on exit.
+Keep the wordmark, wave and grain still. Place the rider below the crest with the
+board angled down the face toward the open shoulder. The rider and board share
+one SVG layer that follows that line with the pointer and eases back on exit.
 Touch, reduced motion and the footer’s pause setting use the still composition.
 Preserve keyboard focus and an accessible link name. The dark review composition
 retains its map screenshot and attribution.

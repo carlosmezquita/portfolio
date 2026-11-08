@@ -67,7 +67,10 @@ if (destination) {
       const bounds = surfay.getBoundingClientRect();
       const x = (event.clientX - bounds.left) / bounds.width - .5;
       const y = (event.clientY - bounds.top) / bounds.height - .5;
-      surfay.style.setProperty('--surfay-rider-transform', `translate(${x * 28}px, ${y * 16}px) rotate(${x * 3}deg)`);
+      const alongWave = x * 28;
+      // Track the painted board angle with a small vertical response to the pointer.
+      const downFace = alongWave * .16 + y * 6;
+      surfay.style.setProperty('--surfay-rider-transform', `translate(${alongWave}px, ${downFace}px) rotate(${x * 2}deg)`);
     }, { passive: true });
     surfay.addEventListener('pointerleave', resetRider, { passive: true });
   }
