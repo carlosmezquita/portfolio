@@ -217,7 +217,13 @@
 .surfay-project-back { display: inline-block; margin-bottom: 32px; font-size: 14px; }
 .surfay-project-page p { margin-top: 16px; }
 .surfay-project-page .project-links { flex-flow: row wrap; }
-@media (max-width: 960px) {
+@media (min-width: 761px) and (max-width: 1100px) {
+  .surfay-card { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+  .surfay-card-copy { padding: 16px clamp(16px, 2.6vw, 28px); }
+  .surfay-card-copy h3 { font-size: clamp(32px, 3.8vw, 42px); }
+  .surfay-card-copy p { margin: 10px 0 6px; font-size: 14px; line-height: 1.4; }
+}
+@media (max-width: 760px) {
   .surfay-card { grid-template-columns: minmax(0, 1fr); }
   .surfay-card-copy h3 { font-size: clamp(38px, 8vw, 48px); }
 }

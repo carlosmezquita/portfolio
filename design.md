@@ -149,8 +149,8 @@ work → sage background/experience → contact. Keep the opening navigable and 
 project evidence prominent. Empty space provides pacing; it is not a gap to fill
 with badges, ornamental text or another feature block.
 
-Surfay’s bordered card uses a 1.6:1 image/copy split on desktop and stacks
-the illustration above the copy at 960px. Keep the illustration flush with
+Surfay’s bordered card uses a 1.6:1 image/copy split on wide screens and
+1.2:1 from 761px to 1100px. At 760px it stacks the illustration above the copy. Keep the illustration flush with
 the card edge and keep the text inset. About uses 1:1.15 columns with a 105px gap
 (65px on tablet). Contact uses .8:1.2 columns at tablet width. At ≤760px these
 stack into a single reading order, along with the secondary project rows.
@@ -239,7 +239,7 @@ adapts the app’s [Golden hour palette](https://github.com/carlosmezquita/surfa
 
 Keep the wordmark, wave and grain still. Place the rider on the steep left face,
 with the board pointing left and down. The rider and board share one SVG layer
-that follows that line with the pointer and eases back on exit.
+that follows that line with the pointer anywhere over the card and eases back on exit.
 Touch, reduced motion and the footer’s pause setting use the still composition.
 Give the illustration a text alternative and preserve keyboard focus for the
 project links. The dark review composition retains its map screenshot and attribution.

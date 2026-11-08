@@ -13,7 +13,7 @@ if (destination) {
   const root = document.documentElement;
   const background = document.querySelector('.background');
   const light = document.querySelector('.background-light');
-  const surfay = document.querySelector('.surfay-banner');
+  const surfay = document.querySelector('.surfay-card');
   const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
   let paused = false;
   let visible = !('IntersectionObserver' in window);
