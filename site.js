@@ -69,7 +69,7 @@ if (destination) {
       const y = (event.clientY - bounds.top) / bounds.height - .5;
       const alongWave = x * 28;
       // Track the painted board angle with a small vertical response to the pointer.
-      const downFace = alongWave * .16 + y * 6;
+      const downFace = -alongWave * .34 + y * 6;
       surfay.style.setProperty('--surfay-rider-transform', `translate(${alongWave}px, ${downFace}px) rotate(${x * 2}deg)`);
     }, { passive: true });
     surfay.addEventListener('pointerleave', resetRider, { passive: true });
