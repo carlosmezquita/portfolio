@@ -165,7 +165,7 @@ Use whitespace, surface changes and 1px rules to establish hierarchy. No univers
 card shadow system. The real product frame has a restrained shadow, and contact
 focus has a soft sage ring; these are local cues. Do not spread glass blur, ambient
 glows or floating panels across the page. The background section uses a quiet
-wash of sage and Atlantic blue with a fine paper texture.
+sage and teal wash with a fine paper texture.
 
 ## Shapes
 
@@ -254,18 +254,18 @@ society entries. Fine rules separate entries; factual dates and actual ownership
 provide credibility. Avoid timelines made of floating cards, skill meters and
 unverified impact counters.
 
-Layer soft teal and marine-blue gradients over sage, with a lift of warm paper at
-the upper left. Keep the color and fine, stationary monochrome grain strongest
-around the location story. Fade the texture toward the experience entries and
-use darker muted ink locally to retain contrast for dates and labels. Use a
-small, seamless SVG tile for the texture. Keep text and rules above both layers.
+Keep soft, stationary teal shapes behind the introduction on sage. Let a warm
+paper highlight drift across the shapes in an eased, alternating 28-second
+cycle. Keep the highlight and tint within the introduction area. Use the small,
+seamless SVG tile in the corners, where the grain can fade before it reaches
+the experience entries. Preserve the original text colors and divider rules.
 
-Move the color field with `transform` over the existing eased, alternating
-28-second cycle. Use shorter travel on phones and keep the field's edges outside
-the visible gradient throughout the cycle. Clip the decoration with `overflow: clip`
-and let input reach the content. Follow the shared footer motion preference and
-pause offscreen and in hidden tabs. Reduced motion and disabled JavaScript keep
-the still wash and grain. The dark alternative uses its original wash.
+Mouse and trackpad movement in the introduction nudge the highlight by up to
+16px horizontally and 12px vertically, easing back on exit. Let touch scroll
+naturally. Clip the decoration with `overflow: clip` and let input reach the
+content. Follow the shared footer motion preference and pause offscreen and in
+hidden tabs. Reduced motion and disabled JavaScript keep a still composition.
+The dark alternative uses its original wash.
 
 Visual references include the airbrushed transitions in [Magnific's grainy
 gradient collection](https://www.magnific.com/free-photos-vectors/modern-grainy-gradient)
