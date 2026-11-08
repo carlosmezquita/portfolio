@@ -208,7 +208,7 @@
 @media(prefers-reduced-motion:reduce){.touch-hint{display:none!important}}
 
 /* The poster sits still while the surfer and board respond to the pointer. */
-.surfay-banner { aspect-ratio: 900/523; background: #f4ebd8; cursor: pointer; }
+.surfay-banner { aspect-ratio: 900/523; background: #f4ebd8; }
 .surfay-art { display: block; width: 100%; height: 100%; }
 .surfay-rider { transform-box: fill-box; transform-origin: center; }
 @media (prefers-reduced-motion: no-preference) {

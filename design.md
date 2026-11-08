@@ -232,19 +232,19 @@ brand continuity, not copying their dark palettes or assuming conversion gains.
 Surfay’s 900:523 SVG poster sits in the sand stage beside contribution copy and
 evidence links. It adapts the app’s [Golden hour palette](https://github.com/carlosmezquita/surfay/blob/main/src/index.css)
 and Fraunces wordmark into a cream, orange and teal scene with a surfer and a
-fine print grain. Use Surfay as the only lettering on the poster and a pointer
-cursor for the full-poster live map link. Keep the full composition visible at
-every breakpoint. The stage uses 24px padding on desktop and 12px on phones,
-and stacks above the copy at 960px. The artwork is illustrative.
-The live map and engineering links provide product evidence. Preserve the
-experimental-scoring limitation in the copy.
+fine print grain. Use Surfay as the only lettering on the poster. Keep the full
+composition visible at every breakpoint. The stage uses 24px padding on desktop
+and 12px on phones, and stacks above the copy at 960px. The artwork is illustrative.
+Place **Explore the repository** and **Open live view** in the project copy as
+separate links, with the engineering notes linked inline from the technical
+description. Preserve the experimental-scoring limitation in the copy.
 
 Keep the wordmark, wave and grain still. Place the rider on the steep left face,
 with the board pointing left and down. The rider and board share one SVG layer
 that follows that line with the pointer and eases back on exit.
 Touch, reduced motion and the footer’s pause setting use the still composition.
-Preserve keyboard focus and an accessible link name. The dark review composition
-retains its map screenshot and attribution.
+Give the illustration a text alternative and preserve keyboard focus for the
+project links. The dark review composition retains its map screenshot and attribution.
 
 Urbot and CadeiraAI use ruled horizontal rows, clear status and honest contact
 links. Do not fabricate screenshots to make their layouts match Surfay.

@@ -81,21 +81,24 @@
       <div class="section-heading"><h2 id="work-heading">Selected work</h2><p>Independent projects &amp; ongoing work</p></div>
       <article class="showcase" id="surfay" aria-labelledby="surfay-heading">
         <div class="surfay-stage surfay-stage--banner">
-          <a class="product-frame surfay-banner" href="https://surfay.carlosmezquita.dev/map" target="_blank" rel="noopener noreferrer" aria-label="Open Surfay’s live map (opens in a new tab)">
-            <svg class="surfay-art" viewBox="0 0 900 523" aria-hidden="true" focusable="false">
+          <div class="product-frame surfay-banner">
+            <svg class="surfay-art" viewBox="0 0 900 523" role="img" aria-label="Surfay poster with a surfer riding down a wave at sunset" focusable="false">
               <use href="./img/surfay-banner.svg#surfay-backdrop"/>
               <use class="surfay-rider" href="./img/surfay-banner.svg#surfay-surfer"/>
               <use href="./img/surfay-banner.svg#surfay-finish"/>
             </svg>
-          </a>
+          </div>
         </div>
         <div class="showcase-copy">
           <p class="project-context">Personal project · Working prototype</p>
           <h3 id="surfay-heading">Surf forecasts<br> for Galicia.</h3>
           <p>A surf forecast for Galicia. I built the map interface and backend that turn marine forecasts and local coastal profiles into hourly spot forecasts.</p>
-          <p class="technical-detail">The backend keeps spot updates and forecast snapshots in sync, and preserves the forecast behind each condition report.</p>
+          <p class="technical-detail">The <a data-content-link="surfay_notes" data-project-target="surfay" data-github-target="surfay-engineering" href="https://github.com/carlosmezquita/surfay/blob/main/docs/engineering.md">engineering notes</a> explain how the backend keeps spot updates and forecast snapshots in sync, and preserves the forecast behind each condition report.</p>
           <p class="stack">React, TypeScript, MapLibre<br> Cloudflare Workers &amp; D1</p>
-          <div class="project-links"><a data-content-link="surfay_code" data-project-target="surfay" data-github-target="surfay" href="https://github.com/carlosmezquita/surfay">Explore the code <span aria-hidden="true">↗</span></a><a data-content-link="surfay_notes" data-project-target="surfay" data-github-target="surfay-engineering" href="https://github.com/carlosmezquita/surfay/blob/main/docs/engineering.md">Engineering notes <span aria-hidden="true">↗</span></a></div>
+          <div class="project-links">
+            <a data-content-link="surfay_code" data-project-target="surfay" data-github-target="surfay" href="https://github.com/carlosmezquita/surfay">Explore the repository <span aria-hidden="true">↗</span></a>
+            <a href="https://surfay.carlosmezquita.dev/map" target="_blank" rel="noopener noreferrer" aria-label="Open live view (opens in a new tab)">Open live view <span aria-hidden="true">↗</span></a>
+          </div>
           <p class="project-limit">Experimental scoring; forecast accuracy hasn’t been independently validated.</p>
         </div>
       </article>
