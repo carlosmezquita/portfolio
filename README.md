@@ -15,7 +15,7 @@ Static HTML, CSS and small scripts for navigation, motion and contact. No build 
 - `img/social-card-v2.png`: current shared-link poster with the original artwork, name and role, without a portrait; the previous `social-card.png` remains available for cached links.
 - `scripts/build_social_card.py`: rebuilds that 1200×630 image using the checked-in assets/fonts; requires `fonttools[woff]` and Inkscape.
 - `site.css`: responsive warm editorial layout, dark alternative, focus states and print styles.
-- `img/surfay-forecast.png`: current real Surfay map preview, retaining embedded map attribution; links to the live map.
+- `img/surfay-banner.svg`: illustrated Surfay poster on the homepage, with a separate rider layer and a link to the live map.
 - `design.md`: canonical visual contract, tokens, component patterns and motion/responsive rules.
 - `AGENTS.md`: agent entry point, source map, design workflow and relevant checks.
 - `docs/evidence-review.md`: claim review, LinkedIn inconsistencies and remaining publication gates.

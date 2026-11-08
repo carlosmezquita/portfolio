@@ -13,6 +13,7 @@ if (destination) {
   const root = document.documentElement;
   const background = document.querySelector('.background');
   const light = document.querySelector('.background-light');
+  const surfay = document.querySelector('.surfay-banner');
   const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
   let paused = false;
   let visible = !('IntersectionObserver' in window);
@@ -25,6 +26,7 @@ if (destination) {
       light.style.setProperty('--background-pointer', getComputedStyle(light, '::before').translate);
     }
     root.classList.toggle('motion-paused', stopped);
+    if (stopped) surfay?.style.removeProperty('--surfay-rider-transform');
     // Entrance effects are one-shot; do not hide/replay the form when resuming.
     if (stopped) root.classList.add('motion-settled');
     background?.classList.toggle('ambient-running', running);
@@ -57,6 +59,17 @@ if (destination) {
     background.addEventListener('pointerleave', () => {
       if (background.classList.contains('ambient-running')) resetLight();
     }, { passive: true });
+  }
+  if (surfay) {
+    const resetRider = () => surfay.style.removeProperty('--surfay-rider-transform');
+    surfay.addEventListener('pointermove', event => {
+      if (event.pointerType !== 'mouse' || paused || preference.matches) return;
+      const bounds = surfay.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width - .5;
+      const y = (event.clientY - bounds.top) / bounds.height - .5;
+      surfay.style.setProperty('--surfay-rider-transform', `translate(${x * 28}px, ${y * 16}px) rotate(${x * 3}deg)`);
+    }, { passive: true });
+    surfay.addEventListener('pointerleave', resetRider, { passive: true });
   }
   if (background && 'IntersectionObserver' in window) {
     new IntersectionObserver(([entry]) => {
