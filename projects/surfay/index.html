@@ -1,12 +1,29 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Surfay | Carlos Mezquita</title>
-<meta name="robots" content="noindex, follow">
-<link rel="canonical" href="https://carlosmezquita.dev/">
-<meta http-equiv="refresh" content="0;url=../../#surfay">
-<link rel="stylesheet" href="../../site.css">
-<script defer src="../../analytics.js?v=20261023-2"></script>
-</head><body><main class="page"><section class="intro"><h1>Surfay</h1><p>This project is now part of my portfolio overview.</p><p><a href="../../#surfay">View the Surfay summary</a></p></section></main>
-<script>window.location.replace('../../#surfay');</script>
-</body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Surfay | Carlos Mezquita</title>
+  <meta name="description" content="An interactive map with hourly surf forecasts for spots along the Galician coast.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://carlosmezquita.dev/projects/surfay/">
+  <link rel="stylesheet" href="../../site.css?v=20261108-surfay-card">
+  <script defer src="../../site-content.js"></script>
+  <script defer src="../../analytics.js?v=20261023-2"></script>
+</head>
+<body>
+  <main class="wrap surfay-project-page" id="surfay" aria-labelledby="surfay-title">
+    <a class="surfay-project-back" href="../../#surfay">← Back to selected work</a>
+    <h1 id="surfay-title">Surfay</h1>
+    <p class="project-context">Personal project · Working prototype</p>
+    <p>I built the map interface and backend that turn marine forecasts and local coastal profiles into hourly spot forecasts for Galicia.</p>
+    <p>The <a data-content-link="surfay_notes" data-project-target="surfay" data-github-target="surfay-engineering" href="https://github.com/carlosmezquita/surfay/blob/main/docs/engineering.md">engineering notes</a> explain how the backend keeps spot updates and forecast snapshots in sync and preserves the forecast behind each condition report.</p>
+    <p class="stack">React, TypeScript, MapLibre · Cloudflare Workers &amp; D1</p>
+    <div class="project-links">
+      <a data-content-link="surfay_code" data-project-target="surfay" data-github-target="surfay" href="https://github.com/carlosmezquita/surfay">Explore the repository <span aria-hidden="true">↗</span></a>
+      <a href="https://surfay.carlosmezquita.dev/map" target="_blank" rel="noopener noreferrer" aria-label="Open live view (opens in a new tab)">Open live view <span aria-hidden="true">↗</span></a>
+    </div>
+    <p class="project-context">Experimental scoring. Forecast accuracy hasn’t been independently validated.</p>
+  </main>
+</body>
+</html>

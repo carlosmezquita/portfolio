@@ -126,7 +126,7 @@ closely tracked and expressive without bold weight. Sans provides precise readin
 | Hero name | `clamp(56px, 7.2vw, 100px)`, serif, 1.05 | `clamp(42px, 8.5vw, 63px)`; 38px at ≤360px |
 | Intro lead | 23px sans, 1.5; 20px at ≤1050px | 20px |
 | Selected work title | 36px serif, 1.2 | 30px |
-| Surfay headline | `clamp(40px, 4.2vw, 60px)`, serif, 1.05 | 43px |
+| Surfay headline | `clamp(40px, 4.3vw, 63px)`, serif, .98 | `clamp(38px, 8vw, 48px)` |
 | Other project names | 36px serif | 32px |
 | About headline | `clamp(38px, 4.2vw, 59px)`, serif, 1.1 | 43px |
 | Get in touch. | 61px serif, 1; tracking -.04em | 48px |
@@ -149,10 +149,11 @@ work → sage background/experience → contact. Keep the opening navigable and 
 project evidence prominent. Empty space provides pacing; it is not a gap to fill
 with badges, ornamental text or another feature block.
 
-Surfay uses a 1.6:1 image/copy split with a 49px gap on desktop, narrowing at the
-tablet breakpoint. About uses 1:1.15 columns with a 105px gap (65px on tablet).
-Contact matches the broad split, with .8:1.2 columns at tablet width. At ≤760px,
-these stack into a single reading order; secondary project rows stack too.
+Surfay’s bordered card uses a 1.6:1 image/copy split on desktop and stacks
+the illustration above the copy at 760px. Keep the illustration flush with
+the card edge and keep the text inset. About uses 1:1.15 columns with a 105px gap
+(65px on tablet). Contact uses .8:1.2 columns at tablet width. At ≤760px these
+stack into a single reading order, along with the secondary project rows.
 Keep `minmax(0, …)`/`min-width:0` where needed so long content cannot widen the page.
 
 New public text pages can use a narrower reading column, shared paper/ink/fonts
@@ -229,15 +230,12 @@ brand continuity, not copying their dark palettes or assuming conversion gains.
 
 ### Selected work
 
-Surfay’s 900:523 SVG poster sits in the sand stage beside contribution copy and
-evidence links. It adapts the app’s [Golden hour palette](https://github.com/carlosmezquita/surfay/blob/main/src/index.css)
-and Fraunces wordmark into a cream, orange and teal scene with a surfer and a
-fine print grain. Use Surfay as the only lettering on the poster. Keep the full
-composition visible at every breakpoint. The stage uses 24px padding on desktop
-and 12px on phones, and stacks above the copy at 960px. The artwork is illustrative.
-Place **Explore the repository** and **Open live view** in the project copy as
-separate links, with the engineering notes linked inline from the technical
-description. Preserve the experimental-scoring limitation in the copy.
+Surfay’s full 900:523 SVG poster and short summary share one bordered card.
+Use a headline, one sentence and a **Read more** link. The link opens the
+dedicated project page, which holds the technical details, repository and live
+map links, and experimental-scoring note while the longer article is prepared.
+Keep the full poster visible and use Surfay as its only lettering. The poster
+adapts the app’s [Golden hour palette](https://github.com/carlosmezquita/surfay/blob/main/src/index.css) and Fraunces wordmark.
 
 Keep the wordmark, wave and grain still. Place the rider on the steep left face,
 with the board pointing left and down. The rider and board share one SVG layer

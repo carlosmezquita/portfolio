@@ -2,7 +2,7 @@
 
 [Visit the portfolio](https://carlosmezquita.dev)
 
-A concise overview of my software work, Denodo experience, education and contact details. Surfay links directly to its public repository and engineering notes. Urbot and Cadeira have brief summaries and contact links.
+A concise overview of my software work, Denodo experience, education and contact details. Surfay’s card links to a project page with its repository, engineering notes and live map. Urbot and Cadeira have brief summaries and contact links.
 
 ## Implementation
 
