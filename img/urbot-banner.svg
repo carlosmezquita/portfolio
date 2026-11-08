@@ -1,27 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 523" role="img" aria-labelledby="title desc">
   <title id="title">Urbot</title>
-  <desc id="desc">An architectural model rising from a parcel plan, with drafting lines and a marked setback.</desc>
+  <desc id="desc">An isometric city block with a highlighted development site and architectural setback lines.</desc>
   <defs>
-    <linearGradient id="paper" x2=".9" y2="1"><stop stop-color="#f1eee2"/><stop offset="1" stop-color="#c4d1bd"/></linearGradient>
-    <radialGradient id="light"><stop stop-color="#fff8e5" stop-opacity=".95"/><stop offset="1" stop-color="#fff8e5" stop-opacity="0"/></radialGradient>
-    <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0v26" fill="none" stroke="#31534a" stroke-opacity=".14"/></pattern>
-    <filter id="grain" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".86" numOctaves="3" seed="14" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 .12  0 0 0 0 .17  0 0 0 0 .12  1.2 0 0 0 -.49"/></filter>
-    <pattern id="paper-grain" width="160" height="160" patternUnits="userSpaceOnUse"><rect width="160" height="160" filter="url(#grain)"/></pattern>
+    <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#f1efdf"/><stop offset=".52" stop-color="#dce3cc"/><stop offset="1" stop-color="#a5bc9e"/></linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0v30" fill="none" stroke="#31534a" stroke-opacity=".15"/></pattern>
+    <filter id="noise" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".86" numOctaves="3" seed="14" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 .12  0 0 0 0 .17  0 0 0 0 .12  1.2 0 0 0 -.49"/></filter>
+    <pattern id="grain" width="160" height="160" patternUnits="userSpaceOnUse"><rect width="160" height="160" filter="url(#noise)"/></pattern>
   </defs>
   <path d="M0 0h900v523H0z" fill="url(#paper)"/>
-  <ellipse cx="246" cy="210" rx="378" ry="325" fill="url(#light)"/>
-  <path d="M444 56h456v411H444z" fill="url(#grid)"/>
-  <path d="m0 452 900-53m-900 26 900-53" stroke="#657d69" stroke-opacity=".35" fill="none"/>
-  <path d="m484 313 164-94 205 81-165 104Z" fill="#e7e6cd" stroke="#31534a" stroke-width="2.5"/>
-  <path d="m484 313 204 91 165-104v16L688 421l-204-92Z" fill="#9eae92" stroke="#31534a" stroke-width="2" stroke-linejoin="round"/>
-  <path d="m522 316 131-76 164 65-131 82Z" fill="#cfdbc3" stroke="#657d69" stroke-width="2" stroke-dasharray="6 6"/>
-  <path d="m555 311 79-45 126 51-81 50Z" fill="#31534a" opacity=".16" transform="translate(10 8)"/>
-  <path d="m571 205 88 36 87-52v119l-87 54-88-37Z" fill="#bd793b" stroke="#2a443b" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="m659 241 87-52v119l-87 54Z" fill="#915331" stroke="#2a443b" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="m571 205 86-50 89 34-87 52Z" fill="#efbf79" stroke="#2a443b" stroke-width="2.5" stroke-linejoin="round"/>
-  <path d="m592 242 46 19m-46 10 46 19m-46 10 46 19m43-62 43-26m-43 55 43-26m-43 55 43-26" fill="none" stroke="#ffe8b8" stroke-width="4" stroke-opacity=".8"/>
-  <path d="m551 190 92-55m-91 52 4 7m83-64 6 8m116 40 31 12v105m-35-118 8 3m22 115 9-1" fill="none" stroke="#31534a" stroke-width="1.5" stroke-opacity=".75"/>
-  <g fill="#31534a"><circle cx="522" cy="316" r="4"/><circle cx="817" cy="305" r="4"/><circle cx="686" cy="387" r="4"/></g>
-  <path d="M0 0h900v523H0z" fill="url(#paper-grain)" opacity=".39"/>
+  <circle cx="702" cy="230" r="207" fill="#466a57" opacity=".16"/>
+  <path d="M430 30h470v493H430z" fill="url(#grid)"/>
+  <path d="M0 482 900 413m-900 48 900-69" stroke="#657d69" stroke-opacity=".38"/>
+  <g stroke="#31534a" stroke-width="2.5" stroke-linejoin="round">
+    <path d="m422 327 247-143 211 116-240 151Z" fill="#ecdfbd"/>
+    <path d="m422 327 218 124 240-151v17L640 469 422 345Z" fill="#94a98d"/>
+    <path d="m499 345 125-73 139 78-125 78Z" fill="#bbc7a6" stroke-dasharray="7 6"/>
+    <path d="m472 303 87-51 63 34-87 51Z" fill="#d7dfc4"/>
+    <path d="m689 246 69-40 83 47-70 42Z" fill="#c7d4b5"/>
+    <path d="m481 256 53 28 47-27v-49l-47 27-53-28Z" fill="#678676"/>
+    <path d="m481 207 48-28 52 29-47 27Z" fill="#b6c9a9"/>
+    <path d="m713 197 50 27 47-28v-65l-47 27-50-27Z" fill="#537264"/>
+    <path d="m713 131 47-28 50 28-47 27Z" fill="#a8bfa0"/>
+    <path d="m565 235 84 43 75-46v107l-75 49-84-45Z" fill="#bd773f"/>
+    <path d="m649 278 75-46v107l-75 49Z" fill="#8a5039"/>
+    <path d="m565 235 75-45 84 42-75 46Z" fill="#edbf79"/>
+  </g>
+  <g fill="none" stroke="#f7e8be" stroke-width="3.5"><path d="m582 264 49 26m-49-1 49 26m-49-1 49 26m33-53 43-27m-43 52 43-27m-43 52 43-27"/></g>
+  <path d="m483 180 48-28m-51 24 5 8m44-36 4 8m37 58 73-44m-76 40 5 8m69-52 4 8m115-71 48-29m-50 25 4 8m44-36 4 8" fill="none" stroke="#31534a" stroke-width="1.5" opacity=".75"/>
+  <g fill="#31534a"><circle cx="499" cy="345" r="4"/><circle cx="763" cy="350" r="4"/><circle cx="638" cy="428" r="4"/></g>
+  <path d="M0 0h900v523H0z" fill="url(#grain)" opacity=".32"/>
   <path d="M98.22 294.25Q90.72 294.25 84.95 290.71Q79.18 287.16 75.98 280.84Q72.79 274.51 72.79 266.31V202.09Q72.79 199.18 71.88 198.2Q70.98 197.23 68.06 196.67L64.86 196.12Q63.06 195.7 63.06 194.45Q63.06 192.92 65.14 192.92H90.58Q92.67 192.92 92.67 194.59Q92.67 195.84 91.14 196.12L87.38 196.67Q84.6 197.09 83.63 198.2Q82.66 199.31 82.66 202.23V266.45Q82.66 277.01 87.38 282.85Q92.11 288.69 100.59 288.69Q109.21 288.69 113.93 282.85Q118.66 277.01 118.66 266.45V205.01Q118.66 197.51 113.93 196.67L110.18 196.12Q108.65 195.84 108.65 194.59Q108.65 192.92 110.74 192.92H130.75Q132.84 192.92 132.84 194.45Q132.84 195.7 131.03 196.12L127.83 196.67Q123.11 197.51 123.11 204.87V266.31Q123.11 278.96 116.3 286.61Q109.48 294.25 98.22 294.25ZM154.31 231.01Q160.01 221.28 168.07 221.28Q172.66 221.28 174.88 223.99Q177.11 226.7 177.11 230.03Q177.11 232.67 175.79 234.34Q174.47 236.01 171.69 236.01Q169.46 236.01 168.42 234.97Q167.38 233.93 166.75 232.53Q166.12 231.14 165.29 230.1Q164.46 229.06 162.51 229.06Q160.01 229.06 157.79 232.05Q155.56 235.04 154.1 240.04Q152.64 245.04 152.64 251.44V283.69Q152.64 286.61 153.55 287.86Q154.45 289.11 157.37 289.39L161.12 289.8Q162.65 290.08 162.65 291.33Q162.65 293 160.56 293H137.07Q134.99 293 134.99 291.47Q134.99 290.22 136.8 289.8L138.46 289.52Q141.38 288.97 142.29 287.79Q143.19 286.61 143.19 283.69V236.98Q143.19 234.48 142.43 233.58Q141.66 232.67 139.72 232.4L136.8 231.98Q134.99 231.84 134.99 230.45Q134.99 229.34 137.21 228.92Q141.52 228.23 143.82 226.7Q146.11 225.17 148.61 222.94Q149.86 221.69 150.7 221.69Q151.95 221.69 151.95 223.36V230.87Q151.95 231.84 152.78 232.05Q153.62 232.26 154.31 231.01ZM204.14 294.25Q198.44 294.25 193.16 290.64Q190.1 288.55 187.6 291.75Q186.21 293.28 185.51 293.76Q184.82 294.25 184.12 294.25Q182.59 294.25 183.01 292.31Q183.57 289.11 183.85 284.1Q184.12 279.1 184.12 270.76V204.04Q184.12 201.54 183.36 200.63Q182.59 199.73 180.65 199.45L177.73 199.04Q176.2 198.76 176.2 197.37Q176.2 195.98 177.73 195.7Q181.62 194.87 184.26 193.75Q186.9 192.64 188.71 191.53Q190.94 190.14 192.05 190.14Q193.58 190.14 193.58 192.36V226.7Q193.58 227.81 194.48 228.16Q195.38 228.5 196.5 227.39Q202.47 221.28 209.56 221.28Q215.96 221.28 220.89 225.52Q225.82 229.75 228.67 237.26Q231.52 244.77 231.52 254.91Q231.52 266.45 227.91 275.35Q224.3 284.24 218.11 289.25Q211.92 294.25 204.14 294.25ZM203.86 290.78Q211.65 290.78 216.44 281.6Q221.24 272.43 221.24 256.86Q221.24 242.54 217.07 235.04Q212.9 227.53 205.25 227.53Q200.53 227.53 197.05 231.42Q193.58 235.31 193.58 242.26V277.29Q193.58 283.55 196.43 287.16Q199.28 290.78 203.86 290.78ZM263.7 294.25Q256.61 294.25 250.98 289.46Q245.35 284.66 242.02 276.32Q238.68 267.98 238.68 257.69Q238.68 247.41 242.02 239.21Q245.35 231.01 251.05 226.14Q256.75 221.28 263.7 221.28Q270.79 221.28 276.42 226.14Q282.05 231.01 285.38 239.21Q288.72 247.41 288.72 257.69Q288.72 267.98 285.45 276.32Q282.19 284.66 276.49 289.46Q270.79 294.25 263.7 294.25ZM263.7 290.78Q278.16 290.78 278.16 257.69Q278.16 224.75 263.7 224.75Q249.24 224.75 249.24 257.69Q249.24 290.78 263.7 290.78ZM311.03 294.25Q306.16 294.25 303.04 290.85Q299.91 287.44 299.91 279.66V227.67Q299.91 226 298.24 226H294.21Q291.99 226 291.99 224.33Q291.99 223.22 293.24 222.39Q297.82 219.19 300.6 215.51Q303.38 211.82 305.47 205.43Q306.44 202.51 307.83 202.51Q309.36 202.51 309.36 204.73V220.16Q309.36 222.11 311.31 222.11H320.34Q322.57 222.11 322.57 224.06Q322.57 226 320.34 226H311.31Q309.36 226 309.36 227.95V279.8Q309.36 282.85 310.33 284.59Q311.31 286.33 313.95 286.33Q316.87 286.33 318.74 283.41Q320.62 280.49 321.18 273.96Q321.45 272.01 322.98 272.01Q324.65 272.01 324.65 274.1Q324.23 284.8 320.27 289.52Q316.31 294.25 311.03 294.25Z" fill="#213a33"/>
 </svg>

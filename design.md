@@ -83,10 +83,9 @@ history, rather than additional design documents.
 
 ### What gives this design its character
 
-The hero is the expressive moment. Below it, typography, whitespace and real
-product evidence do the work. Surfay deserves a large composed presentation;
-Urbot and CadeiraAI have shorter editorial rows because their evidence differs.
-This asymmetry is intentional. Do not flatten the page into interchangeable cards.
+The hero is the expressive moment. Below it, typography, whitespace and project
+evidence do the work. Surfay, Urbot and CadeiraAI share a card layout, with a
+distinct illustrated composition for each project.
 
 The token block gives reusable reference values, not a replacement stylesheet.
 Responsive formulas and component exceptions below matter. Reuse existing CSS
@@ -244,10 +243,10 @@ Touch, reduced motion and the footer’s pause setting use the still composition
 Give the illustration a text alternative and preserve keyboard focus for the
 project links. The dark review composition retains its map screenshot and attribution.
 
-Urbot and CadeiraAI use ruled rows, clear status and contact links. Add smaller
-900:523 grainy SVG posters with outlined Instrument Serif wordmarks. Urbot uses
-a parcel plan and building mass; CadeiraAI uses a receiver and dinner plate.
-These are conceptual illustrations. Stack the art and copy at 600px.
+Urbot and CadeiraAI use the same card structure as Surfay, with a concise
+description and a contact link. Their grainy SVG posters use distinct palettes
+and outlined Instrument Serif lettering. Urbot shows a city block and setback
+lines. CadeiraAI shows a receiver above a restaurant table set for two.
 
 ### Background
 

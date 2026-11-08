@@ -207,42 +207,33 @@
 @media(max-width:760px),(pointer:coarse){.motion-ready:not(.motion-paused) .touch-hint{display:block}}
 @media(prefers-reduced-motion:reduce){.touch-hint{display:none!important}}
 
-/* Secondary projects keep their editorial rows with compact poster art. */
-.project-row--illustrated { grid-template-columns: minmax(0, 1fr); gap: 16px; }
-.project-row-art { display: block; width: min(100%, 300px); height: auto; border: 1px solid var(--line); }
-.project-row-copy { min-width: 0; }
-.project-row-copy .project-description { margin-top: 10px; }
-.project-row-copy .row-link { display: inline-block; margin-top: 10px; padding: 6px 0; }
-@media (min-width: 601px) {
-  .project-row--illustrated { grid-template-columns: clamp(190px, 29%, 350px) minmax(0, 1fr); align-items: center; gap: clamp(22px, 4vw, 54px); }
-  .project-row-art { width: 100%; }
-}
-
-/* The featured project reads as one editorial card. */
-.surfay-card { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: center; border: 1px solid var(--line); background: #fbfaf6; scroll-margin-top: 28px; }
-.surfay-card-copy { padding: clamp(24px, 3vw, 44px); }
-.surfay-card-copy h3, .surfay-project-page h1 { font: 400 clamp(40px, 4.3vw, 63px)/.98 var(--serif); letter-spacing: -.035em; }
-.surfay-card-copy p { max-width: 33ch; margin: 16px 0 22px; font-size: 15px; }
-.surfay-card-more { display: inline-block; min-height: 44px; padding-block: 10px; font-size: 13px; }
+/* Project artwork and concise copy share an editorial card. */
+.work-card { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: center; border: 1px solid var(--line); background: #fbfaf6; scroll-margin-top: 28px; }
+.work-card-art { display: block; width: 100%; height: auto; }
+.work-card + .work-card { margin-top: 20px; }
+.work-card-copy { padding: clamp(24px, 3vw, 44px); }
+.work-card-copy h3, .surfay-project-page h1 { font: 400 clamp(40px, 4.3vw, 63px)/.98 var(--serif); letter-spacing: -.035em; }
+.work-card-copy p { max-width: 33ch; margin: 16px 0 22px; font-size: 15px; }
+.work-card-link { display: inline-block; min-height: 44px; padding-block: 10px; font-size: 13px; }
 .surfay-project-page { max-width: 820px; padding-block: clamp(32px, 7vw, 88px); }
 .surfay-project-back { display: inline-block; margin-bottom: 32px; font-size: 14px; }
 .surfay-project-page p { margin-top: 16px; }
 .surfay-project-page .project-links { flex-flow: row wrap; }
 @media (760px < width <= 1100px) {
-  .surfay-card { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
-  .surfay-card-copy { padding: 16px clamp(16px, 2.6vw, 28px); }
-  .surfay-card-copy h3 { font-size: clamp(32px, 3.8vw, 42px); }
-  .surfay-card-copy p { margin: 10px 0 6px; font-size: 14px; line-height: 1.4; }
+  .work-card { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+  .work-card-copy { padding: 16px clamp(16px, 2.6vw, 28px); }
+  .work-card-copy h3 { font-size: clamp(32px, 3.8vw, 42px); }
+  .work-card-copy p { margin: 10px 0 6px; font-size: 14px; line-height: 1.4; }
 }
 @media (600px <= width <= 760px) {
-  .surfay-card { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
-  .surfay-card-copy { padding: 8px 12px; }
-  .surfay-card-copy h3 { font-size: clamp(26px, 4.15vw, 31px); }
-  .surfay-card-copy p { margin: 8px 0 0; font-size: 13px; line-height: 1.4; }
+  .work-card { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+  .work-card-copy { padding: 8px 12px; }
+  .work-card-copy h3 { font-size: clamp(26px, 4.15vw, 31px); }
+  .work-card-copy p { margin: 8px 0 0; font-size: 13px; line-height: 1.4; }
 }
 @media (width < 600px) {
-  .surfay-card { grid-template-columns: minmax(0, 1fr); }
-  .surfay-card-copy h3 { font-size: clamp(38px, 8vw, 48px); }
+  .work-card { grid-template-columns: minmax(0, 1fr); }
+  .work-card-copy h3 { font-size: clamp(38px, 8vw, 48px); }
 }
 
 /* The poster sits still while the surfer and board respond to the pointer. */
