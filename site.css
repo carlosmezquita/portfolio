@@ -207,6 +207,17 @@
 @media(max-width:760px),(pointer:coarse){.motion-ready:not(.motion-paused) .touch-hint{display:block}}
 @media(prefers-reduced-motion:reduce){.touch-hint{display:none!important}}
 
+/* Secondary projects keep their editorial rows with compact poster art. */
+.project-row--illustrated { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.project-row-art { display: block; width: min(100%, 300px); height: auto; border: 1px solid var(--line); }
+.project-row-copy { min-width: 0; }
+.project-row-copy .project-description { margin-top: 10px; }
+.project-row-copy .row-link { display: inline-block; margin-top: 10px; padding: 6px 0; }
+@media (min-width: 601px) {
+  .project-row--illustrated { grid-template-columns: clamp(190px, 29%, 350px) minmax(0, 1fr); align-items: center; gap: clamp(22px, 4vw, 54px); }
+  .project-row-art { width: 100%; }
+}
+
 /* The featured project reads as one editorial card. */
 .surfay-card { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: center; border: 1px solid var(--line); background: #fbfaf6; scroll-margin-top: 28px; }
 .surfay-card-copy { padding: clamp(24px, 3vw, 44px); }

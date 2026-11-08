@@ -244,8 +244,10 @@ Touch, reduced motion and the footer’s pause setting use the still composition
 Give the illustration a text alternative and preserve keyboard focus for the
 project links. The dark review composition retains its map screenshot and attribution.
 
-Urbot and CadeiraAI use ruled horizontal rows, clear status and honest contact
-links. Do not fabricate screenshots to make their layouts match Surfay.
+Urbot and CadeiraAI use ruled rows, clear status and contact links. Add smaller
+900:523 grainy SVG posters with outlined Instrument Serif wordmarks. Urbot uses
+a parcel plan and building mass; CadeiraAI uses a receiver and dinner plate.
+These are conceptual illustrations. Stack the art and copy at 600px.
 
 ### Background
 
