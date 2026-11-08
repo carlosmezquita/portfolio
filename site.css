@@ -10,7 +10,7 @@
 .background.ambient-running::before{animation-play-state:running}
 @keyframes background-drift{to{transform:translate(35%,18%)}}
 .background-grain::before{display:none}
-.background-grain .about-intro :is(.section-kicker,.languages){color:color-mix(in srgb,var(--muted) 80%,var(--ink))}
+.background-grain .about-intro :is(.section-kicker,.languages){color:color-mix(in srgb,var(--muted) 60%,var(--ink))}
 .background-light{display:none}
 .background-grain .background-light {
   display: block;
