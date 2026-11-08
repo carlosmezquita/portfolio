@@ -209,15 +209,15 @@
 
 /* The featured project reads as one editorial card. */
 .surfay-card { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: center; border: 1px solid var(--line); background: #fbfaf6; scroll-margin-top: 28px; }
-.surfay-card-copy { padding: clamp(24px, 3.6vw, 52px); }
+.surfay-card-copy { padding: clamp(24px, 3vw, 44px); }
 .surfay-card-copy h3, .surfay-project-page h1 { font: 400 clamp(40px, 4.3vw, 63px)/.98 var(--serif); letter-spacing: -.035em; }
 .surfay-card-copy p { max-width: 33ch; margin: 16px 0 22px; font-size: 15px; }
-.surfay-card-more { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px; font-weight: 600; }
+.surfay-card-more { display: inline-block; min-height: 44px; padding-block: 10px; font-size: 13px; }
 .surfay-project-page { max-width: 820px; padding-block: clamp(32px, 7vw, 88px); }
 .surfay-project-back { display: inline-block; margin-bottom: 32px; font-size: 14px; }
 .surfay-project-page p { margin-top: 16px; }
 .surfay-project-page .project-links { flex-flow: row wrap; }
-@media (max-width: 760px) {
+@media (max-width: 960px) {
   .surfay-card { grid-template-columns: minmax(0, 1fr); }
   .surfay-card-copy h3 { font-size: clamp(38px, 8vw, 48px); }
 }
