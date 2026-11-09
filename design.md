@@ -125,8 +125,7 @@ closely tracked and expressive without bold weight. Sans provides precise readin
 | Hero name | `clamp(56px, 7.2vw, 100px)`, serif, 1.05 | `clamp(42px, 8.5vw, 63px)`; 38px at ≤360px |
 | Intro lead | 23px sans, 1.5; 20px at ≤1050px | 20px |
 | Selected work title | 36px serif, 1.2 | 30px |
-| Surfay headline | `clamp(40px, 4.3vw, 63px)`, serif, .98 | `clamp(38px, 8vw, 48px)` |
-| Other project names | 36px serif | 32px |
+| Selected work card titles | 36px serif (32px on the tablet rail) | `clamp(27px, 7vw, 33px)` below 600px |
 | About headline | `clamp(38px, 4.2vw, 59px)`, serif, 1.1 | 43px |
 | Get in touch. | 61px serif, 1; tracking -.04em | 48px |
 | Inputs / floating labels | 16px sans; raised label 12px | Same; do not shrink editable text |
@@ -148,11 +147,10 @@ work → sage background/experience → contact. Keep the opening navigable and 
 project evidence prominent. Empty space provides pacing; it is not a gap to fill
 with badges, ornamental text or another feature block.
 
-Surfay’s bordered card uses a 1.6:1 image/copy split on wide screens and
-1.2:1 from 761px to 1100px, then 1.1:1 down to 600px. Below 600px it stacks. Keep the illustration flush with
-the card edge and keep the text inset. About uses 1:1.15 columns with a 105px gap
+Selected work cards place the illustration above the copy. Keep the illustration
+flush with the card edge and keep the text inset. About uses 1:1.15 columns with a 105px gap
 (65px on tablet). Contact uses .8:1.2 columns at tablet width. At ≤760px these
-stack into a single reading order, along with the secondary project rows.
+stack into a single reading order.
 Keep `minmax(0, …)`/`min-width:0` where needed so long content cannot widen the page.
 
 New public text pages can use a narrower reading column, shared paper/ink/fonts
@@ -248,7 +246,11 @@ project cards in one row with art above copy and links aligned at the bottom.
 From 600px viewport width, use a horizontal snap rail if all three cards do
 not fit, with accessible previous/next buttons and a paper-colored edge fade
 where cards are clipped. Hide the native scrollbar when these controls are active.
-Below 600px, stack the cards. Keep arrow scrolling smooth when motion is enabled. Urbot and CadeiraAI use the same card
+Below 600px, use a swipe rail with a glimpse of neighboring cards and three
+labeled pagination dots in place of arrows. Snap interior cards to the center
+and the end cards to their corresponding edges. The active pill follows scroll
+progress. Use smooth scrolling for controls when motion is enabled and discrete
+dot positions when motion is reduced or paused. Urbot and CadeiraAI use the same card
 structure as Surfay, with a concise description and a contact link. Their grainy SVG posters use distinct palettes
 and outlined Fraunces lettering in Surfay’s ink color. Urbot shows a flat city
 skyline with a highlighted building and light drafting marks. CadeiraAI’s receiver eases

@@ -220,13 +220,56 @@
 .surfay-project-back { display: inline-block; margin-bottom: 32px; font-size: 14px; }
 .surfay-project-page p { margin-top: 16px; }
 .surfay-project-page .project-links { flex-flow: row wrap; }
+/* Show the overflow controls appropriate to the width. */
+.work-controls, .work-dots { display: none; }
 @media (width < 600px) {
-  .work-card { grid-template-columns: minmax(0, 1fr); }
-  .work-card-copy h3 { font-size: clamp(38px, 8vw, 48px); }
+  .work-cards {
+    grid-auto-flow: column;
+    grid-auto-columns: min(82%, 320px);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    gap: 14px;
+  }
+  .work-card {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    align-items: stretch;
+    scroll-snap-align: center;
+  }
+  .work-card:first-child { scroll-snap-align: start; }
+  .work-card:last-child:not(:first-child) { scroll-snap-align: end; }
+  .work-card-copy { display: flex; flex-direction: column; padding: 16px 16px 12px; }
+  .work-card-copy h3 { font-size: clamp(27px, 7vw, 33px); }
+  .work-card-copy p { font-size: 14px; line-height: 1.45; margin: 8px 0 10px; }
+  .work-card-link { margin-top: auto; align-self: flex-start; }
+  .work-card-link:focus-visible { outline-offset: 2px; }
+  .work--cards .section-heading { gap: 8px; }
+  .work-dots:not([hidden]) { position: relative; display: flex; justify-content: center; margin-top: 2px; }
+  .work-dots button {
+    width: 44px; height: 44px; padding: 0; border: 0;
+    background: transparent; display: grid; place-items: center; cursor: pointer;
+  }
+  .work-dots button::before {
+    content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--muted);
+  }
+  .work-dots::after {
+    content: ""; position: absolute; top: calc(50% - 3.5px); left: calc(50% - 53px);
+    width: 18px; height: 7px; border-radius: 5px; background: var(--blue);
+    transform: translateX(calc(var(--dot-position, 0) * 44px));
+    pointer-events: none;
+  }
+  .work-dots button:focus-visible { outline: 2px solid #197792; outline-offset: -3px; }
 }
 
-/* Use one row on tablet and desktop, with native overflow only on tablet. */
-.work-controls { display: none; }
+.work-rail { position: relative; --work-edge-fade: 20px; }
+.work-rail:is([data-more-left], [data-more-right]) > .work-cards { scrollbar-width: none; }
+.work-rail[data-more-left]::before, .work-rail[data-more-right]::after {
+  content: ""; position: absolute; z-index: 1; inset-block: 0;
+  width: var(--work-edge-fade); pointer-events: none;
+}
+.work-rail[data-more-left]::before { left: 0; background: linear-gradient(to right, var(--paper), transparent); }
+.work-rail[data-more-right]::after { right: 0; background: linear-gradient(to left, var(--paper), transparent); }
 .work-controls button {
   width: 44px; height: 44px; border: 1px solid var(--line);
   background: transparent; color: var(--ink); font: 18px var(--sans); cursor: pointer;
@@ -249,16 +292,8 @@
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scrollbar-width: thin;
-
     }
-    .work-rail { position: relative; }
-    .work-rail:is([data-more-left], [data-more-right]) > .work-cards { scrollbar-width: none; }
-    .work-rail[data-more-left]::before, .work-rail[data-more-right]::after {
-      content: ""; position: absolute; z-index: 1; inset-block: 0;
-      width: clamp(22px, 4vw, 38px); pointer-events: none;
-    }
-    .work-rail[data-more-left]::before { left: 0; background: linear-gradient(to right, var(--paper), transparent); }
-    .work-rail[data-more-right]::after { right: 0; background: linear-gradient(to left, var(--paper), transparent); }
+    .work-rail { --work-edge-fade: clamp(22px, 4vw, 38px); }
     .work-card { scroll-snap-align: start; }
     .work-card-copy { padding: 18px; }
     .work-card-copy h3 { font-size: 32px; }
