@@ -239,10 +239,10 @@
 /* The poster sits still while the surfer and board respond to the pointer. */
 .surfay-banner { aspect-ratio: 900/523; background: #f4ebd8; }
 .surfay-art { display: block; width: 100%; height: 100%; }
-.surfay-rider { transform-box: fill-box; transform-origin: center; }
+:is(.surfay-rider, .project-art-motion) { transform-box: fill-box; transform-origin: center; }
 @media (prefers-reduced-motion: no-preference) {
-  html:not(.motion-paused) .surfay-rider {
-    transform: var(--surfay-rider-transform, none);
+  html:not(.motion-paused) :is(.surfay-rider, .project-art-motion) {
+    transform: var(--project-art-transform, none);
     transition: transform 720ms cubic-bezier(.22, 1, .36, 1);
   }
 }

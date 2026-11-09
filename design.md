@@ -245,8 +245,10 @@ project links. The dark review composition retains its map screenshot and attrib
 
 Urbot and CadeiraAI use the same card structure as Surfay, with a concise
 description and a contact link. Their grainy SVG posters use distinct palettes
-and outlined Instrument Serif lettering. Urbot shows a city block and setback
-lines. CadeiraAI shows a receiver above a restaurant table set for two.
+and outlined Fraunces lettering, matching Surfay’s wordmark. Urbot shows a city
+block with dimensions that move with the buildings. CadeiraAI’s receiver eases
+with the cursor above a still table setting. Both cards share the footer motion
+control and respect reduced motion.
 
 ### Background
 
