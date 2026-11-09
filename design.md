@@ -227,6 +227,11 @@ large editorial headline with a supporting visual. Their actual homepage metadat
 and images were inspected on 23 October 2026. The lesson is focal hierarchy and
 brand continuity, not copying their dark palettes or assuming conversion gains.
 
+### Homepage intro
+
+Keep the introduction and profile links in one block. Put Download CV, GitHub,
+and LinkedIn beneath the bio, and use a short gap before Selected work.
+
 ### Selected work
 
 Surfay’s full 900:523 SVG poster and short summary share one bordered card.
