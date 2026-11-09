@@ -26,6 +26,7 @@ function scene({ reduced = false, observer = true, canvasAvailable = true } = {}
     addEventListener() {}, getBoundingClientRect: () => ({ left: 0, top: 0, width: 390, height: 250 }) };
   const document = {
     hidden: false, documentElement: root,
+    querySelectorAll: () => [],
     querySelector: selector => ({ '.footer-motion-toggle': toggle, '.background': background,
       '.hero-poster': poster, '.identity-motion': canvas })[selector],
     addEventListener(name, handler) { (events[name] ??= []).push(handler); },

@@ -13,7 +13,7 @@ if (destination) {
   const root = document.documentElement;
   const background = document.querySelector('.background');
   const light = document.querySelector('.background-light');
-  const surfay = document.querySelector('.surfay-card');
+  const cards = document.querySelectorAll('.work-card');
   const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
   let paused = false;
   let visible = !('IntersectionObserver' in window);
@@ -26,7 +26,7 @@ if (destination) {
       light.style.setProperty('--background-pointer', getComputedStyle(light, '::before').translate);
     }
     root.classList.toggle('motion-paused', stopped);
-    if (stopped) surfay?.style.removeProperty('--surfay-rider-transform');
+    if (stopped) for (const card of cards) card.style.removeProperty('--project-art-transform');
     // Entrance effects are one-shot; do not hide/replay the form when resuming.
     if (stopped) root.classList.add('motion-settled');
     background?.classList.toggle('ambient-running', running);
@@ -60,19 +60,20 @@ if (destination) {
       if (background.classList.contains('ambient-running')) resetLight();
     }, { passive: true });
   }
-  if (surfay) {
-    const resetRider = () => surfay.style.removeProperty('--surfay-rider-transform');
-    surfay.addEventListener('pointermove', event => {
+  for (const card of cards) {
+    const followsWave = card.classList.contains('surfay-card');
+    const resetArt = () => card.style.removeProperty('--project-art-transform');
+    card.addEventListener('pointermove', event => {
       if (event.pointerType !== 'mouse' || paused || preference.matches) return;
-      const bounds = surfay.getBoundingClientRect();
+      const bounds = card.getBoundingClientRect();
       const x = (event.clientX - bounds.left) / bounds.width - .5;
       const y = (event.clientY - bounds.top) / bounds.height - .5;
-      const alongWave = x * 28;
-      // Track the painted board angle with a small vertical response to the pointer.
-      const downFace = -alongWave * .34 + y * 6;
-      surfay.style.setProperty('--surfay-rider-transform', `translate(${alongWave}px, ${downFace}px) rotate(${x * 2}deg)`);
+      const across = x * (followsWave ? 28 : 14);
+      // The board tracks the wave slope. The other illustrations drift gently.
+      const down = y * 6 - (followsWave ? across * .34 : 0);
+      card.style.setProperty('--project-art-transform', `translate(${across}px, ${down}px) rotate(${x * 2}deg)`);
     }, { passive: true });
-    surfay.addEventListener('pointerleave', resetRider, { passive: true });
+    card.addEventListener('pointerleave', resetArt, { passive: true });
   }
   if (background && 'IntersectionObserver' in window) {
     new IntersectionObserver(([entry]) => {
