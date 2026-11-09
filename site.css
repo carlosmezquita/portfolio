@@ -207,12 +207,6 @@
 @media(max-width:760px),(pointer:coarse){.motion-ready:not(.motion-paused) .touch-hint{display:block}}
 @media(prefers-reduced-motion:reduce){.touch-hint{display:none!important}}
 
-/* Keep the homepage bio and profile links together. */
-.intro--compact { display: block; padding-block: 24px 25px; }
-.intro--compact .intro-detail { margin-top: 7px; }
-.intro--compact .intro-links { display: flex; flex-wrap: wrap; gap: 4px 22px; padding-top: 8px; margin-top: 0; }
-.work--cards { padding-top: 14px; }
-
 /* Project artwork and concise copy share an editorial card. */
 .work-card { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: center; border: 1px solid var(--line); background: #fbfaf6; scroll-margin-top: 28px; }
 .work-card-art { display: block; width: 100%; height: auto; }
