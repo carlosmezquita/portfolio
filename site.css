@@ -210,7 +210,8 @@
 /* Project artwork and concise copy share an editorial card. */
 .work-card { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: center; border: 1px solid var(--line); background: #fbfaf6; scroll-margin-top: 28px; }
 .work-card-art { display: block; width: 100%; height: auto; }
-.work-card + .work-card { margin-top: 20px; }
+.work--cards { container: selected-work / inline-size; }
+.work-cards { display: grid; gap: 20px; }
 .work-card-copy { padding: clamp(24px, 3vw, 44px); }
 .work-card-copy h3, .surfay-project-page h1 { font: 400 clamp(40px, 4.3vw, 63px)/.98 var(--serif); letter-spacing: -.035em; }
 .work-card-copy p { max-width: 33ch; margin: 16px 0 22px; font-size: 15px; }
@@ -234,6 +235,15 @@
 @media (width < 600px) {
   .work-card { grid-template-columns: minmax(0, 1fr); }
   .work-card-copy h3 { font-size: clamp(38px, 8vw, 48px); }
+}
+
+@container selected-work (min-width: 960px) {
+  .work-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .work-card { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; align-items: stretch; }
+  .work-card-copy { display: flex; flex-direction: column; padding: 24px; }
+  .work-card-copy h3 { font-size: 36px; }
+  .work-card-copy p { margin: 12px 0 14px; font-size: 14px; line-height: 1.5; }
+  .work-card-link { align-self: flex-start; margin-top: auto; }
 }
 
 /* The poster sits still while the surfer and board respond to the pointer. */
