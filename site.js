@@ -91,9 +91,41 @@ if (destination) {
   if (!rail || !controls) return;
   const frame = rail.parentElement;
   const [previous, next] = controls.querySelectorAll('button');
-  const [firstCard, secondCard] = rail.children;
+  const cards = [...rail.children];
+  const [firstCard, secondCard] = cards;
+  const dots = document.querySelector('.work-dots');
+  const dotButtons = dots ? [...dots.querySelectorAll('button')] : [];
+  const phone = window.matchMedia('(width < 600px)');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const still = () => reducedMotion.matches || document.documentElement.classList.contains('motion-paused');
   const maxScroll = () => rail.scrollWidth - rail.clientWidth;
+  const dotStops = () => {
+    const start = firstCard.getBoundingClientRect().left;
+    const end = maxScroll();
+    return cards.map((card, index) => {
+      if (index === 0) return 0;
+      if (index === cards.length - 1) return end;
+      const { left, width } = card.getBoundingClientRect();
+      return Math.max(0, Math.min(end, left - start - (rail.clientWidth - width) / 2));
+    });
+  };
+  function syncDots(overflow) {
+    if (!dots) return;
+    dots.hidden = !phone.matches || !overflow;
+    if (dots.hidden) return;
+    const stops = dotStops();
+    const offset = Math.max(0, Math.min(stops.at(-1), rail.scrollLeft));
+    const next = stops.findIndex(stop => stop >= offset);
+    const previous = Math.max(0, next - 1);
+    const distance = stops[next] - stops[previous];
+    const progress = distance > 0 ? previous + (offset - stops[previous]) / distance : next;
+    const active = Math.round(progress);
+    dots.style.setProperty('--dot-position', still() ? active : progress);
+    dotButtons.forEach((button, index) => {
+      if (index === active) button.setAttribute('aria-current', 'true');
+      else button.removeAttribute('aria-current');
+    });
+  }
   const sync = () => {
     const overflow = maxScroll() > 1;
     const moreLeft = overflow && rail.scrollLeft >= 1;
@@ -105,17 +137,23 @@ if (destination) {
     else rail.removeAttribute('tabindex');
     previous.setAttribute('aria-disabled', String(!moreLeft));
     next.setAttribute('aria-disabled', String(!moreRight));
+    syncDots(overflow);
   };
   controls.addEventListener('click', event => {
     const button = event.target.closest('[data-work-scroll]');
     if (!button || button.getAttribute('aria-disabled') === 'true') return;
     const step = secondCard.getBoundingClientRect().left - firstCard.getBoundingClientRect().left;
-    const still = reducedMotion.matches || document.documentElement.classList.contains('motion-paused');
     const end = maxScroll();
     const target = rail.scrollLeft + Number(button.dataset.workScroll) * step;
-    rail.scrollTo({ left: target > end - 32 ? end : Math.max(0, target), behavior: still ? 'auto' : 'smooth' });
+    rail.scrollTo({ left: target > end - 32 ? end : Math.max(0, target), behavior: still() ? 'auto' : 'smooth' });
   });
+  dotButtons.forEach((button, index) => button.addEventListener('click', () => {
+    rail.scrollTo({ left: dotStops()[index], behavior: still() ? 'auto' : 'smooth' });
+  }));
   rail.addEventListener('scroll', sync, { passive: true });
+  phone.addEventListener('change', sync);
+  document.addEventListener('portfolio:motionchange', sync);
+  reducedMotion.addEventListener('change', sync);
   new ResizeObserver(sync).observe(rail);
   sync();
 })();
