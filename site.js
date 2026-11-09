@@ -83,3 +83,34 @@ if (destination) {
   }
   sync();
 })();
+
+// Keep the scroll rail native and add step controls where the cards overflow.
+(() => {
+  const rail = document.querySelector('#project-cards');
+  const controls = document.querySelector('.work-controls');
+  if (!rail || !controls) return;
+  const [previous, next] = controls.querySelectorAll('button');
+  const [firstCard, secondCard] = rail.children;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const maxScroll = () => rail.scrollWidth - rail.clientWidth;
+  const sync = () => {
+    const overflow = maxScroll() > 1;
+    controls.hidden = !overflow;
+    if (overflow) rail.tabIndex = 0;
+    else rail.removeAttribute('tabindex');
+    previous.setAttribute('aria-disabled', String(rail.scrollLeft < 1));
+    next.setAttribute('aria-disabled', String(rail.scrollLeft >= maxScroll() - 1));
+  };
+  controls.addEventListener('click', event => {
+    const button = event.target.closest('[data-work-scroll]');
+    if (!button || button.getAttribute('aria-disabled') === 'true') return;
+    const step = secondCard.getBoundingClientRect().left - firstCard.getBoundingClientRect().left;
+    const still = reducedMotion.matches || document.documentElement.classList.contains('motion-paused');
+    const end = maxScroll();
+    const target = rail.scrollLeft + Number(button.dataset.workScroll) * step;
+    rail.scrollTo({ left: target > end - 32 ? end : Math.max(0, target), behavior: still ? 'auto' : 'smooth' });
+  });
+  rail.addEventListener('scroll', sync, { passive: true });
+  new ResizeObserver(sync).observe(rail);
+  sync();
+})();
