@@ -249,8 +249,16 @@
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scrollbar-width: thin;
-      padding-bottom: 10px;
+
     }
+    .work-rail { position: relative; }
+    .work-rail:is([data-more-left], [data-more-right]) > .work-cards { scrollbar-width: none; }
+    .work-rail[data-more-left]::before, .work-rail[data-more-right]::after {
+      content: ""; position: absolute; z-index: 1; inset-block: 0;
+      width: clamp(22px, 4vw, 38px); pointer-events: none;
+    }
+    .work-rail[data-more-left]::before { left: 0; background: linear-gradient(to right, var(--paper), transparent); }
+    .work-rail[data-more-right]::after { right: 0; background: linear-gradient(to left, var(--paper), transparent); }
     .work-card { scroll-snap-align: start; }
     .work-card-copy { padding: 18px; }
     .work-card-copy h3 { font-size: 32px; }

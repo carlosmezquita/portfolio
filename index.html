@@ -49,8 +49,8 @@
   </script>
   <link rel="preload" href="./fonts/instrument-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="./fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="./site.css?v=20261109-project-carousel">
-  <script defer src="./site.js?v=20261109-project-carousel"></script>
+  <link rel="stylesheet" href="./site.css?v=20261109-carousel-fade">
+  <script defer src="./site.js?v=20261109-carousel-fade"></script>
   <script defer src="./hero-motion.js"></script>
   <script defer src="./contact.js"></script>
   <script defer src="./analytics.js?v=20261023-2"></script>
@@ -86,45 +86,47 @@
           <button type="button" data-work-scroll="1" aria-controls="project-cards" aria-label="Next project">→</button>
         </div>
       </div>
-      <div class="work-cards" id="project-cards" role="group" aria-label="Project cards">
-        <article class="surfay-card work-card" id="surfay" aria-labelledby="surfay-heading">
-          <div class="surfay-banner">
-            <svg class="surfay-art" viewBox="0 0 900 523" role="img" aria-label="Surfay poster with a surfer riding down a wave at sunset" focusable="false">
-              <use href="./img/surfay-banner.svg#surfay-backdrop"/>
-              <use class="surfay-rider" href="./img/surfay-banner.svg#surfay-surfer"/>
-              <use href="./img/surfay-banner.svg#surfay-finish"/>
+      <div class="work-rail">
+        <div class="work-cards" id="project-cards" role="group" aria-label="Project cards">
+          <article class="surfay-card work-card" id="surfay" aria-labelledby="surfay-heading">
+            <div class="surfay-banner">
+              <svg class="surfay-art" viewBox="0 0 900 523" role="img" aria-label="Surfay poster with a surfer riding down a wave at sunset" focusable="false">
+                <use href="./img/surfay-banner.svg#surfay-backdrop"/>
+                <use class="surfay-rider" href="./img/surfay-banner.svg#surfay-surfer"/>
+                <use href="./img/surfay-banner.svg#surfay-finish"/>
+              </svg>
+            </div>
+            <div class="work-card-copy">
+              <h3 id="surfay-heading">Surf forecasts for Galicia</h3>
+              <p>An interactive map with hourly forecasts for individual surf breaks, built from marine data and local coastal profiles.</p>
+              <a class="work-card-link" href="./projects/surfay/" aria-label="Read more about Surfay">Read more <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="work-card" id="urbot" aria-labelledby="urbot-heading">
+            <svg class="work-card-art" viewBox="0 0 900 523" role="img" aria-label="Urbot architectural planning illustration" focusable="false">
+              <use href="./img/urbot-banner.svg#urbot-backdrop"/>
+              <use class="project-art-motion" href="./img/urbot-banner.svg#urbot-motion"/>
+              <use href="./img/urbot-banner.svg#urbot-finish"/>
             </svg>
-          </div>
-          <div class="work-card-copy">
-            <h3 id="surfay-heading">Surf forecasts for Galicia</h3>
-            <p>An interactive map with hourly forecasts for individual surf breaks, built from marine data and local coastal profiles.</p>
-            <a class="work-card-link" href="./projects/surfay/" aria-label="Read more about Surfay">Read more <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>
-        <article class="work-card" id="urbot" aria-labelledby="urbot-heading">
-          <svg class="work-card-art" viewBox="0 0 900 523" role="img" aria-label="Urbot architectural planning illustration" focusable="false">
-            <use href="./img/urbot-banner.svg#urbot-backdrop"/>
-            <use class="project-art-motion" href="./img/urbot-banner.svg#urbot-motion"/>
-            <use href="./img/urbot-banner.svg#urbot-finish"/>
-          </svg>
-          <div class="work-card-copy">
-            <h3 id="urbot-heading">Urban planning checks</h3>
-            <p>An internal tool for project intake, planning rule checks and evidence review.</p>
-            <a class="work-card-link" data-content-link="urbot_link" data-project-target="urbot" data-github-target="urbot" href="#contact">Ask about Urbot <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>
-        <article class="work-card" id="cadeira" aria-labelledby="cadeira-heading">
-          <svg class="work-card-art" viewBox="0 0 900 523" role="img" aria-label="CadeiraAI restaurant reservations illustration" focusable="false">
-            <use href="./img/cadeiraai-banner.svg#cadeiraai-backdrop"/>
-            <use class="project-art-motion" href="./img/cadeiraai-banner.svg#cadeiraai-motion"/>
-            <use href="./img/cadeiraai-banner.svg#cadeiraai-finish"/>
-          </svg>
-          <div class="work-card-copy">
-            <h3 id="cadeira-heading">Reservations by phone</h3>
-            <p>A voice agent prototype that takes restaurant reservations over the phone.</p>
-            <a class="work-card-link" data-content-link="cadeira_link" data-project-target="cadeira" data-github-target="cadeira" href="#contact">Ask about CadeiraAI <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>
+            <div class="work-card-copy">
+              <h3 id="urbot-heading">Urban planning checks</h3>
+              <p>An internal tool for project intake, planning rule checks and evidence review.</p>
+              <a class="work-card-link" data-content-link="urbot_link" data-project-target="urbot" data-github-target="urbot" href="#contact">Ask about Urbot <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="work-card" id="cadeira" aria-labelledby="cadeira-heading">
+            <svg class="work-card-art" viewBox="0 0 900 523" role="img" aria-label="CadeiraAI restaurant reservations illustration" focusable="false">
+              <use href="./img/cadeiraai-banner.svg#cadeiraai-backdrop"/>
+              <use class="project-art-motion" href="./img/cadeiraai-banner.svg#cadeiraai-motion"/>
+              <use href="./img/cadeiraai-banner.svg#cadeiraai-finish"/>
+            </svg>
+            <div class="work-card-copy">
+              <h3 id="cadeira-heading">Reservations by phone</h3>
+              <p>A voice agent prototype that takes restaurant reservations over the phone.</p>
+              <a class="work-card-link" data-content-link="cadeira_link" data-project-target="cadeira" data-github-target="cadeira" href="#contact">Ask about CadeiraAI <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
     <section class="background background-grain" id="about" aria-labelledby="about-heading">

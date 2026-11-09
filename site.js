@@ -89,17 +89,22 @@ if (destination) {
   const rail = document.querySelector('#project-cards');
   const controls = document.querySelector('.work-controls');
   if (!rail || !controls) return;
+  const frame = rail.parentElement;
   const [previous, next] = controls.querySelectorAll('button');
   const [firstCard, secondCard] = rail.children;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const maxScroll = () => rail.scrollWidth - rail.clientWidth;
   const sync = () => {
     const overflow = maxScroll() > 1;
+    const moreLeft = overflow && rail.scrollLeft >= 1;
+    const moreRight = overflow && rail.scrollLeft < maxScroll() - 1;
+    frame.toggleAttribute('data-more-left', moreLeft);
+    frame.toggleAttribute('data-more-right', moreRight);
     controls.hidden = !overflow;
     if (overflow) rail.tabIndex = 0;
     else rail.removeAttribute('tabindex');
-    previous.setAttribute('aria-disabled', String(rail.scrollLeft < 1));
-    next.setAttribute('aria-disabled', String(rail.scrollLeft >= maxScroll() - 1));
+    previous.setAttribute('aria-disabled', String(!moreLeft));
+    next.setAttribute('aria-disabled', String(!moreRight));
   };
   controls.addEventListener('click', event => {
     const button = event.target.closest('[data-work-scroll]');
