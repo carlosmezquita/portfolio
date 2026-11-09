@@ -245,10 +245,13 @@ project links. The dark review composition retains its map screenshot and attrib
 
 When the Selected work content area is at least 960px wide, show all three
 project cards in one row with art above copy and links aligned at the bottom.
-Below that, use a single column of cards. Urbot and CadeiraAI use the same card
+From 600px viewport width, use a horizontal snap rail if all three cards do
+not fit, with accessible previous/next buttons and a paper-colored edge fade
+where cards are clipped. Hide the native scrollbar when these controls are active.
+Below 600px, stack the cards. Keep arrow scrolling smooth when motion is enabled. Urbot and CadeiraAI use the same card
 structure as Surfay, with a concise description and a contact link. Their grainy SVG posters use distinct palettes
-and outlined Fraunces lettering, matching Surfay’s wordmark. Urbot shows a city
-block with dimensions that move with the buildings. CadeiraAI’s receiver eases
+and outlined Fraunces lettering in Surfay’s ink color. Urbot shows a flat city
+skyline with a highlighted building and light drafting marks. CadeiraAI’s receiver eases
 with the cursor above a still table setting. Both cards share the footer motion
 control and respect reduced motion.
 

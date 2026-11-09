@@ -220,30 +220,53 @@
 .surfay-project-back { display: inline-block; margin-bottom: 32px; font-size: 14px; }
 .surfay-project-page p { margin-top: 16px; }
 .surfay-project-page .project-links { flex-flow: row wrap; }
-@media (760px < width <= 1100px) {
-  .work-card { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
-  .work-card-copy { padding: 16px clamp(16px, 2.6vw, 28px); }
-  .work-card-copy h3 { font-size: clamp(32px, 3.8vw, 42px); }
-  .work-card-copy p { margin: 10px 0 6px; font-size: 14px; line-height: 1.4; }
-}
-@media (600px <= width <= 760px) {
-  .work-card { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
-  .work-card-copy { padding: 8px 12px; }
-  .work-card-copy h3 { font-size: clamp(26px, 4.15vw, 31px); }
-  .work-card-copy p { margin: 8px 0 0; font-size: 13px; line-height: 1.4; }
-}
 @media (width < 600px) {
   .work-card { grid-template-columns: minmax(0, 1fr); }
   .work-card-copy h3 { font-size: clamp(38px, 8vw, 48px); }
 }
 
-@container selected-work (min-width: 960px) {
-  .work-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+/* Use one row on tablet and desktop, with native overflow only on tablet. */
+.work-controls { display: none; }
+.work-controls button {
+  width: 44px; height: 44px; border: 1px solid var(--line);
+  background: transparent; color: var(--ink); font: 18px var(--sans); cursor: pointer;
+}
+.work-controls button[aria-disabled="true"] { opacity: .45; cursor: default; }
+.work-controls button:not([aria-disabled="true"]):hover { background: #fbfaf6; }
+.work-controls button:focus-visible, .work-cards:focus-visible { outline: 2px solid #197792; outline-offset: 2px; }
+@media (width >= 600px) {
   .work-card { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; align-items: stretch; }
   .work-card-copy { display: flex; flex-direction: column; padding: 24px; }
   .work-card-copy h3 { font-size: 36px; }
   .work-card-copy p { margin: 12px 0 14px; font-size: 14px; line-height: 1.5; }
   .work-card-link { align-self: flex-start; margin-top: auto; }
+  @container selected-work (width < 960px) {
+    .work--cards .section-heading:has(.work-controls:not([hidden])) > p { display: none; }
+    .work-controls:not([hidden]) { display: flex; gap: 8px; }
+    .work-cards {
+      grid-auto-flow: column;
+      grid-auto-columns: clamp(272px, calc((100% - 68px) / 2), 350px);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+
+    }
+    .work-rail { position: relative; }
+    .work-rail:is([data-more-left], [data-more-right]) > .work-cards { scrollbar-width: none; }
+    .work-rail[data-more-left]::before, .work-rail[data-more-right]::after {
+      content: ""; position: absolute; z-index: 1; inset-block: 0;
+      width: clamp(22px, 4vw, 38px); pointer-events: none;
+    }
+    .work-rail[data-more-left]::before { left: 0; background: linear-gradient(to right, var(--paper), transparent); }
+    .work-rail[data-more-right]::after { right: 0; background: linear-gradient(to left, var(--paper), transparent); }
+    .work-card { scroll-snap-align: start; }
+    .work-card-copy { padding: 18px; }
+    .work-card-copy h3 { font-size: 32px; }
+    .work-card-link:focus-visible { outline-offset: 2px; }
+  }
+  @container selected-work (min-width: 960px) {
+    .work-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
 }
 
 /* The poster sits still while the surfer and board respond to the pointer. */
