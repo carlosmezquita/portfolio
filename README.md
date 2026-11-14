@@ -29,7 +29,7 @@ Static HTML, CSS and small scripts for navigation, motion and contact. No build 
 - `dashboard-worker/`: private statistics, contact inbox and text/link editor protected by Cloudflare Access.
 - `site-content.js`: loads published plain-text content overrides, retaining static content on failure.
 - `Carlos-Mezquita-CV.pdf`: downloadable public CV.
-- `scripts/build_cv.py`: rebuilds the CV with Python and ReportLab.
+- `scripts/build_cv.py`: rebuilds the public CV from the editable Word source in the same directory.
 - `projects/<name>/index.html`: redirects old case-study URLs to their summaries, with a visible fallback link.
 - `CNAME`: existing custom domain for GitHub Pages.
 
@@ -39,7 +39,7 @@ Static HTML, CSS and small scripts for navigation, motion and contact. No build 
 python3 -m http.server 8000 --bind 0.0.0.0
 ```
 
-Open `http://localhost:8000`. To rebuild the CV, install ReportLab and run `python3 scripts/build_cv.py`.
+Open `http://localhost:8000`. To rebuild the CV, install LibreOffice Writer and Instrument Sans, then run `python3 scripts/build_cv.py`.
 
 ## Updating content
 
